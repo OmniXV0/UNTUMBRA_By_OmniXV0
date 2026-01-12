@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://byvx0ai4y18v0"]
+
+[ext_resource type="Script" uid="uid://druvtaqiudwfa" path="res://Scripts/HeartsUI.gd" id="1_p3dg4"]
+[ext_resource type="Texture2D" uid="uid://cub2i55s8hsxk" path="res://Textures/HeartsEmpty.png" id="2_p8ykq"]
+[ext_resource type="Resource" uid="uid://cjtc123x1jbbi" path="res://Resources/PlayerStats.tres" id="2_t5vmc"]
+[ext_resource type="Texture2D" uid="uid://trx862ewwrdf" path="res://Textures/HeartsFull.png" id="3_t5vmc"]
+[ext_resource type="Texture2D" uid="uid://b32fw0atx6qb" path="res://Textures/HealsEmpty.png" id="5_hi2dd"]
+[ext_resource type="Texture2D" uid="uid://banoj5ett1h3g" path="res://Textures/HealsFull.png" id="6_jh18t"]
+
+[node name="HeartsUI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_p3dg4")
+player_stats = ExtResource("2_t5vmc")
+
+[node name="EmptyHearts" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 30.0
+texture = ExtResource("2_p8ykq")
+stretch_mode = 1
+
+[node name="FullHearts" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 30.0
+texture = ExtResource("3_t5vmc")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="EmptyHeals" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 35.0
+offset_right = 52.0
+offset_bottom = 50.0
+texture = ExtResource("5_hi2dd")
+stretch_mode = 1
+
+[node name="FullHeals" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 35.0
+offset_right = 52.0
+offset_bottom = 50.0
+texture = ExtResource("6_jh18t")
+expand_mode = 1
+stretch_mode = 1

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnmxu631phwyn"]
+
+[ext_resource type="Texture2D" uid="uid://cv8mkklyw1r5a" path="res://Sprites/TheSurvivor.png" id="1_d7hrd"]
+[ext_resource type="Script" uid="uid://c6hi35787f8wa" path="res://Scripts/DashTrail.gd" id="2_8wn4n"]
+
+[node name="DashTrail" type="Sprite2D"]
+modulate = Color(0.47007585, 0.47007585, 0.47007585, 1)
+show_behind_parent = true
+z_index = -2
+texture = ExtResource("1_d7hrd")
+hframes = 12
+vframes = 3
+script = ExtResource("2_8wn4n")

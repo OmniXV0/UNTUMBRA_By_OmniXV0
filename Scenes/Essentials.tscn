@@ -1,0 +1,72 @@
+[gd_scene load_steps=7 format=3 uid="uid://bpfuxs6213j5x"]
+
+[ext_resource type="AnimationLibrary" uid="uid://80yucush5tgw" path="res://Animations/FadeAnimation.res" id="1_4xgqm"]
+[ext_resource type="Script" uid="uid://dff63s4sk6ir4" path="res://Scripts/Essentials.gd" id="1_lk7sx"]
+[ext_resource type="Script" uid="uid://640p8t61who3" path="res://Scripts/PauseMenu.gd" id="2_rw5iw"]
+[ext_resource type="Script" uid="uid://bxof3upxugd7q" path="res://Scripts/Camera.gd" id="4_wo2c0"]
+
+[sub_resource type="Animation" id="Animation_k6g17"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4xgqm"]
+_data = {
+&"RESET": SubResource("Animation_k6g17")
+}
+
+[node name="Essentials" type="CanvasLayer"]
+script = ExtResource("1_lk7sx")
+
+[node name="PauseButton" type="TextureButton" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PauseMenu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_rw5iw")
+
+[node name="Fade" type="ColorRect" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 660.0
+offset_bottom = 500.0
+
+[node name="FadeAnimation" type="AnimationPlayer" parent="Fade"]
+libraries = {
+&"": SubResource("AnimationLibrary_4xgqm"),
+&"FadeAnimation": ExtResource("1_4xgqm")
+}
+
+[node name="ScreenShake" type="Camera2D" parent="."]
+position = Vector2(320, 240)
+script = ExtResource("4_wo2c0")
+
+[connection signal="pressed" from="PauseButton" to="PauseMenu" method="_on_pause_button_pressed"]

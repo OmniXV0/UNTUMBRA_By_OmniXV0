@@ -1,0 +1,251 @@
+[gd_scene load_steps=24 format=3 uid="uid://o5ae7hx476ey"]
+
+[ext_resource type="Script" uid="uid://ca47p2e8ifk8h" path="res://Scripts/Player.gd" id="1_ttesm"]
+[ext_resource type="Resource" uid="uid://cjtc123x1jbbi" path="res://Resources/PlayerStats.tres" id="2_bhhdu"]
+[ext_resource type="Texture2D" uid="uid://cv8mkklyw1r5a" path="res://Sprites/TheSurvivor.png" id="3_bhhdu"]
+[ext_resource type="PackedScene" uid="uid://cnmxu631phwyn" path="res://Scenes/DashTrail.tscn" id="3_o3h8g"]
+[ext_resource type="AnimationLibrary" uid="uid://qrwp383ejci" path="res://Animations/PlayerAnimation.res" id="3_xobjj"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://dnsyprwaagsy8" path="res://Animations/Player.tres" id="4_5ixxa"]
+[ext_resource type="Script" uid="uid://bxof3upxugd7q" path="res://Scripts/Camera.gd" id="4_dewec"]
+[ext_resource type="Script" uid="uid://c6qkwgrvt7d3i" path="res://Scripts/Hitbox.gd" id="6_nn08x"]
+[ext_resource type="Script" uid="uid://bna5ylwwau47l" path="res://Scripts/Hurtbox.gd" id="8_bhhdu"]
+[ext_resource type="AudioStream" uid="uid://dg8m3g587xieu" path="res://Audio/SFX/PlayerAttackSFX.mp3" id="9_glx4g"]
+[ext_resource type="AudioStream" uid="uid://cyb6sn2elirco" path="res://Audio/SFX/PlayerDashSFX.mp3" id="10_miouo"]
+[ext_resource type="AudioStream" uid="uid://co7y2hdxayys2" path="res://Audio/SFX/PlayerTakeDamageSFX.mp3" id="11_o3h8g"]
+[ext_resource type="AudioStream" uid="uid://dfh7x7qfgbj8y" path="res://Audio/SFX/PlayerDeathSFX.mp3" id="12_1e7my"]
+
+[sub_resource type="Gradient" id="Gradient_o3h8g"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1e7my"]
+gradient = SubResource("Gradient_o3h8g")
+
+[sub_resource type="Gradient" id="Gradient_arntx"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_lslt6"]
+gradient = SubResource("Gradient_arntx")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ulo2v"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 40.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -2.2351742e-06
+linear_accel_max = 9.999997
+scale_max = 5.0
+scale_over_velocity_min = 1.0
+scale_over_velocity_max = 5.0
+color_ramp = SubResource("GradientTexture1D_lslt6")
+color_initial_ramp = SubResource("GradientTexture1D_1e7my")
+
+[sub_resource type="Animation" id="Animation_dewec"]
+length = 0.001
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HitboxArea/HitboxCollision:polygon")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HitboxArea/HitboxCollision:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HurtboxArea/HurtboxCollision:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:collision_layer")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:collision_mask")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5ixxa"]
+_data = {
+&"RESET": SubResource("Animation_dewec")
+}
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_5ixxa"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_nn08x"]
+nodes/output/position = Vector2(380, 180)
+nodes/PlayerStates/node = ExtResource("4_5ixxa")
+nodes/PlayerStates/position = Vector2(-60, 100)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_5ixxa")
+nodes/TimeScale/position = Vector2(200, 160)
+node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"PlayerStates"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_megsn"]
+size = Vector2(12, 12)
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+y_sort_enabled = true
+collision_layer = 6
+collision_mask = 7
+script = ExtResource("1_ttesm")
+stats = ExtResource("2_bhhdu")
+dash_trail_node = ExtResource("3_o3h8g")
+
+[node name="PlayerSprite" type="Sprite2D" parent="."]
+texture = ExtResource("3_bhhdu")
+hframes = 12
+vframes = 3
+
+[node name="DashTrailTimer" type="Timer" parent="."]
+
+[node name="DashTrailParticles" type="GPUParticles2D" parent="."]
+show_behind_parent = true
+z_index = -1
+position = Vector2(0, 13)
+emitting = false
+amount = 20
+speed_scale = 5.0
+process_material = SubResource("ParticleProcessMaterial_ulo2v")
+
+[node name="PlayerAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_5ixxa"),
+&"PlayerAnimation": ExtResource("3_xobjj")
+}
+
+[node name="InvincibilityFramesAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_5ixxa"),
+&"PlayerAnimation": ExtResource("3_xobjj")
+}
+
+[node name="PlayerAnimationTree" type="AnimationTree" parent="."]
+callback_mode_discrete = 1
+tree_root = SubResource("AnimationNodeBlendTree_nn08x")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../PlayerAnimation")
+parameters/PlayerStates/DashState/Dash/blend_position = Vector2(0, 0)
+parameters/PlayerStates/DashState/DashSwing/blend_position = Vector2(0, 0)
+parameters/PlayerStates/DashSwing/blend_position = Vector2(0, 0)
+parameters/PlayerStates/Dashing/blend_position = Vector2(-0.030303, 0.201794)
+parameters/PlayerStates/Movement/Dash/blend_position = Vector2(0, 0)
+parameters/PlayerStates/Movement/Idle/blend_position = Vector2(0, 0)
+parameters/PlayerStates/Movement/Swing/blend_position = Vector2(0, 0)
+parameters/PlayerStates/Movement/Walk/blend_position = Vector2(-0.0358127, -0.0109891)
+parameters/TimeScale/scale = 1.0
+
+[node name="PlayerCamera" type="Camera2D" parent="."]
+process_callback = 0
+limit_left = -1280
+limit_top = -960
+limit_right = 1280
+limit_bottom = 960
+position_smoothing_enabled = true
+script = ExtResource("4_dewec")
+
+[node name="PlayerCollider" type="CollisionPolygon2D" parent="."]
+position = Vector2(-3, 13)
+polygon = PackedVector2Array(-1, -2, 7, -2, 7, 2, -1, 2)
+
+[node name="HitboxArea" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 16
+script = ExtResource("6_nn08x")
+stores_hit_targets = true
+metadata/_custom_type_script = "uid://c6qkwgrvt7d3i"
+
+[node name="HitboxCollision" type="CollisionPolygon2D" parent="HitboxArea"]
+polygon = PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0)
+disabled = true
+
+[node name="HurtboxArea" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("8_bhhdu")
+metadata/_custom_type_script = "uid://bna5ylwwau47l"
+
+[node name="HurtboxCollision" type="CollisionShape2D" parent="HurtboxArea"]
+position = Vector2(0, 9)
+shape = SubResource("RectangleShape2D_megsn")
+
+[node name="PlayerAttack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_glx4g")
+bus = &"Player"
+
+[node name="PlayerDash" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_miouo")
+bus = &"Player"
+
+[node name="PlayerTakeDamage" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_o3h8g")
+mix_target = 2
+bus = &"Player"
+
+[node name="PlayerDeath" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_1e7my")
+mix_target = 1
+bus = &"Player"
+
+[connection signal="timeout" from="DashTrailTimer" to="." method="_on_dash_trail_timer_timeout"]

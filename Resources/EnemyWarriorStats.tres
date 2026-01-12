@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Stats" load_steps=2 format=3 uid="uid://bivbipgc0xk0b"]
+
+[ext_resource type="Script" uid="uid://g58xjr07cgb0" path="res://Scripts/Stats.gd" id="1_seodi"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_seodi")
+max_health = 3
+health = 3
+heals = null
+metadata/_custom_type_script = "uid://g58xjr07cgb0"

@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5qqs5p7rravl"]
+
+[ext_resource type="SpriteFrames" uid="uid://b57cpe0xwk4v0" path="res://Animations/EnemyDeathEffect.tres" id="1_j51y5"]
+
+[node name="DeathEffect" type="AnimatedSprite2D"]
+y_sort_enabled = true
+sprite_frames = ExtResource("1_j51y5")
+animation = &"GunnerDeathEffect"
+autoplay = "FighterDeathEffect"
+
+[connection signal="animation_finished" from="." to="." method="queue_free"]

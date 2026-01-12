@@ -1,0 +1,93 @@
+[gd_scene load_steps=5 format=3 uid="uid://bcpma0af5t0hx"]
+
+[ext_resource type="FontFile" uid="uid://bvvaytb6u27py" path="res://Fonts/deltha/Deltha.otf" id="1_gyf44"]
+[ext_resource type="Script" uid="uid://dvsvgp4322w3a" path="res://Scripts/ControlsMenu.gd" id="1_n2li1"]
+[ext_resource type="FontFile" uid="uid://do8imyb1tdnka" path="res://Fonts/bytebounce/ByteBounce.ttf" id="2_n2li1"]
+[ext_resource type="PackedScene" uid="uid://dsawtc1yhu1wh" path="res://Scenes/AudioController.tscn" id="4_bvrd0"]
+
+[node name="ControlsMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_n2li1")
+
+[node name="ControlsScreen" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 640.0
+offset_bottom = 480.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5019608)
+
+[node name="ControlsTitle" type="Label" parent="ControlsScreen"]
+layout_mode = 0
+offset_left = 240.0
+offset_top = 10.0
+offset_right = 393.0
+offset_bottom = 45.0
+theme_override_fonts/font = ExtResource("1_gyf44")
+theme_override_font_sizes/font_size = 25
+text = "Controls"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ControlsTextContainer" type="GridContainer" parent="ControlsScreen"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 60.0
+offset_right = 635.0
+offset_bottom = 444.0
+theme_override_constants/h_separation = -20
+theme_override_constants/v_separation = 50
+columns = 2
+
+[node name="ControlsText0" type="Label" parent="ControlsScreen/ControlsTextContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_n2li1")
+theme_override_font_sizes/font_size = 20
+text = "Keyboard Without Mouse:
+
+Move: Arrow Keys
+Slash: Z
+Dash: X
+Shoot: C | Hold button
+Aim: Left Shift - turn left, B - turn right
+Heal: V | Hold button
+Pause: Escape (Esc)
+Exit this screen: Ctrl or Cmd"
+
+[node name="ControlsText1" type="Label" parent="ControlsScreen/ControlsTextContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_n2li1")
+theme_override_font_sizes/font_size = 20
+text = "Keyboard With Mouse:
+
+Move: WASD
+Slash: Left mouse button
+Dash: Right mouse button
+Shoot: Middle mouse button | Hold button
+Aim: Mouse cursor
+Heal: E | Hold button
+Pause: Escape (Esc)
+Exit this screen, controls menu: Tab"
+
+[node name="ControlsText2" type="Label" parent="ControlsScreen/ControlsTextContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_n2li1")
+theme_override_font_sizes/font_size = 20
+text = "Controller:
+
+Move: Left Stick / D-Pad
+Slash: B (Nintendo) / A (Xbox) / Cross (Sony)
+Dash: Y (Nintendo) / X (Xbox) / Square (Sony)
+Shoot: Right Shoulder or Right Trigger
+Aim: Right Stick
+Heal: Left Shoulder or Left Trigger
+Pause: Start
+Exit this screen, controls menu: Select"
+
+[node name="AudioController" parent="." instance=ExtResource("4_bvrd0")]

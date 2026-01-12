@@ -1,0 +1,489 @@
+[gd_scene load_steps=33 format=3 uid="uid://o5ae7hx476ey"]
+
+[ext_resource type="Script" uid="uid://ca47p2e8ifk8h" path="res://Scripts/Player.gd" id="1_ttesm"]
+[ext_resource type="Resource" uid="uid://cjtc123x1jbbi" path="res://Resources/PlayerStats.tres" id="2_bhhdu"]
+[ext_resource type="Texture2D" uid="uid://cv8mkklyw1r5a" path="res://Sprites/TheSurvivor.png" id="3_bhhdu"]
+[ext_resource type="PackedScene" uid="uid://cnmxu631phwyn" path="res://Scenes/DashTrail.tscn" id="3_o3h8g"]
+[ext_resource type="AnimationLibrary" uid="uid://qrwp383ejci" path="res://Animations/PlayerAnimation.res" id="3_xobjj"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://dnsyprwaagsy8" path="res://Animations/Player.tres" id="4_5ixxa"]
+[ext_resource type="Script" uid="uid://bxof3upxugd7q" path="res://Scripts/Camera.gd" id="4_dewec"]
+[ext_resource type="Texture2D" uid="uid://ba2oc0olx2ai" path="res://Sprites/TheSurvivorBigSlash.png" id="5_1e7my"]
+[ext_resource type="PackedScene" uid="uid://cjnl3fl8xn5ge" path="res://Scenes/Gun.tscn" id="6_arntx"]
+[ext_resource type="Script" uid="uid://c6qkwgrvt7d3i" path="res://Scripts/Hitbox.gd" id="6_nn08x"]
+[ext_resource type="Texture2D" uid="uid://cb1buwvky2dx5" path="res://Sprites/HealsParticles.png" id="7_1iu4k"]
+[ext_resource type="Texture2D" uid="uid://dy0a6878tfni7" path="res://Sprites/HealsIcon.png" id="7_lslt6"]
+[ext_resource type="Script" uid="uid://bna5ylwwau47l" path="res://Scripts/Hurtbox.gd" id="8_bhhdu"]
+[ext_resource type="AudioStream" uid="uid://dg8m3g587xieu" path="res://Audio/SFX/PlayerAttackSFX.mp3" id="9_glx4g"]
+[ext_resource type="Texture2D" uid="uid://banoj5ett1h3g" path="res://Textures/HealsFull.png" id="9_i2e8t"]
+[ext_resource type="AudioStream" uid="uid://cyb6sn2elirco" path="res://Audio/SFX/PlayerDashSFX.mp3" id="10_miouo"]
+[ext_resource type="FontFile" uid="uid://do8imyb1tdnka" path="res://Fonts/bytebounce/ByteBounce.ttf" id="10_qidb7"]
+[ext_resource type="AudioStream" uid="uid://co7y2hdxayys2" path="res://Audio/SFX/PlayerTakeDamageSFX.mp3" id="11_o3h8g"]
+[ext_resource type="AudioStream" uid="uid://dfh7x7qfgbj8y" path="res://Audio/SFX/PlayerDeathSFX.mp3" id="12_1e7my"]
+[ext_resource type="AudioStream" uid="uid://b5fr44h4vf6u4" path="res://Audio/SFX/PlayerHealSFX.mp3" id="14_o3h8g"]
+[ext_resource type="AudioStream" uid="uid://djkqk84ulpem6" path="res://Audio/SFX/PlayerBigSlashSFX.mp3" id="14_ulo2v"]
+[ext_resource type="AudioStream" uid="uid://ck3byk12qpj4t" path="res://Audio/SFX/EnemyAttackSFX.mp3" id="22_x63xi"]
+
+[sub_resource type="Gradient" id="Gradient_o3h8g"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1e7my"]
+gradient = SubResource("Gradient_o3h8g")
+
+[sub_resource type="Gradient" id="Gradient_arntx"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_lslt6"]
+gradient = SubResource("Gradient_arntx")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ulo2v"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 40.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -2.2351742e-06
+linear_accel_max = 9.999997
+scale_max = 5.0
+scale_over_velocity_min = 1.0
+scale_over_velocity_max = 5.0
+color_ramp = SubResource("GradientTexture1D_lslt6")
+color_initial_ramp = SubResource("GradientTexture1D_1e7my")
+
+[sub_resource type="Animation" id="Animation_dewec"]
+length = 0.001
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HitboxArea/HitboxCollision:polygon")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HitboxArea/HitboxCollision:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HurtboxArea/HurtboxCollision:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:collision_layer")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:collision_mask")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("BigSlash:frame")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("PlayerCanvas/RedFlash:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("HealsIcon:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("HealsIcon:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("HealsIcon:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Gun/BigBlast/HitboxArea/HitboxCollision:disabled")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("HealsParticles:modulate")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("HealsParticles:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 9)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("HealsParticles:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("HealsSprite:scale")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("HealsSprite:visible")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("HealsSprite:modulate")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5ixxa"]
+_data = {
+&"RESET": SubResource("Animation_dewec")
+}
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_5ixxa"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_nn08x"]
+graph_offset = Vector2(-347.2, 73.899994)
+nodes/output/position = Vector2(380, 180)
+nodes/PlayerStates/node = ExtResource("4_5ixxa")
+nodes/PlayerStates/position = Vector2(-60, 100)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_5ixxa")
+nodes/TimeScale/position = Vector2(200, 160)
+node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"PlayerStates"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_megsn"]
+size = Vector2(12, 12)
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+y_sort_enabled = true
+collision_layer = 6
+collision_mask = 7
+script = ExtResource("1_ttesm")
+stats = ExtResource("2_bhhdu")
+dash_trail_node = ExtResource("3_o3h8g")
+
+[node name="PlayerSprite" type="Sprite2D" parent="."]
+texture = ExtResource("3_bhhdu")
+hframes = 12
+vframes = 3
+
+[node name="BigSlash" type="Sprite2D" parent="."]
+texture = ExtResource("5_1e7my")
+hframes = 9
+frame = 8
+
+[node name="HealsIcon" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+z_index = 10
+position = Vector2(0, -30)
+texture = ExtResource("7_lslt6")
+
+[node name="HealsParticles" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = 10
+position = Vector2(0, 9)
+texture = ExtResource("7_1iu4k")
+
+[node name="HealsSprite" type="Sprite2D" parent="."]
+visible = false
+z_index = 10
+position = Vector2(-8, -24)
+texture = ExtResource("9_i2e8t")
+
+[node name="HealsSpriteText" type="Label" parent="HealsSprite"]
+offset_left = 10.0
+offset_top = -7.0
+offset_right = 22.0
+offset_bottom = 4.0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_fonts/font = ExtResource("10_qidb7")
+text = "+1"
+
+[node name="Gun" parent="." instance=ExtResource("6_arntx")]
+
+[node name="PlayerBigBlast" parent="Gun" index="5"]
+stream = null
+
+[node name="SlashTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="DashTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="BlastTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="DashTrailTimer" type="Timer" parent="."]
+
+[node name="DashTrailParticles" type="GPUParticles2D" parent="."]
+show_behind_parent = true
+z_index = -1
+position = Vector2(0, 13)
+emitting = false
+amount = 20
+speed_scale = 5.0
+process_material = SubResource("ParticleProcessMaterial_ulo2v")
+
+[node name="PlayerAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_5ixxa"),
+&"PlayerAnimation": ExtResource("3_xobjj")
+}
+
+[node name="InvincibilityFramesAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_5ixxa"),
+&"PlayerAnimation": ExtResource("3_xobjj")
+}
+
+[node name="HealsAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_5ixxa"),
+&"PlayerAnimation": ExtResource("3_xobjj")
+}
+
+[node name="GunAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_5ixxa"),
+&"PlayerAnimation": ExtResource("3_xobjj")
+}
+
+[node name="PlayerAnimationTree" type="AnimationTree" parent="."]
+callback_mode_discrete = 1
+tree_root = SubResource("AnimationNodeBlendTree_nn08x")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../PlayerAnimation")
+parameters/PlayerStates/DashState/Dash/blend_position = Vector2(0, 0)
+parameters/PlayerStates/DashState/DashSwing/blend_position = Vector2(0, 0)
+parameters/PlayerStates/DashSwing/blend_position = Vector2(0, 0)
+parameters/PlayerStates/Dashing/blend_position = Vector2(0, 0)
+parameters/PlayerStates/Movement/Dash/blend_position = Vector2(0, 0)
+parameters/PlayerStates/Movement/Idle/blend_position = Vector2(0, 0)
+parameters/PlayerStates/Movement/Swing/blend_position = Vector2(0, 0)
+parameters/PlayerStates/Movement/Walk/blend_position = Vector2(0, 0)
+parameters/TimeScale/scale = 1.0
+
+[node name="PlayerCamera" type="Camera2D" parent="."]
+process_callback = 0
+position_smoothing_enabled = true
+script = ExtResource("4_dewec")
+
+[node name="PlayerCollider" type="CollisionPolygon2D" parent="."]
+position = Vector2(-3, 13)
+polygon = PackedVector2Array(-1, -2, 7, -2, 7, 2, -1, 2)
+
+[node name="HitboxArea" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 16
+script = ExtResource("6_nn08x")
+stores_hit_targets = true
+metadata/_custom_type_script = "uid://c6qkwgrvt7d3i"
+
+[node name="HitboxCollision" type="CollisionPolygon2D" parent="HitboxArea"]
+polygon = PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0)
+disabled = true
+
+[node name="HurtboxArea" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("8_bhhdu")
+metadata/_custom_type_script = "uid://bna5ylwwau47l"
+
+[node name="HurtboxCollision" type="CollisionShape2D" parent="HurtboxArea"]
+position = Vector2(0, 9)
+shape = SubResource("RectangleShape2D_megsn")
+
+[node name="PlayerAttack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_glx4g")
+bus = &"SFX"
+
+[node name="PlayerBigSlash" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_ulo2v")
+bus = &"SFX"
+
+[node name="PlayerDash" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_miouo")
+bus = &"SFX"
+
+[node name="PlayerTakeDamage" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_o3h8g")
+mix_target = 2
+bus = &"SFX"
+
+[node name="PlayerDeath" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_1e7my")
+mix_target = 1
+bus = &"SFX"
+
+[node name="PlayerHeal" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_o3h8g")
+mix_target = 1
+bus = &"SFX"
+
+[node name="EnemyAttackSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("22_x63xi")
+mix_target = 2
+bus = &"SFX"
+
+[node name="PlayerCanvas" type="CanvasLayer" parent="."]
+
+[node name="RedFlash" type="ColorRect" parent="PlayerCanvas"]
+visible = false
+offset_left = -640.0
+offset_top = -480.0
+offset_right = 640.0
+offset_bottom = 480.0
+color = Color(1, 0, 0, 0.47058824)
+
+[connection signal="timeout" from="SlashTimer" to="." method="_on_slash_timer_timeout"]
+[connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
+[connection signal="timeout" from="BlastTimer" to="." method="_on_blast_timer_timeout"]
+[connection signal="timeout" from="DashTrailTimer" to="." method="_on_dash_trail_timer_timeout"]
+
+[editable path="Gun"]

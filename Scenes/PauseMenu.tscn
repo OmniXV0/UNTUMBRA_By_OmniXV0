@@ -1,0 +1,174 @@
+[gd_scene load_steps=7 format=3 uid="uid://5sox1abvv7cw"]
+
+[ext_resource type="Script" uid="uid://1rktdndgyeb8" path="res://Scripts/PauseMenu.gd" id="1_p8av3"]
+[ext_resource type="PackedScene" uid="uid://dsawtc1yhu1wh" path="res://Scenes/AudioController.tscn" id="2_drk18"]
+[ext_resource type="Texture2D" uid="uid://biymkoh426l8f" path="res://Textures/Button.png" id="2_ey1tb"]
+[ext_resource type="FontFile" uid="uid://rr8w64lkc3iu" path="res://Resources/TechnologyFont.tres" id="2_yxrls"]
+[ext_resource type="Texture2D" uid="uid://c4meaycj1efv2" path="res://Textures/ButtonHover.png" id="3_siy43"]
+[ext_resource type="FontFile" uid="uid://ckc538rqyx11m" path="res://Resources/PixelFont.tres" id="5_gqxqw"]
+
+[node name="PauseMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_p8av3")
+
+[node name="PauseScreen" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 480.0
+color = Color(0, 0, 0, 0.5019608)
+
+[node name="Text" type="Label" parent="PauseScreen"]
+layout_mode = 0
+offset_left = 190.0
+offset_top = 120.0
+offset_right = 461.0
+offset_bottom = 189.0
+theme_override_fonts/font = ExtResource("2_yxrls")
+theme_override_font_sizes/font_size = 50
+text = "Pause"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buttons" type="VBoxContainer" parent="PauseScreen"]
+layout_mode = 0
+offset_left = 260.0
+offset_top = 220.0
+offset_right = 390.0
+offset_bottom = 340.0
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Resume" type="TextureButton" parent="PauseScreen/Buttons"]
+layout_mode = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../Exit")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../Exit")
+focus_mode = 1
+texture_normal = ExtResource("2_ey1tb")
+texture_hover = ExtResource("3_siy43")
+texture_focused = ExtResource("3_siy43")
+
+[node name="Label" type="Label" parent="PauseScreen/Buttons/Resume"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 7.0
+offset_right = 122.0
+offset_bottom = 42.0
+theme_override_fonts/font = ExtResource("5_gqxqw")
+theme_override_font_sizes/font_size = 40
+text = "Resume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Exit" type="TextureButton" parent="PauseScreen/Buttons"]
+layout_mode = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../Resume")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../Resume")
+focus_next = NodePath("../../../ConfirmExit/Buttons/ExitNo")
+focus_mode = 1
+texture_normal = ExtResource("2_ey1tb")
+texture_hover = ExtResource("3_siy43")
+texture_focused = ExtResource("3_siy43")
+
+[node name="Label" type="Label" parent="PauseScreen/Buttons/Exit"]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 7.0
+offset_right = 91.0
+offset_bottom = 42.0
+theme_override_fonts/font = ExtResource("5_gqxqw")
+theme_override_font_sizes/font_size = 40
+text = "Exit"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ConfirmExit" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 480.0
+color = Color(0, 0, 0, 0.5019608)
+
+[node name="Text" type="Label" parent="ConfirmExit"]
+layout_mode = 0
+offset_left = 33.0
+offset_top = 160.0
+offset_right = 608.0
+offset_bottom = 229.0
+theme_override_fonts/font = ExtResource("2_yxrls")
+theme_override_font_sizes/font_size = 40
+text = "Exit to Title Screen?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buttons" type="HBoxContainer" parent="ConfirmExit"]
+layout_mode = 0
+offset_left = 180.0
+offset_top = 240.0
+offset_right = 460.0
+offset_bottom = 290.0
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="ExitYes" type="TextureButton" parent="ConfirmExit/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_left = NodePath("../ExitNo")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath("../ExitNo")
+focus_neighbor_bottom = NodePath(".")
+focus_previous = NodePath("../../../PauseScreen/Buttons/Exit")
+focus_mode = 1
+texture_normal = ExtResource("2_ey1tb")
+texture_hover = ExtResource("3_siy43")
+texture_focused = ExtResource("3_siy43")
+
+[node name="Label" type="Label" parent="ConfirmExit/Buttons/ExitYes"]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 7.0
+offset_right = 91.0
+offset_bottom = 42.0
+theme_override_fonts/font = ExtResource("5_gqxqw")
+theme_override_font_sizes/font_size = 40
+text = "Yes"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ExitNo" type="TextureButton" parent="ConfirmExit/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_left = NodePath("../ExitYes")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath("../ExitYes")
+focus_neighbor_bottom = NodePath(".")
+focus_previous = NodePath("../../../PauseScreen/Buttons/Exit")
+focus_mode = 1
+texture_normal = ExtResource("2_ey1tb")
+texture_hover = ExtResource("3_siy43")
+texture_focused = ExtResource("3_siy43")
+
+[node name="Label" type="Label" parent="ConfirmExit/Buttons/ExitNo"]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 7.0
+offset_right = 91.0
+offset_bottom = 42.0
+theme_override_fonts/font = ExtResource("5_gqxqw")
+theme_override_font_sizes/font_size = 40
+text = "No"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AudioController" parent="." instance=ExtResource("2_drk18")]
+
+[connection signal="pressed" from="PauseScreen/Buttons/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="PauseScreen/Buttons/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="ConfirmExit/Buttons/ExitYes" to="." method="_on_exit_yes_pressed"]
+[connection signal="pressed" from="ConfirmExit/Buttons/ExitNo" to="." method="_on_exit_no_pressed"]

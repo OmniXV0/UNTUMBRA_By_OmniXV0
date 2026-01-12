@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://cjnl3fl8xn5ge"]
+
+[ext_resource type="Script" uid="uid://bm3yvnsqd3mp5" path="res://Scripts/Gun.gd" id="1_u7kx4"]
+[ext_resource type="PackedScene" uid="uid://cvlf8kfb8vexs" path="res://Scenes/Bullet.tscn" id="2_cgpo0"]
+[ext_resource type="Texture2D" uid="uid://lg1iqp6dwqd7" path="res://Sprites/TheSurvivorGun.png" id="3_cgpo0"]
+[ext_resource type="AudioStream" uid="uid://cnh51q2gl7cpa" path="res://Audio/SFX/PlayerShootSFX.mp3" id="4_37v6b"]
+[ext_resource type="Texture2D" uid="uid://c84w6oh10ufsh" path="res://Sprites/TheSurvivorBigBlast.png" id="4_phyfd"]
+[ext_resource type="Script" uid="uid://c6qkwgrvt7d3i" path="res://Scripts/Hitbox.gd" id="5_54o5q"]
+
+[node name="Gun" type="Node2D"]
+script = ExtResource("1_u7kx4")
+bullet_node = ExtResource("2_cgpo0")
+
+[node name="GunSprite" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(16, 0)
+rotation = -1.5707964
+texture = ExtResource("3_cgpo0")
+
+[node name="BigBlast" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(583, 0)
+texture = ExtResource("4_phyfd")
+
+[node name="HitboxArea" type="Area2D" parent="BigBlast"]
+collision_layer = 16
+collision_mask = 16
+script = ExtResource("5_54o5q")
+metadata/_custom_type_script = "uid://c6qkwgrvt7d3i"
+
+[node name="HitboxCollision" type="CollisionPolygon2D" parent="BigBlast/HitboxArea"]
+position = Vector2(-2.9999094, 0)
+polygon = PackedVector2Array(-557.00006, -16, -557.00006, 16, 547.99994, 16, 546.99994, -16)
+disabled = true
+
+[node name="SpawnPoint" type="Marker2D" parent="."]
+y_sort_enabled = true
+position = Vector2(23, 0)
+
+[node name="FireDelayTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="PlayerShoot" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_37v6b")
+bus = &"SFX"
+
+[node name="PlayerBigBlast" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_37v6b")
+bus = &"SFX"

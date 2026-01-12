@@ -1,0 +1,252 @@
+[gd_scene load_steps=8 format=3 uid="uid://b8lvhcqr2djkx"]
+
+[ext_resource type="Script" uid="uid://bv8qj2xsy6paq" path="res://Scripts/GameOver.gd" id="1_m5628"]
+[ext_resource type="Resource" uid="uid://cjtc123x1jbbi" path="res://Resources/PlayerStats.tres" id="2_k52d1"]
+[ext_resource type="FontFile" uid="uid://rr8w64lkc3iu" path="res://Resources/TechnologyFont.tres" id="3_5mu6e"]
+[ext_resource type="PackedScene" uid="uid://dsawtc1yhu1wh" path="res://Scenes/AudioController.tscn" id="3_ktc4i"]
+[ext_resource type="Texture2D" uid="uid://biymkoh426l8f" path="res://Textures/Button.png" id="3_rdiyk"]
+[ext_resource type="Texture2D" uid="uid://c4meaycj1efv2" path="res://Textures/ButtonHover.png" id="4_bfgkh"]
+[ext_resource type="FontFile" uid="uid://ckc538rqyx11m" path="res://Resources/PixelFont.tres" id="6_8710x"]
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 640.0
+offset_bottom = 480.0
+script = ExtResource("1_m5628")
+player_stats = ExtResource("2_k52d1")
+
+[node name="GameOverScreen" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 480.0
+color = Color(0, 0, 0, 0.5019608)
+
+[node name="Text" type="Label" parent="GameOverScreen"]
+layout_mode = 0
+offset_left = 125.0
+offset_top = 120.0
+offset_right = 518.0
+offset_bottom = 189.0
+theme_override_fonts/font = ExtResource("3_5mu6e")
+theme_override_font_sizes/font_size = 50
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buttons" type="VBoxContainer" parent="GameOverScreen"]
+layout_mode = 0
+offset_left = 260.0
+offset_top = 220.0
+offset_right = 390.0
+offset_bottom = 340.0
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Continue" type="TextureButton" parent="GameOverScreen/Buttons"]
+layout_mode = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../Quit")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../Quit")
+focus_mode = 1
+texture_normal = ExtResource("3_rdiyk")
+texture_hover = ExtResource("4_bfgkh")
+texture_focused = ExtResource("4_bfgkh")
+
+[node name="Label" type="Label" parent="GameOverScreen/Buttons/Continue"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 7.0
+offset_right = 129.0
+offset_bottom = 42.0
+theme_override_fonts/font = ExtResource("6_8710x")
+theme_override_font_sizes/font_size = 35
+text = "Continue"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quit" type="TextureButton" parent="GameOverScreen/Buttons"]
+layout_mode = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../Continue")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../Continue")
+focus_mode = 1
+texture_normal = ExtResource("3_rdiyk")
+texture_hover = ExtResource("4_bfgkh")
+texture_focused = ExtResource("4_bfgkh")
+
+[node name="Label" type="Label" parent="GameOverScreen/Buttons/Quit"]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 7.0
+offset_right = 91.0
+offset_bottom = 42.0
+theme_override_fonts/font = ExtResource("6_8710x")
+theme_override_font_sizes/font_size = 40
+text = "Quit"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ConfirmContinue" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 480.0
+color = Color(0, 0, 0, 0.5019608)
+
+[node name="Text" type="Label" parent="ConfirmContinue"]
+layout_mode = 0
+offset_left = 156.0
+offset_top = 160.0
+offset_right = 484.0
+offset_bottom = 229.0
+theme_override_fonts/font = ExtResource("3_5mu6e")
+theme_override_font_sizes/font_size = 50
+text = "Continue?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buttons" type="HBoxContainer" parent="ConfirmContinue"]
+layout_mode = 0
+offset_left = 180.0
+offset_top = 240.0
+offset_right = 460.0
+offset_bottom = 290.0
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="ContinueYes" type="TextureButton" parent="ConfirmContinue/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_left = NodePath("../ContinueNo")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath("../ContinueNo")
+focus_neighbor_bottom = NodePath(".")
+focus_mode = 1
+texture_normal = ExtResource("3_rdiyk")
+texture_hover = ExtResource("4_bfgkh")
+texture_focused = ExtResource("4_bfgkh")
+
+[node name="Label" type="Label" parent="ConfirmContinue/Buttons/ContinueYes"]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 7.0
+offset_right = 91.0
+offset_bottom = 42.0
+theme_override_fonts/font = ExtResource("6_8710x")
+theme_override_font_sizes/font_size = 40
+text = "Yes"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ContinueNo" type="TextureButton" parent="ConfirmContinue/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_left = NodePath("../ContinueYes")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath("../ContinueYes")
+focus_neighbor_bottom = NodePath(".")
+focus_mode = 1
+texture_normal = ExtResource("3_rdiyk")
+texture_hover = ExtResource("4_bfgkh")
+texture_focused = ExtResource("4_bfgkh")
+
+[node name="Label" type="Label" parent="ConfirmContinue/Buttons/ContinueNo"]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 7.0
+offset_right = 91.0
+offset_bottom = 42.0
+theme_override_fonts/font = ExtResource("6_8710x")
+theme_override_font_sizes/font_size = 40
+text = "No"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ConfirmQuit" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 480.0
+color = Color(0, 0, 0, 0.5019608)
+
+[node name="Text" type="Label" parent="ConfirmQuit"]
+layout_mode = 0
+offset_left = 234.0
+offset_top = 160.0
+offset_right = 407.0
+offset_bottom = 229.0
+theme_override_fonts/font = ExtResource("3_5mu6e")
+theme_override_font_sizes/font_size = 50
+text = "Quit?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buttons" type="HBoxContainer" parent="ConfirmQuit"]
+layout_mode = 0
+offset_left = 180.0
+offset_top = 240.0
+offset_right = 460.0
+offset_bottom = 290.0
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="QuitYes" type="TextureButton" parent="ConfirmQuit/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_left = NodePath("../QuitNo")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath("../QuitNo")
+focus_neighbor_bottom = NodePath(".")
+focus_mode = 1
+texture_normal = ExtResource("3_rdiyk")
+texture_hover = ExtResource("4_bfgkh")
+texture_focused = ExtResource("4_bfgkh")
+
+[node name="Label" type="Label" parent="ConfirmQuit/Buttons/QuitYes"]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 7.0
+offset_right = 91.0
+offset_bottom = 42.0
+theme_override_fonts/font = ExtResource("6_8710x")
+theme_override_font_sizes/font_size = 40
+text = "Yes"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QuitNo" type="TextureButton" parent="ConfirmQuit/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_left = NodePath("../QuitYes")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath("../QuitYes")
+focus_neighbor_bottom = NodePath(".")
+focus_mode = 1
+texture_normal = ExtResource("3_rdiyk")
+texture_hover = ExtResource("4_bfgkh")
+texture_focused = ExtResource("4_bfgkh")
+
+[node name="Label" type="Label" parent="ConfirmQuit/Buttons/QuitNo"]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 7.0
+offset_right = 91.0
+offset_bottom = 42.0
+theme_override_fonts/font = ExtResource("6_8710x")
+theme_override_font_sizes/font_size = 40
+text = "No"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AudioController" parent="." instance=ExtResource("3_ktc4i")]
+
+[connection signal="pressed" from="GameOverScreen/Buttons/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="GameOverScreen/Buttons/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="ConfirmContinue/Buttons/ContinueYes" to="." method="_on_continue_yes_pressed"]
+[connection signal="pressed" from="ConfirmContinue/Buttons/ContinueNo" to="." method="_on_continue_no_pressed"]
+[connection signal="pressed" from="ConfirmQuit/Buttons/QuitYes" to="." method="_on_quit_yes_pressed"]
+[connection signal="pressed" from="ConfirmQuit/Buttons/QuitNo" to="." method="_on_quit_no_pressed"]

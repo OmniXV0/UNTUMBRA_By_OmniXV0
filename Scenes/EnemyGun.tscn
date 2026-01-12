@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://e1v7psvh3y46"]
+
+[ext_resource type="Script" uid="uid://bhy1dq3g16kk0" path="res://Scripts/EnemyGun.gd" id="1_owgal"]
+[ext_resource type="PackedScene" uid="uid://daxa78lhu7p7x" path="res://Scenes/EnemyBullet.tscn" id="2_ckp71"]
+
+[node name="EnemyGun" type="Node2D"]
+script = ExtResource("1_owgal")
+bullet_node = ExtResource("2_ckp71")
+
+[node name="SpawnPoint" type="Marker2D" parent="."]
+y_sort_enabled = true
+
+[node name="FireDelayTimer" type="Timer" parent="."]
+one_shot = true

@@ -1,0 +1,253 @@
+[gd_scene load_steps=31 format=3 uid="uid://cwj0y85uv7vvm"]
+
+[ext_resource type="Script" uid="uid://cfywqxackaeve" path="res://Scripts/EnemyWarrior.gd" id="1_3k342"]
+[ext_resource type="Resource" uid="uid://bivbipgc0xk0b" path="res://Resources/EnemyWarriorStats.tres" id="2_7byb3"]
+[ext_resource type="Resource" uid="uid://bp6hmylj0oaj0" path="res://Resources/EnemyStats.tres" id="2_j7bbf"]
+[ext_resource type="AnimationLibrary" uid="uid://bbp7vc84efdw7" path="res://Animations/EnemyWarriorAnimation.res" id="3_3k342"]
+[ext_resource type="PackedScene" uid="uid://mu3i8nv3wkev" path="res://Scenes/Item.tscn" id="3_aa5g1"]
+[ext_resource type="Texture2D" uid="uid://c8ejb0may5ypf" path="res://Sprites/Fighter.png" id="4_ba0ce"]
+[ext_resource type="Script" uid="uid://bna5ylwwau47l" path="res://Scripts/Hurtbox.gd" id="8_daa53"]
+[ext_resource type="Script" uid="uid://c6qkwgrvt7d3i" path="res://Scripts/Hitbox.gd" id="9_lw8fy"]
+[ext_resource type="Script" uid="uid://c34o5gkk18ft1" path="res://Scripts/EnemyHeartsUI.gd" id="10_njh2m"]
+[ext_resource type="Texture2D" uid="uid://ca7xsmcqu4qlv" path="res://Textures/EnemyHeartsEmpty.png" id="11_sv3js"]
+[ext_resource type="Texture2D" uid="uid://cd3gupfjjcvoe" path="res://Textures/EnemyHeartsFull.png" id="12_ox1x5"]
+[ext_resource type="PackedScene" uid="uid://e1v7psvh3y46" path="res://Scenes/EnemyGun.tscn" id="13_j7bbf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wovta"]
+size = Vector2(32, 11)
+
+[sub_resource type="Animation" id="Animation_xeo28"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnemySprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:collision_layer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:collision_mask")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HitboxArea/HitboxAttack:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kpr8r"]
+_data = {
+&"RESET": SubResource("Animation_xeo28")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3k342"]
+animation = &"EnemyWarriorAnimation/EnemyWarriorAttack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1exfc"]
+animation = &"EnemyWarriorAnimation/EnemyWarriorChase"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mo1ky"]
+animation = &"EnemyWarriorAnimation/EnemyWarriorIdle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xeo28"]
+animation = &"EnemyWarriorAnimation/EnemyWarriorHit"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6bs3c"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_uoxpr"]
+advance_mode = 2
+advance_expression = "is_player_in_range()"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_idouy"]
+advance_mode = 2
+advance_expression = "not is_player_in_range()"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kpr8r"]
+advance_mode = 2
+advance_expression = "velocity == Vector2(0, 0)"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ba0ce"]
+break_loop_at_end = true
+switch_mode = 2
+advance_mode = 2
+advance_expression = "not is_player_in_attack()"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7byb3"]
+advance_mode = 2
+advance_expression = "is_player_in_attack()"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_0o0ue"]
+states/Attack/node = SubResource("AnimationNodeAnimation_3k342")
+states/Attack/position = Vector2(362, 15)
+states/Chase/node = SubResource("AnimationNodeAnimation_1exfc")
+states/Chase/position = Vector2(362, 197)
+states/Idle/node = SubResource("AnimationNodeAnimation_mo1ky")
+states/Idle/position = Vector2(362, 100)
+states/Knockback/node = SubResource("AnimationNodeAnimation_xeo28")
+states/Knockback/position = Vector2(518, 100)
+states/Start/position = Vector2(202, 100)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_6bs3c"), "Idle", "Chase", SubResource("AnimationNodeStateMachineTransition_uoxpr"), "Chase", "Idle", SubResource("AnimationNodeStateMachineTransition_idouy"), "Knockback", "Idle", SubResource("AnimationNodeStateMachineTransition_kpr8r"), "Attack", "Idle", SubResource("AnimationNodeStateMachineTransition_ba0ce"), "Idle", "Attack", SubResource("AnimationNodeStateMachineTransition_7byb3")]
+graph_offset = Vector2(-278, -15)
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_6s1gy"]
+nodes/EnemyWarriorState/node = SubResource("AnimationNodeStateMachine_0o0ue")
+nodes/EnemyWarriorState/position = Vector2(0, 100)
+node_connections = [&"output", 0, &"EnemyWarriorState"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b2bpf"]
+size = Vector2(52, 216)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mo1ky"]
+size = Vector2(32, 20.5)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7byb3"]
+radius = 80.0
+height = 220.0
+
+[node name="EnemyWarrior" type="CharacterBody2D"]
+y_sort_enabled = true
+collision_layer = 4
+collision_mask = 5
+motion_mode = 1
+script = ExtResource("1_3k342")
+enemy_stats = ExtResource("2_7byb3")
+enemy_id = 1
+item_node = ExtResource("3_aa5g1")
+
+[node name="EnemyCollision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5.5)
+shape = SubResource("RectangleShape2D_wovta")
+
+[node name="EnemySprite" type="Sprite2D" parent="."]
+texture = ExtResource("4_ba0ce")
+hframes = 15
+
+[node name="EnemyDashTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="EnemyShootTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="EnemyAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_kpr8r"),
+&"EnemyWarriorAnimation": ExtResource("3_3k342")
+}
+
+[node name="EnemyAnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeBlendTree_6s1gy")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../EnemyAnimation")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+visible = false
+offset_left = -12.5
+offset_top = -23.0
+offset_right = 12.5
+offset_bottom = -18.0
+value = 100.0
+show_percentage = false
+
+[node name="EnemyRaycast" type="RayCast2D" parent="."]
+target_position = Vector2(8, 0)
+
+[node name="HurtboxArea" type="Area2D" parent="."]
+position = Vector2(0, -21)
+collision_layer = 16
+collision_mask = 16
+script = ExtResource("8_daa53")
+metadata/_custom_type_script = "uid://bna5ylwwau47l"
+
+[node name="HurtboxCollision" type="CollisionShape2D" parent="HurtboxArea"]
+position = Vector2(0, -3)
+scale = Vector2(0.25, 0.25)
+shape = SubResource("RectangleShape2D_b2bpf")
+
+[node name="HitboxArea" type="Area2D" parent="."]
+position = Vector2(0, -32)
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("9_lw8fy")
+damage = 2
+metadata/_custom_type_script = "uid://c6qkwgrvt7d3i"
+
+[node name="HitboxCollision" type="CollisionShape2D" parent="HitboxArea"]
+position = Vector2(0, 32.25)
+shape = SubResource("RectangleShape2D_mo1ky")
+
+[node name="HitboxAttack" type="CollisionShape2D" parent="HitboxArea"]
+position = Vector2(0, 32)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_7byb3")
+disabled = true
+
+[node name="EnemyHeartsUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -15.0
+offset_top = -95.0
+offset_right = 15.0
+offset_bottom = -85.0
+script = ExtResource("10_njh2m")
+enemy_stats = ExtResource("2_j7bbf")
+
+[node name="EmptyHearts" type="TextureRect" parent="EnemyHeartsUI"]
+layout_mode = 0
+offset_right = 30.0
+offset_bottom = 10.0
+texture = ExtResource("11_sv3js")
+stretch_mode = 1
+
+[node name="FullHearts" type="TextureRect" parent="EnemyHeartsUI"]
+layout_mode = 0
+offset_right = 30.0
+offset_bottom = 10.0
+texture = ExtResource("12_ox1x5")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="Center" type="Marker2D" parent="."]
+
+[node name="EnemyGun" parent="." instance=ExtResource("13_j7bbf")]
+position = Vector2(35, -50)
+
+[node name="EnemyFighterAttackSFX" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
+
+[node name="EnemySlasherAttackSFX" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
+
+[connection signal="timeout" from="EnemyDashTimer" to="." method="_on_enemy_dash_timer_timeout"]

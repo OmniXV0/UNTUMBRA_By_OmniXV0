@@ -1,0 +1,50 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://b8lj8b7506q1l"]
+
+[ext_resource type="Texture2D" uid="uid://c8ejb0may5ypf" path="res://Sprites/Fighter.png" id="1_5np7v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5np7v"]
+atlas = ExtResource("1_5np7v")
+region = Rect2(960, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_srex3"]
+atlas = ExtResource("1_5np7v")
+region = Rect2(1120, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v1qf7"]
+atlas = ExtResource("1_5np7v")
+region = Rect2(1280, 0, 160, 160)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5np7v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_srex3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v1qf7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v1qf7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v1qf7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v1qf7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v1qf7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v1qf7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v1qf7")
+}],
+"loop": false,
+"name": &"DeathEffect",
+"speed": 5.0
+}]

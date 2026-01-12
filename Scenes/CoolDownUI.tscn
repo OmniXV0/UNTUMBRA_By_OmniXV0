@@ -1,0 +1,87 @@
+[gd_scene load_steps=5 format=3 uid="uid://rtiew07hcd7u"]
+
+[ext_resource type="FontFile" uid="uid://do8imyb1tdnka" path="res://Fonts/bytebounce/ByteBounce.ttf" id="1_7wb5p"]
+[ext_resource type="Script" uid="uid://brnlucqnd6gfi" path="res://Scripts/CoolDownUI.gd" id="1_k7vag"]
+[ext_resource type="Texture2D" uid="uid://bpl8mmut6gurm" path="res://Textures/CoolDownBarEmpty.png" id="3_vt7x5"]
+[ext_resource type="Texture2D" uid="uid://c1aff3sfk1xyl" path="res://Textures/CoolDownBarFull.png" id="4_t8blx"]
+
+[node name="CoolDownUI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_k7vag")
+
+[node name="CoolDownContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 92.0
+alignment = 2
+
+[node name="CoolDownText" type="Label" parent="CoolDownContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("1_7wb5p")
+theme_override_font_sizes/font_size = 20
+text = "Big Slash:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="BarContainer" type="HBoxContainer" parent="CoolDownContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="SlashBar" type="TextureProgressBar" parent="CoolDownContainer/BarContainer"]
+layout_mode = 2
+max_value = 10.0
+fill_mode = 1
+texture_under = ExtResource("3_vt7x5")
+texture_progress = ExtResource("4_t8blx")
+
+[node name="CoolDownText2" type="Label" parent="CoolDownContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("1_7wb5p")
+theme_override_font_sizes/font_size = 20
+text = "Long Dash:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="BarContainer2" type="HBoxContainer" parent="CoolDownContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="DashBar" type="TextureProgressBar" parent="CoolDownContainer/BarContainer2"]
+layout_mode = 2
+max_value = 10.0
+fill_mode = 1
+texture_under = ExtResource("3_vt7x5")
+texture_progress = ExtResource("4_t8blx")
+
+[node name="CoolDownText3" type="Label" parent="CoolDownContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("1_7wb5p")
+theme_override_font_sizes/font_size = 20
+text = "Big Blast:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="BarContainer3" type="HBoxContainer" parent="CoolDownContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="BlastBar" type="TextureProgressBar" parent="CoolDownContainer/BarContainer3"]
+layout_mode = 2
+max_value = 10.0
+fill_mode = 1
+texture_under = ExtResource("3_vt7x5")
+texture_progress = ExtResource("4_t8blx")
+
+[node name="SlashWaitTimer" type="Timer" parent="."]
+
+[node name="DashWaitTimer" type="Timer" parent="."]
+
+[node name="BlastWaitTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="SlashWaitTimer" to="." method="_on_slash_wait_timer_timeout"]
+[connection signal="timeout" from="DashWaitTimer" to="." method="_on_dash_wait_timer_timeout"]
+[connection signal="timeout" from="BlastWaitTimer" to="." method="_on_blast_wait_timer_timeout"]

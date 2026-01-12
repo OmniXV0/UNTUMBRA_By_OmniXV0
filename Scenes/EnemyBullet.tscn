@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://daxa78lhu7p7x"]
+
+[ext_resource type="Script" uid="uid://dxfj2377vnidb" path="res://Scripts/Bullet.gd" id="1_701ao"]
+[ext_resource type="Script" uid="uid://c6qkwgrvt7d3i" path="res://Scripts/Hitbox.gd" id="2_xv6bn"]
+[ext_resource type="Texture2D" uid="uid://c7wvnuwxo2r8b" path="res://Sprites/GunnerBullet.png" id="3_701ao"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_14k46"]
+radius = 20.0
+
+[node name="EnemyBullet" type="Node2D"]
+script = ExtResource("1_701ao")
+
+[node name="HitboxArea" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("2_xv6bn")
+stores_hit_targets = true
+metadata/_custom_type_script = "uid://c6qkwgrvt7d3i"
+
+[node name="BulletCollision" type="CollisionShape2D" parent="HitboxArea"]
+shape = SubResource("CircleShape2D_14k46")
+
+[node name="BulletSprite" type="Sprite2D" parent="."]
+texture = ExtResource("3_701ao")
+
+[node name="BulletScreenNotifier" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-20, -20, 40, 40)
+
+[connection signal="screen_exited" from="BulletScreenNotifier" to="." method="_on_bullet_screen_notifier_screen_exited"]
