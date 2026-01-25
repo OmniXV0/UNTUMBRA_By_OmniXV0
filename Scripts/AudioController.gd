@@ -1,6 +1,6 @@
 extends Node
 
-var main_menu_music = load ("res://Audio/Music/OmniXV0 - OmniNihil (Loop) (Placeholder Music).mp3")
+var main_menu_music = load ("res://Audio/Music/OmniXV0 - Falling Up.mp3")
 var game_music = load ("res://Audio/Music/OmniXV0 - World Without Words.mp3")
 
 var click_yes_sfx = load("res://Audio/SFX/ClickYesSFX.mp3")
