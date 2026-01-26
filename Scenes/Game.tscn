@@ -34,12 +34,13 @@ tile_map_data = PackedByteArray("AAD7//z/AQAKAAAAAAD9//z/AQALAAAAAAAAAPz/AQALAAA
 tile_set = ExtResource("3_2irst")
 
 [node name="Ruins" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAEAAoAAQADAAMAAAA=")
+y_sort_enabled = true
+tile_map_data = PackedByteArray("AAAEAAoAAQABAAMAAAAPAAMAAQAHAAMAABD9/wUAAQANAAMAAAAMABEAAQAKAAMAAAD6/w0AAQAHAAMAAAAGAP7/AQAEAAMAAAAVAA8AAQAEAAMAABAXAAgAAQANAAMAABA=")
 tile_set = ExtResource("3_2irst")
 
 [node name="Rocks" type="TileMapLayer" parent="."]
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAAWABEAAQAAAAMAABAJAAwAAQACAAMAAAAPAAYAAQABAAMAAAALAP//AQAAAAMAABD9/woAAQACAAMAABABABAAAQABAAMAAAAWAAEAAQACAAMAABD8/wIAAQABAAMAABADAAQAAQAAAAMAAAA=")
+tile_map_data = PackedByteArray("AAAWABEAAQAAAAMAABAPAAYAAQAAAAUAAAALAP//AQAAAAMAABD9/woAAQAAAAUAAAAWAAEAAQAAAAUAABD8/wIAAQAAAAQAAAADAAQAAQAAAAMAAAAJAAwAAQAAAAMAABA=")
 tile_set = ExtResource("3_2irst")
 
 [node name="WallsBase" type="TileMapLayer" parent="."]
