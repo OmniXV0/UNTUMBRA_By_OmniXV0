@@ -92,7 +92,7 @@ func _physics_process(delta: float) -> void:
 					if direction.x >= 0:
 						enemy_gun.position.x = 35
 						enemy_sprite.scale.x = 1
-					elif direction.y < 0:
+					elif direction.x < 0:
 						enemy_gun.position.x = -35
 						enemy_sprite.scale.x = -1
 				min_range = 200

@@ -8,7 +8,7 @@ extends Node2D
 @onready var spawn_point: Marker2D = $SpawnPoint
 @export var fire_delay: float = 0.25
 @onready var fire_delay_timer: Timer = $FireDelayTimer
-@onready var player_shoot: AudioStreamPlayer = $PlayerShoot
+@onready var player_shoot_sfx: AudioStreamPlayer = $PlayerShootSFX
 
 @onready var player: Player = $".."
 var can_fire: bool = false
@@ -47,7 +47,7 @@ func _process(delta: float) -> void:
 			big_blast_hitbox_area.clear_hit_targets()
 		else:
 			can_fire = false
-			player_shoot.play()
+			player_shoot_sfx.play()
 			big_blast.hide()
 			hitbox_collision.disabled = true
 			var bullet = bullet_node.instantiate()

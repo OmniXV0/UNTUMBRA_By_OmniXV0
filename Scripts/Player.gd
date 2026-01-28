@@ -30,12 +30,13 @@ class_name Player extends CharacterBody2D
 @onready var game_over
 @onready var cool_down_ui
 
-@onready var player_attack_sfx: AudioStreamPlayer = $PlayerAttack
-@onready var player_big_slash: AudioStreamPlayer = $PlayerBigSlash
-@onready var player_dash_sfx: AudioStreamPlayer = $PlayerDash
-@onready var player_take_damage_sfx: AudioStreamPlayer = $PlayerTakeDamage
-@onready var player_death_sfx: AudioStreamPlayer = $PlayerDeath
-@onready var player_heal_sfx: AudioStreamPlayer = $PlayerHeal
+@onready var player_attack_sfx: AudioStreamPlayer = $PlayerAttackSFX
+@onready var player_big_slash_sfx: AudioStreamPlayer = $PlayerBigSlashSFX
+@onready var player_dash_sfx: AudioStreamPlayer = $PlayerDashSFX
+@onready var player_long_dash_sfx: AudioStreamPlayer = $PlayerLongDashSFX
+@onready var player_take_damage_sfx: AudioStreamPlayer = $PlayerTakeDamageSFX
+@onready var player_death_sfx: AudioStreamPlayer = $PlayerDeathSFX
+@onready var player_heal_sfx: AudioStreamPlayer = $PlayerHealSFX
 
 const speed: int = 100
 const dash_speed: int = 700
@@ -87,7 +88,10 @@ func _physics_process(delta: float) -> void:
 					swinging_sword()
 					
 				if Input.is_action_just_pressed("dash"):
-					player_dash_sfx.play()
+					if long_dash_powerup:
+						player_long_dash_sfx.play()
+					else:
+						player_dash_sfx.play()
 					playback.travel("DashState")
 					dash_trail_timer.wait_time = 0.03
 					dash_trail_timer.start()
@@ -115,7 +119,7 @@ func _physics_process(delta: float) -> void:
 			
 func swinging_sword():
 	if big_slash_powerup:
-		player_big_slash.play()
+		player_big_slash_sfx.play()
 	else:
 		player_attack_sfx.play()
 	swinging = true

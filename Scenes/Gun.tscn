@@ -40,10 +40,10 @@ position = Vector2(23, 0)
 [node name="FireDelayTimer" type="Timer" parent="."]
 one_shot = true
 
-[node name="PlayerShoot" type="AudioStreamPlayer" parent="."]
+[node name="PlayerShootSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_37v6b")
 bus = &"SFX"
 
-[node name="PlayerBigBlast" type="AudioStreamPlayer" parent="."]
+[node name="PlayerBigBlastSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_37v6b")
 bus = &"SFX"
