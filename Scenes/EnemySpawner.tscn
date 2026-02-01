@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b0rrm0safu16k" path="res://Scripts/EnemySpawner.gd" id="1_4b1db"]
 [ext_resource type="PackedScene" uid="uid://cwqhmpdq1ggbh" path="res://Scenes/Enemy.tscn" id="2_4l853"]
 [ext_resource type="PackedScene" uid="uid://cwj0y85uv7vvm" path="res://Scenes/EnemyWarrior.tscn" id="3_dg7rp"]
-[ext_resource type="AudioStream" uid="uid://6jqy7mk0fvci" path="res://Audio/SFX/EnemySpawnSFX.mp3" id="3_u7cdh"]
+[ext_resource type="AudioStream" uid="uid://6jqy7mk0fvci" path="res://Audio/SFX/EnemyBotSpawnSFX.mp3" id="3_u7cdh"]
 [ext_resource type="AudioStream" uid="uid://d3rj443p26s23" path="res://Audio/SFX/EnemyFighterSpawnSFX.mp3" id="5_i2m4k"]
 [ext_resource type="AudioStream" uid="uid://cnfoq1d1adsb5" path="res://Audio/SFX/EnemySlasherSpawnSFX.mp3" id="6_16a1j"]
 [ext_resource type="AudioStream" uid="uid://dyhnq0jy8tvt3" path="res://Audio/SFX/EnemyGunnerSpawnSFX.mp3" id="7_ctwkl"]
@@ -17,19 +17,19 @@ enemy_warrior_prefab = ExtResource("3_dg7rp")
 wait_time = 10.0
 autostart = true
 
-[node name="EnemySpawnSFX" type="AudioStreamPlayer" parent="."]
+[node name="EnemyBotSpawnSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_u7cdh")
 bus = &"SFX"
 
-[node name="EnemyFighterSpawnSFX" type="AudioStreamPlayer" parent="."]
+[node name="EnemyFighterSpawnSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_i2m4k")
 bus = &"SFX"
 
-[node name="EnemySlasherSpawnSFX" type="AudioStreamPlayer" parent="."]
+[node name="EnemySlasherSpawnSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_16a1j")
 bus = &"SFX"
 
-[node name="EnemyGunnerSpawnSFX" type="AudioStreamPlayer" parent="."]
+[node name="EnemyGunnerSpawnSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_ctwkl")
 bus = &"SFX"
 

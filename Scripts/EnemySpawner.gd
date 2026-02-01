@@ -9,10 +9,10 @@ var enemy_spawn_rate: int = 0
 var enemies_dead: int = 0
 var enemy_count: int = 0
 
-@onready var enemy_spawn_sfx: AudioStreamPlayer = $EnemySpawnSFX
-@onready var enemy_fighter_spawn_sfx: AudioStreamPlayer = $EnemyFighterSpawnSFX
-@onready var enemy_slasher_spawn_sfx: AudioStreamPlayer = $EnemySlasherSpawnSFX
-@onready var enemy_gunner_spawn_sfx: AudioStreamPlayer = $EnemyGunnerSpawnSFX
+@onready var enemy_bot_spawn_sfx: AudioStreamPlayer2D = $EnemyBotSpawnSFX
+@onready var enemy_fighter_spawn_sfx: AudioStreamPlayer2D = $EnemyFighterSpawnSFX
+@onready var enemy_slasher_spawn_sfx: AudioStreamPlayer2D = $EnemySlasherSpawnSFX
+@onready var enemy_gunner_spawn_sfx: AudioStreamPlayer2D = $EnemyGunnerSpawnSFX
 
 func _ready():
 	spawn_enemy()
@@ -44,6 +44,6 @@ func spawn_enemy():
 	#elif enemy_spawn_rate == 9:
 		#pass
 	else:
-		enemy_spawn_sfx.play()
+		enemy_bot_spawn_sfx.play()
 		enemy = enemy_prefab.instantiate()
 		add_child(enemy)

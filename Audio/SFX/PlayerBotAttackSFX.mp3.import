@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://dg8m3g587xieu"
-path="res://.godot/imported/PlayerAttackSFX.mp3-07a16fcb27c2564d71b2c2b2946a0d38.mp3str"
+path="res://.godot/imported/PlayerBotAttackSFX.mp3-5d8e899e5fb762f34ee8e3c8d4c894ec.mp3str"
 
 [deps]
 
-source_file="res://Audio/SFX/PlayerAttackSFX.mp3"
-dest_files=["res://.godot/imported/PlayerAttackSFX.mp3-07a16fcb27c2564d71b2c2b2946a0d38.mp3str"]
+source_file="res://Audio/SFX/PlayerBotAttackSFX.mp3"
+dest_files=["res://.godot/imported/PlayerBotAttackSFX.mp3-5d8e899e5fb762f34ee8e3c8d4c894ec.mp3str"]
 
 [params]
 

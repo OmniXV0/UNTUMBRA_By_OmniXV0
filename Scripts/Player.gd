@@ -11,7 +11,7 @@ class_name Player extends CharacterBody2D
 @onready var slash_timer: Timer = $SlashTimer
 @onready var dash_timer: Timer = $DashTimer
 @onready var blast_timer: Timer = $BlastTimer
-@onready var enemy_attack_sfx: AudioStreamPlayer = $EnemyAttackSFX
+@onready var enemy_bot_attack_sfx: AudioStreamPlayer = $EnemyBotAttackSFX
 
 @onready var player_sprite: Sprite2D = $PlayerSprite
 @onready var player_animation: AnimationPlayer = $PlayerAnimation
@@ -227,7 +227,8 @@ func player_death() -> void:
 	game_over.find_child("Continue").grab_focus()
 			
 func take_hit(other_hitbox: Hitbox) -> void:
-	enemy_attack_sfx.play()
+	if other_hitbox.enemy_collide_attack == true:
+		enemy_bot_attack_sfx.play()
 	player_camera.screen_shake(5, 0.5)
 	if stats.health > 0:
 		player_take_damage_sfx.play()

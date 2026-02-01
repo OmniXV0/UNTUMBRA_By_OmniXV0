@@ -471,7 +471,7 @@ stream = ExtResource("14_o3h8g")
 mix_target = 1
 bus = &"SFX"
 
-[node name="EnemyAttackSFX" type="AudioStreamPlayer" parent="."]
+[node name="EnemyBotAttackSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("22_x63xi")
 mix_target = 2
 bus = &"SFX"

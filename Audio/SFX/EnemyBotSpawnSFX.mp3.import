@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://6jqy7mk0fvci"
-path="res://.godot/imported/EnemySpawnSFX.mp3-0046d30d4cb7f0666467f78cede5aeb1.mp3str"
+path="res://.godot/imported/EnemyBotSpawnSFX.mp3-3589e4d75c70f692956f78d1fa7014c3.mp3str"
 
 [deps]
 
-source_file="res://Audio/SFX/EnemySpawnSFX.mp3"
-dest_files=["res://.godot/imported/EnemySpawnSFX.mp3-0046d30d4cb7f0666467f78cede5aeb1.mp3str"]
+source_file="res://Audio/SFX/EnemyBotSpawnSFX.mp3"
+dest_files=["res://.godot/imported/EnemyBotSpawnSFX.mp3-3589e4d75c70f692956f78d1fa7014c3.mp3str"]
 
 [params]
 
