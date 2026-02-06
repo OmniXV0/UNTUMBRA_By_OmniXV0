@@ -35,12 +35,12 @@ tile_set = ExtResource("3_2irst")
 
 [node name="Ruins" type="TileMapLayer" parent="."]
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAAEAAoAAQABAAMAAAAPAAMAAQAHAAMAABD9/wUAAQANAAMAAAAVAA8AAQAEAAMAABAXAAgAAQANAAMAABD7/w0AAQAHAAMAAAAMABIAAQAKAAMAAAAHAP7/AQAEAAMAAAA=")
+tile_map_data = PackedByteArray("AAAEAAoAAQABAAMAAAD7/w0AAQAHAAMAAAD9/wUAAQANAAMAAAAVAA8AAQAEAAMAABAXAAgAAQANAAMAAAAHAP7/AQAEAAMAAAAMABIAAQAKAAMAAAA=")
 tile_set = ExtResource("3_2irst")
 
 [node name="Rocks" type="TileMapLayer" parent="."]
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAAWABEAAQAAAAMAABAPAAYAAQAAAAUAAAALAP//AQAAAAMAABD9/woAAQAAAAUAABAWAAEAAQAAAAUAABD8/wIAAQAAAAQAABADAAQAAQAAAAMAAAAJAAwAAQAAAAUAAAABABAAAQAAAAQAAAA=")
+tile_map_data = PackedByteArray("AAAWABEAAQAAAAMAABAJAAwAAQAAAAUAAAAPAAYAAQAAAAQAAAALAP//AQAAAAMAABD9/woAAQAAAAUAABABABAAAQAAAAQAAAAWAAEAAQAAAAUAABD8/wIAAQAAAAQAABADAAQAAQAAAAMAAAA=")
 tile_set = ExtResource("3_2irst")
 
 [node name="WallsBase" type="TileMapLayer" parent="."]
@@ -62,21 +62,6 @@ limit_left = -320
 limit_top = -240
 limit_right = 960
 limit_bottom = 720
-
-[node name="PlayerAttack" parent="Player" index="20"]
-bus = &"Master"
-
-[node name="PlayerDash" parent="Player" index="22"]
-bus = &"Master"
-
-[node name="PlayerTakeDamage" parent="Player" index="23"]
-bus = &"Master"
-
-[node name="PlayerDeath" parent="Player" index="24"]
-bus = &"Master"
-
-[node name="PlayerHeal" parent="Player" index="25"]
-bus = &"Master"
 
 [node name="Boundary" type="StaticBody2D" parent="."]
 z_index = -8

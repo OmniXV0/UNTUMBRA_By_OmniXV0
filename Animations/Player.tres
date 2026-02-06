@@ -1,4 +1,4 @@
-[gd_resource type="AnimationNodeStateMachine" load_steps=58 format=3 uid="uid://dnsyprwaagsy8"]
+[gd_resource type="AnimationNodeStateMachine" format=3 uid="uid://dnsyprwaagsy8"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_oh0v2"]
 animation = &"PlayerAnimation/DashDown"

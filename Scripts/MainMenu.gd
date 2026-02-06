@@ -1,11 +1,11 @@
 extends Control
 
 @export var player_stats: Stats
-@onready var main_menu_screen: ColorRect = $MainMenuScreen
+@onready var main_menu_screen: TextureRect = $MainMenuScreen
 @onready var confirm_exit: ColorRect = $ConfirmExit
-@onready var main_menu_buttons: VBoxContainer = $MainMenuScreen/Buttons
+@onready var main_menu_buttons: VBoxContainer = $Buttons
 @onready var exit_buttons: HBoxContainer = $ConfirmExit/Buttons
-@onready var high_score: Label = $MainMenuScreen/HighScore
+@onready var high_score: Label = $HighScore
 
 @onready var audio_controller: Node = $AudioController
 

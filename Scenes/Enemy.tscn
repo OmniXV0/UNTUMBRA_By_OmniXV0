@@ -94,7 +94,6 @@ transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition
 graph_offset = Vector2(-136, 24)
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_6s1gy"]
-graph_offset = Vector2(-228, 63)
 nodes/EnemyState/node = SubResource("AnimationNodeStateMachine_0o0ue")
 nodes/EnemyState/position = Vector2(0, 100)
 node_connections = [&"output", 0, &"EnemyState"]
@@ -159,6 +158,7 @@ shape = SubResource("RectangleShape2D_b2bpf")
 collision_layer = 8
 collision_mask = 8
 script = ExtResource("5_1exfc")
+enemy_collide_attack = true
 metadata/_custom_type_script = "uid://c6qkwgrvt7d3i"
 
 [node name="HitboxCollision" type="CollisionShape2D" parent="HitboxArea"]

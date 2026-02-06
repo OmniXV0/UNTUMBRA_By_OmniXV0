@@ -17,8 +17,13 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 config/name="Fallen_Land_By_OmniXV0"
 run/main_scene="uid://db8tbfciif08j"
 config/features=PackedStringArray("4.6", "Forward Plus")
+boot_splash/bg_color=Color(1, 1, 1, 1)
 boot_splash/image="uid://1aye8u22giwe"
 config/icon="uid://yjmm30gbxay0"
+
+[audio]
+
+buses/default_bus_layout="uid://cp1s0ti8j8c3e"
 
 [autoload]
 
