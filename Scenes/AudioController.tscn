@@ -2,12 +2,27 @@
 
 [ext_resource type="Script" uid="uid://1702tnke0g0s" path="res://Scripts/AudioController.gd" id="1_87mnv"]
 
-[node name="AudioController" type="Node" unique_id=49219287]
+[node name="AudioController" type="Node" unique_id=1931759399]
 script = ExtResource("1_87mnv")
 
-[node name="Music" type="AudioStreamPlayer" parent="." unique_id=711363806]
+[node name="Music0" type="AudioStreamPlayer" parent="." unique_id=791799522]
 mix_target = 1
 bus = &"Music"
 
-[node name="SFX" type="AudioStreamPlayer2D" parent="." unique_id=1632396598]
+[node name="Music1" type="AudioStreamPlayer" parent="." unique_id=49227871]
+volume_db = -80.0
+mix_target = 1
+bus = &"Music"
+
+[node name="Music2" type="AudioStreamPlayer" parent="." unique_id=1118038740]
+volume_db = -80.0
+mix_target = 1
+bus = &"Music"
+
+[node name="Music3" type="AudioStreamPlayer" parent="." unique_id=1517535478]
+volume_db = -80.0
+mix_target = 1
+bus = &"Music"
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="." unique_id=862980012]
 bus = &"SFX"

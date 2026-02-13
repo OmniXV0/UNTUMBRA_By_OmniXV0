@@ -1,11 +1,10 @@
-[gd_scene format=3 uid="uid://db8tbfciif08j"]
+[gd_scene load_steps=13 format=3 uid="uid://db8tbfciif08j"]
 
 [ext_resource type="Script" uid="uid://cwdbatcqjsyr8" path="res://Scripts/MainMenu.gd" id="1_8saeu"]
 [ext_resource type="PackedScene" uid="uid://dsawtc1yhu1wh" path="res://Scenes/AudioController.tscn" id="1_tt5f1"]
 [ext_resource type="Resource" uid="uid://cjtc123x1jbbi" path="res://Resources/PlayerStats.tres" id="2_ghw46"]
 [ext_resource type="FontFile" uid="uid://rr8w64lkc3iu" path="res://Resources/TechnologyFont.tres" id="3_cmrfp"]
 [ext_resource type="Texture2D" uid="uid://biymkoh426l8f" path="res://Textures/Button.png" id="3_df05h"]
-[ext_resource type="Texture2D" uid="uid://m48eaaxv1rp7" path="res://Textures/MainMenuBackground.png" id="3_loo7a"]
 [ext_resource type="Texture2D" uid="uid://c4meaycj1efv2" path="res://Textures/ButtonHover.png" id="4_8um5k"]
 [ext_resource type="FontFile" uid="uid://do8imyb1tdnka" path="res://Fonts/bytebounce/ByteBounce.ttf" id="5_cmrfp"]
 [ext_resource type="FontFile" uid="uid://ckc538rqyx11m" path="res://Resources/PixelFont.tres" id="6_loo7a"]
@@ -20,7 +19,7 @@ base_font = ExtResource("6_loo7a")
 [sub_resource type="FontVariation" id="FontVariation_8e205"]
 base_font = ExtResource("6_loo7a")
 
-[node name="MainMenu" type="Control" unique_id=1386076872]
+[node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -30,14 +29,13 @@ grow_vertical = 2
 script = ExtResource("1_8saeu")
 player_stats = ExtResource("2_ghw46")
 
-[node name="MainMenuScreen" type="TextureRect" parent="." unique_id=1311308463]
+[node name="MainMenuScreen" type="ColorRect" parent="."]
 layout_mode = 0
-offset_right = 1280.0
-offset_bottom = 960.0
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_loo7a")
+offset_right = 640.0
+offset_bottom = 480.0
+color = Color(0, 0, 0, 1)
 
-[node name="Logo" type="TextureRect" parent="." unique_id=1824262651]
+[node name="Logo" type="TextureRect" parent="MainMenuScreen"]
 layout_mode = 0
 offset_left = 148.0
 offset_top = 20.0
@@ -45,7 +43,7 @@ offset_right = 276.0
 offset_bottom = 148.0
 texture = ExtResource("7_if7li")
 
-[node name="Title" type="Label" parent="." unique_id=830831905]
+[node name="Title" type="Label" parent="MainMenuScreen"]
 layout_mode = 0
 offset_left = 183.0
 offset_top = 50.0
@@ -59,7 +57,7 @@ Land"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Name" type="Label" parent="." unique_id=218090070]
+[node name="Name" type="Label" parent="MainMenuScreen"]
 layout_mode = 0
 offset_left = 180.0
 offset_top = 120.0
@@ -71,7 +69,7 @@ text = "By OmniXV0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Version" type="Label" parent="." unique_id=1717535735]
+[node name="Version" type="Label" parent="MainMenuScreen"]
 layout_mode = 0
 offset_left = 180.0
 offset_top = 400.0
@@ -83,7 +81,7 @@ text = "Version 1.0.0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GameEngine" type="Label" parent="." unique_id=1987327404]
+[node name="GameEngine" type="Label" parent="MainMenuScreen"]
 layout_mode = 0
 offset_left = -40.0
 offset_top = 400.0
@@ -95,7 +93,7 @@ text = "Made with Godot"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Copyright" type="Label" parent="." unique_id=442307784]
+[node name="Copyright" type="Label" parent="MainMenuScreen"]
 layout_mode = 0
 offset_left = 395.0
 offset_top = 400.0
@@ -107,7 +105,7 @@ text = "© 2025 OmniXV0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HighScoreText" type="Label" parent="." unique_id=806429667]
+[node name="HighScoreText" type="Label" parent="MainMenuScreen"]
 layout_mode = 0
 offset_left = 250.0
 offset_right = 381.0
@@ -118,7 +116,7 @@ text = "High Score: "
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HighScore" type="Label" parent="." unique_id=1698548639]
+[node name="HighScore" type="Label" parent="MainMenuScreen"]
 layout_mode = 0
 offset_left = 380.0
 offset_right = 393.0
@@ -129,7 +127,7 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Buttons" type="VBoxContainer" parent="." unique_id=109987341]
+[node name="Buttons" type="VBoxContainer" parent="MainMenuScreen"]
 layout_mode = 0
 offset_left = 260.0
 offset_top = 250.0
@@ -138,7 +136,7 @@ offset_bottom = 356.0
 theme_override_constants/separation = 5
 alignment = 1
 
-[node name="Play" type="TextureButton" parent="Buttons" unique_id=62559717]
+[node name="Play" type="TextureButton" parent="MainMenuScreen/Buttons"]
 layout_mode = 2
 focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath("../Quit")
@@ -149,7 +147,7 @@ texture_normal = ExtResource("3_df05h")
 texture_hover = ExtResource("4_8um5k")
 texture_focused = ExtResource("4_8um5k")
 
-[node name="Label" type="Label" parent="Buttons/Play" unique_id=1230251752]
+[node name="Label" type="Label" parent="MainMenuScreen/Buttons/Play"]
 layout_mode = 0
 offset_left = 26.0
 offset_top = 7.0
@@ -161,7 +159,7 @@ text = "Play"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Quit" type="TextureButton" parent="Buttons" unique_id=637595787]
+[node name="Quit" type="TextureButton" parent="MainMenuScreen/Buttons"]
 layout_mode = 2
 focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath("../Play")
@@ -172,7 +170,7 @@ texture_normal = ExtResource("3_df05h")
 texture_hover = ExtResource("4_8um5k")
 texture_focused = ExtResource("4_8um5k")
 
-[node name="Label" type="Label" parent="Buttons/Quit" unique_id=993916725]
+[node name="Label" type="Label" parent="MainMenuScreen/Buttons/Quit"]
 layout_mode = 0
 offset_left = 39.0
 offset_top = 7.0
@@ -184,14 +182,14 @@ text = "Quit"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ConfirmExit" type="ColorRect" parent="." unique_id=1757512971]
+[node name="ConfirmExit" type="ColorRect" parent="."]
 visible = false
 layout_mode = 0
 offset_right = 640.0
 offset_bottom = 480.0
 color = Color(0, 0, 0, 1)
 
-[node name="Text" type="Label" parent="ConfirmExit" unique_id=155678576]
+[node name="Text" type="Label" parent="ConfirmExit"]
 layout_mode = 0
 offset_left = 54.0
 offset_top = 160.0
@@ -203,7 +201,7 @@ text = "Quit the Game?"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Buttons" type="HBoxContainer" parent="ConfirmExit" unique_id=1594968224]
+[node name="Buttons" type="HBoxContainer" parent="ConfirmExit"]
 layout_mode = 0
 offset_left = 180.0
 offset_top = 240.0
@@ -212,7 +210,7 @@ offset_bottom = 290.0
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="ExitYes" type="TextureButton" parent="ConfirmExit/Buttons" unique_id=1568714553]
+[node name="ExitYes" type="TextureButton" parent="ConfirmExit/Buttons"]
 layout_mode = 2
 size_flags_horizontal = 3
 focus_neighbor_left = NodePath("../ExitNo")
@@ -224,7 +222,7 @@ texture_normal = ExtResource("3_df05h")
 texture_hover = ExtResource("4_8um5k")
 texture_focused = ExtResource("4_8um5k")
 
-[node name="Label" type="Label" parent="ConfirmExit/Buttons/ExitYes" unique_id=1161949043]
+[node name="Label" type="Label" parent="ConfirmExit/Buttons/ExitYes"]
 layout_mode = 0
 offset_left = 39.0
 offset_top = 7.0
@@ -236,7 +234,7 @@ text = "Yes"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ExitNo" type="TextureButton" parent="ConfirmExit/Buttons" unique_id=332884710]
+[node name="ExitNo" type="TextureButton" parent="ConfirmExit/Buttons"]
 layout_mode = 2
 size_flags_horizontal = 3
 focus_neighbor_left = NodePath("../ExitYes")
@@ -248,7 +246,7 @@ texture_normal = ExtResource("3_df05h")
 texture_hover = ExtResource("4_8um5k")
 texture_focused = ExtResource("4_8um5k")
 
-[node name="Label" type="Label" parent="ConfirmExit/Buttons/ExitNo" unique_id=765804441]
+[node name="Label" type="Label" parent="ConfirmExit/Buttons/ExitNo"]
 layout_mode = 0
 offset_left = 39.0
 offset_top = 7.0
@@ -260,9 +258,9 @@ text = "No"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AudioController" parent="." unique_id=1549760459 instance=ExtResource("1_tt5f1")]
+[node name="AudioController" parent="." instance=ExtResource("1_tt5f1")]
 
-[connection signal="pressed" from="Buttons/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="Buttons/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="MainMenuScreen/Buttons/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MainMenuScreen/Buttons/Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="ConfirmExit/Buttons/ExitYes" to="." method="_on_exit_yes_pressed"]
 [connection signal="pressed" from="ConfirmExit/Buttons/ExitNo" to="." method="_on_exit_no_pressed"]

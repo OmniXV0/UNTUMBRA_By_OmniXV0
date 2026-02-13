@@ -1,11 +1,11 @@
 extends Control
 
 @export var player_stats: Stats
-@onready var main_menu_screen: TextureRect = $MainMenuScreen
+@onready var main_menu_screen: ColorRect = $MainMenuScreen
 @onready var confirm_exit: ColorRect = $ConfirmExit
-@onready var main_menu_buttons: VBoxContainer = $Buttons
+@onready var main_menu_buttons: VBoxContainer = $MainMenuScreen/Buttons
 @onready var exit_buttons: HBoxContainer = $ConfirmExit/Buttons
-@onready var high_score: Label = $HighScore
+@onready var high_score: Label = $MainMenuScreen/HighScore
 
 @onready var audio_controller: Node = $AudioController
 
@@ -14,7 +14,7 @@ func _ready():
 	Global.high_score = SaveLoad.contents_to_save.high_score
 	high_score.text = str(Global.high_score)
 	Global.is_game_over = false
-	AudioController.play_music(AudioController.main_menu_music)
+	AudioController.play_music(0, AudioController.main_menu_music)
 	main_menu_buttons.find_child("Play").grab_focus()
 	main_menu_screen.show()
 	confirm_exit.hide()

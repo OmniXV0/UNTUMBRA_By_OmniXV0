@@ -58,7 +58,11 @@ var big_blast_powerup: bool = false
 func _ready() -> void:
 	Global.score = 0
 	Global.is_game_over = false
-	AudioController.play_music(AudioController.game_music)
+	AudioController.play_music(0, AudioController.game_music_part_0)
+	AudioController.play_music(1, AudioController.game_music_part_1)
+	AudioController.play_music(2, AudioController.game_music_part_2)
+	AudioController.play_music(3, AudioController.game_music_part_3)
+	
 	z_index = 0
 	big_slash.hide()
 	if get_tree().current_scene.name == "Game":
@@ -140,7 +144,8 @@ func add_dash_trail():
 		dash_trail.modulate = Color.html("787878")
 	
 func big_sword():
-	print("BIG SWORD")
+	print("BIG SLASH")
+	AudioController.play_volume(1, 0)
 	big_slash_powerup = true
 	big_slash.frame = 8
 	hitbox_collision.scale = Vector2(2, 2)
@@ -149,26 +154,33 @@ func big_sword():
 	cool_down_ui.slash_cool_down()
 	
 func long_dash():
+	print("LONG DASH")
+	AudioController.play_volume(2, 0)
 	speed_multiplier = 3
 	long_dash_powerup = true
 	dash_timer.start(10)
 	cool_down_ui.dash_cool_down()
 	
 func big_blast():
+	print("BIG BLAST")
+	AudioController.play_volume(3, 0)
 	big_blast_powerup = true
 	blast_timer.start(10)
 	cool_down_ui.blast_cool_down()
 	
 func _on_slash_timer_timeout() -> void:
+	AudioController.play_volume(1, -80)
 	big_slash_powerup = false
 	hitbox_collision.scale = Vector2(1, 1)
 	big_slash.hide()
 	
 func _on_dash_timer_timeout() -> void:
+	AudioController.play_volume(2, -80)
 	long_dash_powerup = false
 	speed_multiplier = 1
 	
 func _on_blast_timer_timeout() -> void:
+	AudioController.play_volume(3, -80)
 	big_blast_powerup = false
 	gun_animation.stop()
 	
