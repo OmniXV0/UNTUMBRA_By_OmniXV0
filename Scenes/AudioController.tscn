@@ -1,12 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://dsawtc1yhu1wh"]
+[gd_scene format=3 uid="uid://dsawtc1yhu1wh"]
 
 [ext_resource type="Script" uid="uid://1702tnke0g0s" path="res://Scripts/AudioController.gd" id="1_87mnv"]
 
-[node name="AudioController" type="Node"]
+[node name="AudioController" type="Node" unique_id=49219287]
 script = ExtResource("1_87mnv")
 
-[node name="Music" type="AudioStreamPlayer" parent="."]
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=711363806]
+mix_target = 1
 bus = &"Music"
 
-[node name="SFX" type="AudioStreamPlayer2D" parent="."]
+[node name="SFX" type="AudioStreamPlayer2D" parent="." unique_id=1632396598]
 bus = &"SFX"

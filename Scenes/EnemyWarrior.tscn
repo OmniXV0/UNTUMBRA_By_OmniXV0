@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://cwj0y85uv7vvm"]
+[gd_scene format=3 uid="uid://cwj0y85uv7vvm"]
 
 [ext_resource type="Script" uid="uid://cfywqxackaeve" path="res://Scripts/EnemyWarrior.gd" id="1_3k342"]
 [ext_resource type="Resource" uid="uid://bivbipgc0xk0b" path="res://Resources/EnemyWarriorStats.tres" id="2_7byb3"]
@@ -137,7 +137,7 @@ size = Vector2(32, 20.5)
 radius = 80.0
 height = 220.0
 
-[node name="EnemyWarrior" type="CharacterBody2D"]
+[node name="EnemyWarrior" type="CharacterBody2D" unique_id=969627543]
 y_sort_enabled = true
 collision_layer = 4
 collision_mask = 5
@@ -147,32 +147,30 @@ enemy_stats = ExtResource("2_7byb3")
 enemy_id = 1
 item_node = ExtResource("3_aa5g1")
 
-[node name="EnemyCollision" type="CollisionShape2D" parent="."]
+[node name="EnemyCollision" type="CollisionShape2D" parent="." unique_id=1814494471]
 position = Vector2(0, 5.5)
 shape = SubResource("RectangleShape2D_wovta")
 
-[node name="EnemySprite" type="Sprite2D" parent="."]
+[node name="EnemySprite" type="Sprite2D" parent="." unique_id=1183365087]
 texture = ExtResource("4_ba0ce")
 hframes = 15
 
-[node name="EnemyDashTimer" type="Timer" parent="."]
+[node name="EnemyDashTimer" type="Timer" parent="." unique_id=336531124]
 one_shot = true
 
-[node name="EnemyShootTimer" type="Timer" parent="."]
+[node name="EnemyShootTimer" type="Timer" parent="." unique_id=1500099632]
 one_shot = true
 
-[node name="EnemyAnimation" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_kpr8r"),
-&"EnemyWarriorAnimation": ExtResource("3_3k342")
-}
+[node name="EnemyAnimation" type="AnimationPlayer" parent="." unique_id=1619816040]
+libraries/ = SubResource("AnimationLibrary_kpr8r")
+libraries/EnemyWarriorAnimation = ExtResource("3_3k342")
 
-[node name="EnemyAnimationTree" type="AnimationTree" parent="."]
+[node name="EnemyAnimationTree" type="AnimationTree" parent="." unique_id=335853732]
 tree_root = SubResource("AnimationNodeBlendTree_6s1gy")
 advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../EnemyAnimation")
 
-[node name="HealthBar" type="ProgressBar" parent="."]
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=684841076]
 visible = false
 offset_left = -12.5
 offset_top = -23.0
@@ -181,22 +179,22 @@ offset_bottom = -18.0
 value = 100.0
 show_percentage = false
 
-[node name="EnemyRaycast" type="RayCast2D" parent="."]
+[node name="EnemyRaycast" type="RayCast2D" parent="." unique_id=413207562]
 target_position = Vector2(8, 0)
 
-[node name="HurtboxArea" type="Area2D" parent="."]
+[node name="HurtboxArea" type="Area2D" parent="." unique_id=172302479]
 position = Vector2(0, -21)
 collision_layer = 16
 collision_mask = 16
 script = ExtResource("8_daa53")
 metadata/_custom_type_script = "uid://bna5ylwwau47l"
 
-[node name="HurtboxCollision" type="CollisionShape2D" parent="HurtboxArea"]
+[node name="HurtboxCollision" type="CollisionShape2D" parent="HurtboxArea" unique_id=318917419]
 position = Vector2(0, -3)
 scale = Vector2(0.25, 0.25)
 shape = SubResource("RectangleShape2D_b2bpf")
 
-[node name="HitboxArea" type="Area2D" parent="."]
+[node name="HitboxArea" type="Area2D" parent="." unique_id=689040087]
 position = Vector2(0, -32)
 collision_layer = 8
 collision_mask = 8
@@ -204,17 +202,17 @@ script = ExtResource("9_lw8fy")
 damage = 2
 metadata/_custom_type_script = "uid://c6qkwgrvt7d3i"
 
-[node name="HitboxCollision" type="CollisionShape2D" parent="HitboxArea"]
+[node name="HitboxCollision" type="CollisionShape2D" parent="HitboxArea" unique_id=1346220939]
 position = Vector2(0, 32.25)
 shape = SubResource("RectangleShape2D_mo1ky")
 
-[node name="HitboxAttack" type="CollisionShape2D" parent="HitboxArea"]
+[node name="HitboxAttack" type="CollisionShape2D" parent="HitboxArea" unique_id=1105908934]
 position = Vector2(0, 32)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_7byb3")
 disabled = true
 
-[node name="EnemyHeartsUI" type="Control" parent="."]
+[node name="EnemyHeartsUI" type="Control" parent="." unique_id=1198125626]
 layout_mode = 3
 anchors_preset = 0
 offset_left = -15.0
@@ -224,14 +222,14 @@ offset_bottom = -85.0
 script = ExtResource("10_njh2m")
 enemy_stats = ExtResource("2_j7bbf")
 
-[node name="EmptyHearts" type="TextureRect" parent="EnemyHeartsUI"]
+[node name="EmptyHearts" type="TextureRect" parent="EnemyHeartsUI" unique_id=1332379227]
 layout_mode = 0
 offset_right = 30.0
 offset_bottom = 10.0
 texture = ExtResource("11_sv3js")
 stretch_mode = 1
 
-[node name="FullHearts" type="TextureRect" parent="EnemyHeartsUI"]
+[node name="FullHearts" type="TextureRect" parent="EnemyHeartsUI" unique_id=509675997]
 layout_mode = 0
 offset_right = 30.0
 offset_bottom = 10.0
@@ -239,15 +237,17 @@ texture = ExtResource("12_ox1x5")
 expand_mode = 1
 stretch_mode = 1
 
-[node name="Center" type="Marker2D" parent="."]
+[node name="Center" type="Marker2D" parent="." unique_id=144135815]
 
-[node name="EnemyGun" parent="." instance=ExtResource("13_j7bbf")]
+[node name="EnemyGun" parent="." unique_id=1420239510 instance=ExtResource("13_j7bbf")]
 position = Vector2(35, -50)
 
-[node name="EnemyFighterAttackSFX" type="AudioStreamPlayer" parent="."]
+[node name="EnemyFighterAttackSFX" type="AudioStreamPlayer" parent="." unique_id=150177395]
+mix_target = 2
 bus = &"SFX"
 
-[node name="EnemySlasherAttackSFX" type="AudioStreamPlayer" parent="."]
+[node name="EnemySlasherAttackSFX" type="AudioStreamPlayer" parent="." unique_id=278495801]
+mix_target = 2
 bus = &"SFX"
 
 [connection signal="timeout" from="EnemyDashTimer" to="." method="_on_enemy_dash_timer_timeout"]

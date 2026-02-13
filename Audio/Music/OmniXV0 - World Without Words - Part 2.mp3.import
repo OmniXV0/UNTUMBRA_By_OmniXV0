@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bu2vwcsyo63t7"
+path="res://.godot/imported/OmniXV0 - World Without Words - Part 2.mp3-7f91f31447f9f949990350cfb5f947b0.mp3str"
+
+[deps]
+
+source_file="res://Audio/Music/OmniXV0 - World Without Words - Part 2.mp3"
+dest_files=["res://.godot/imported/OmniXV0 - World Without Words - Part 2.mp3-7f91f31447f9f949990350cfb5f947b0.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
