@@ -4,6 +4,8 @@ class_name Player extends CharacterBody2D
 @export var player_frames: int
 @export var dash_trail_node: PackedScene
 
+@onready var combo_timer: Timer = $ComboTimer
+@onready var combo_timer_2: Timer = $ComboTimer2
 @onready var dash_trail_timer: Timer = $DashTrailTimer
 @onready var dash_trail_particles: GPUParticles2D = $DashTrailParticles
 @onready var gun: Node2D = $Gun
@@ -40,11 +42,14 @@ class_name Player extends CharacterBody2D
 
 const speed: int = 100
 const dash_speed: int = 700
+const combo_move_speed: int = 1000
 const friction = 300
 
 var direction: Vector2 = Vector2.ZERO
 var last_direction: = Vector2.DOWN
 var swinging: bool = false
+var swinging2: bool = false
+var swinging3: bool = false
 
 var dash_trail_frame: int = 0
 var sound_has_played: bool = false
@@ -76,6 +81,8 @@ func _ready() -> void:
 	
 func _physics_process(delta: float) -> void:
 	swinging = false
+	swinging2 = false
+	swinging3 = false
 	var state = playback.get_current_node()
 	match state:
 		"Movement":
@@ -90,6 +97,8 @@ func _physics_process(delta: float) -> void:
 					
 				if Input.is_action_just_pressed("swing"):
 					swinging_sword()
+					velocity = last_direction * combo_move_speed
+					move_and_slide()
 					
 				if Input.is_action_just_pressed("dash"):
 					if long_dash_powerup:
@@ -126,7 +135,27 @@ func swinging_sword():
 		player_big_slash_sfx.play()
 	else:
 		player_attack_sfx.play()
-	swinging = true
+	if combo_timer.is_stopped() && combo_timer_2.is_stopped():
+		swinging = true
+		swinging2 = false
+		swinging3 = false
+		combo_timer.wait_time = 0.5
+		combo_timer.start()
+		print("FIRST ATTACK")
+	elif !combo_timer.is_stopped() && combo_timer_2.is_stopped():
+		swinging = true
+		swinging2 = true
+		swinging3 = false
+		combo_timer.stop()
+		combo_timer_2.wait_time = 0.5
+		combo_timer_2.start()
+		print("SECOND ATTACK")
+	elif combo_timer.is_stopped() && !combo_timer_2.is_stopped():
+		swinging = true
+		swinging2 = true
+		swinging3 = true
+		combo_timer_2.stop()
+		print("THIRD ATTACK")
 	hitbox_collision.visible = true
 	hitbox_collision.disabled = false
 	
@@ -254,5 +283,9 @@ func update_animation_parameters() -> void:
 	player_animation_tree.set("parameters/PlayerStates/Movement/Walk/blend_position", direction)
 	player_animation_tree.set("parameters/PlayerStates/Movement/Idle/blend_position", direction)
 	player_animation_tree.set("parameters/PlayerStates/Movement/Swing/blend_position", direction)
+	player_animation_tree.set("parameters/PlayerStates/Movement/Swing2/blend_position", direction)
+	player_animation_tree.set("parameters/PlayerStates/Movement/Swing3/blend_position", direction)
 	player_animation_tree.set("parameters/PlayerStates/DashState/Dash/blend_position", direction)
 	player_animation_tree.set("parameters/PlayerStates/DashState/DashSwing/blend_position", direction)
+	player_animation_tree.set("parameters/PlayerStates/DashState/DashSwing2/blend_position", direction)
+	player_animation_tree.set("parameters/PlayerStates/DashState/DashSwing3/blend_position", direction)

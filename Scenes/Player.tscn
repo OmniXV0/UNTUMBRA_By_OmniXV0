@@ -289,7 +289,7 @@ _data = {
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_5ixxa"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_nn08x"]
-graph_offset = Vector2(-207, 73)
+graph_offset = Vector2(-397.8094, 46.001408)
 nodes/output/position = Vector2(380, 180)
 nodes/PlayerStates/node = ExtResource("4_5ixxa")
 nodes/PlayerStates/position = Vector2(-60, 100)
@@ -311,7 +311,7 @@ dash_trail_node = ExtResource("3_o3h8g")
 [node name="PlayerSprite" type="Sprite2D" parent="." unique_id=400677169]
 texture = ExtResource("3_bhhdu")
 hframes = 12
-vframes = 3
+vframes = 5
 
 [node name="BigSlash" type="Sprite2D" parent="." unique_id=1320063862]
 texture = ExtResource("5_1e7my")
@@ -350,6 +350,12 @@ text = "+1"
 
 [node name="PlayerBigBlastSFX" parent="Gun" index="5"]
 stream = null
+
+[node name="ComboTimer" type="Timer" parent="." unique_id=1735073139]
+one_shot = true
+
+[node name="ComboTimer2" type="Timer" parent="." unique_id=706521040]
+one_shot = true
 
 [node name="SlashTimer" type="Timer" parent="." unique_id=356482082]
 one_shot = true
@@ -394,11 +400,15 @@ advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../PlayerAnimation")
 parameters/PlayerStates/DashState/Dash/blend_position = Vector2(0, 0)
 parameters/PlayerStates/DashState/DashSwing/blend_position = Vector2(0, 0)
+parameters/PlayerStates/DashState/DashSwing2/blend_position = Vector2(0, 0)
+parameters/PlayerStates/DashState/DashSwing3/blend_position = Vector2(0, 0)
 parameters/PlayerStates/DashSwing/blend_position = Vector2(0, 0)
 parameters/PlayerStates/Dashing/blend_position = Vector2(0, 0)
 parameters/PlayerStates/Movement/Dash/blend_position = Vector2(0, 0)
 parameters/PlayerStates/Movement/Idle/blend_position = Vector2(0, 0)
 parameters/PlayerStates/Movement/Swing/blend_position = Vector2(0, 0)
+parameters/PlayerStates/Movement/Swing2/blend_position = Vector2(0, 0)
+parameters/PlayerStates/Movement/Swing3/blend_position = Vector2(0, 0)
 parameters/PlayerStates/Movement/Walk/blend_position = Vector2(0, 0)
 parameters/TimeScale/scale = 1.0
 
