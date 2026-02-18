@@ -1,11 +1,11 @@
 extends Control
 
 @export var player_stats: Stats
-@onready var main_menu_screen: ColorRect = $MainMenuScreen
+@onready var main_menu_screen: TextureRect = $Background
 @onready var confirm_exit: ColorRect = $ConfirmExit
-@onready var main_menu_buttons: VBoxContainer = $MainMenuScreen/Buttons
+@onready var main_menu_buttons: VBoxContainer = $Buttons
 @onready var exit_buttons: HBoxContainer = $ConfirmExit/Buttons
-@onready var high_score: Label = $MainMenuScreen/HighScore
+@onready var high_score: Label = $HighScore
 
 @onready var audio_controller: Node = $AudioController
 
@@ -30,7 +30,7 @@ func _process(_delta: float) -> void:
 			_on_quit_pressed()
 
 func _on_play_pressed() -> void:
-	audio_controller.play_music(audio_controller.click_yes_sfx)
+	audio_controller.play_sfx(audio_controller.click_yes_sfx)
 	player_stats.health = player_stats.max_health
 	player_stats.heals = player_stats.max_heals
 	Global.is_game_over = false
@@ -44,7 +44,7 @@ func _on_quit_pressed() -> void:
 	exit_buttons.find_child("ExitNo").grab_focus()
 
 func _on_exit_yes_pressed() -> void:
-	audio_controller.play_music(audio_controller.click_yes_sfx)
+	audio_controller.play_sfx(audio_controller.click_yes_sfx)
 	await get_tree().create_timer(0.5).timeout
 	get_tree().quit()
 
