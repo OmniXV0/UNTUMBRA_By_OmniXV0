@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b8lvhcqr2djkx"]
+[gd_scene format=3 uid="uid://b8lvhcqr2djkx"]
 
 [ext_resource type="Script" uid="uid://bv8qj2xsy6paq" path="res://Scripts/GameOver.gd" id="1_m5628"]
 [ext_resource type="Resource" uid="uid://cjtc123x1jbbi" path="res://Resources/PlayerStats.tres" id="2_k52d1"]
@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://c4meaycj1efv2" path="res://Textures/ButtonHover.png" id="4_bfgkh"]
 [ext_resource type="FontFile" uid="uid://ckc538rqyx11m" path="res://Resources/PixelFont.tres" id="6_8710x"]
 
-[node name="GameOver" type="Control"]
+[node name="GameOver" type="Control" unique_id=1044572537]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 640.0
@@ -16,14 +16,14 @@ offset_bottom = 480.0
 script = ExtResource("1_m5628")
 player_stats = ExtResource("2_k52d1")
 
-[node name="GameOverScreen" type="ColorRect" parent="."]
+[node name="GameOverScreen" type="ColorRect" parent="." unique_id=522913886]
 visible = false
 layout_mode = 0
 offset_right = 640.0
 offset_bottom = 480.0
 color = Color(0, 0, 0, 0.5019608)
 
-[node name="Text" type="Label" parent="GameOverScreen"]
+[node name="Text" type="Label" parent="GameOverScreen" unique_id=1168099387]
 layout_mode = 0
 offset_left = 125.0
 offset_top = 120.0
@@ -35,7 +35,7 @@ text = "Game Over"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Buttons" type="VBoxContainer" parent="GameOverScreen"]
+[node name="Buttons" type="VBoxContainer" parent="GameOverScreen" unique_id=1305135070]
 layout_mode = 0
 offset_left = 260.0
 offset_top = 220.0
@@ -44,7 +44,7 @@ offset_bottom = 340.0
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="Continue" type="TextureButton" parent="GameOverScreen/Buttons"]
+[node name="Continue" type="TextureButton" parent="GameOverScreen/Buttons" unique_id=2061746472]
 layout_mode = 2
 focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath("../Quit")
@@ -55,7 +55,7 @@ texture_normal = ExtResource("3_rdiyk")
 texture_hover = ExtResource("4_bfgkh")
 texture_focused = ExtResource("4_bfgkh")
 
-[node name="Label" type="Label" parent="GameOverScreen/Buttons/Continue"]
+[node name="Label" type="Label" parent="GameOverScreen/Buttons/Continue" unique_id=1301220848]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 7.0
@@ -67,7 +67,7 @@ text = "Continue"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Quit" type="TextureButton" parent="GameOverScreen/Buttons"]
+[node name="Quit" type="TextureButton" parent="GameOverScreen/Buttons" unique_id=1477056000]
 layout_mode = 2
 focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath("../Continue")
@@ -78,7 +78,7 @@ texture_normal = ExtResource("3_rdiyk")
 texture_hover = ExtResource("4_bfgkh")
 texture_focused = ExtResource("4_bfgkh")
 
-[node name="Label" type="Label" parent="GameOverScreen/Buttons/Quit"]
+[node name="Label" type="Label" parent="GameOverScreen/Buttons/Quit" unique_id=60931504]
 layout_mode = 0
 offset_left = 39.0
 offset_top = 7.0
@@ -90,14 +90,14 @@ text = "Quit"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ConfirmContinue" type="ColorRect" parent="."]
+[node name="ConfirmContinue" type="ColorRect" parent="." unique_id=93308749]
 visible = false
 layout_mode = 0
 offset_right = 640.0
 offset_bottom = 480.0
 color = Color(0, 0, 0, 0.5019608)
 
-[node name="Text" type="Label" parent="ConfirmContinue"]
+[node name="Text" type="Label" parent="ConfirmContinue" unique_id=1548409244]
 layout_mode = 0
 offset_left = 156.0
 offset_top = 160.0
@@ -109,7 +109,7 @@ text = "Continue?"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Buttons" type="HBoxContainer" parent="ConfirmContinue"]
+[node name="Buttons" type="HBoxContainer" parent="ConfirmContinue" unique_id=1897887798]
 layout_mode = 0
 offset_left = 180.0
 offset_top = 240.0
@@ -118,7 +118,7 @@ offset_bottom = 290.0
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="ContinueYes" type="TextureButton" parent="ConfirmContinue/Buttons"]
+[node name="ContinueYes" type="TextureButton" parent="ConfirmContinue/Buttons" unique_id=1087751497]
 layout_mode = 2
 size_flags_horizontal = 3
 focus_neighbor_left = NodePath("../ContinueNo")
@@ -130,7 +130,7 @@ texture_normal = ExtResource("3_rdiyk")
 texture_hover = ExtResource("4_bfgkh")
 texture_focused = ExtResource("4_bfgkh")
 
-[node name="Label" type="Label" parent="ConfirmContinue/Buttons/ContinueYes"]
+[node name="Label" type="Label" parent="ConfirmContinue/Buttons/ContinueYes" unique_id=2086014906]
 layout_mode = 0
 offset_left = 39.0
 offset_top = 7.0
@@ -142,7 +142,7 @@ text = "Yes"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ContinueNo" type="TextureButton" parent="ConfirmContinue/Buttons"]
+[node name="ContinueNo" type="TextureButton" parent="ConfirmContinue/Buttons" unique_id=2058121649]
 layout_mode = 2
 size_flags_horizontal = 3
 focus_neighbor_left = NodePath("../ContinueYes")
@@ -154,7 +154,7 @@ texture_normal = ExtResource("3_rdiyk")
 texture_hover = ExtResource("4_bfgkh")
 texture_focused = ExtResource("4_bfgkh")
 
-[node name="Label" type="Label" parent="ConfirmContinue/Buttons/ContinueNo"]
+[node name="Label" type="Label" parent="ConfirmContinue/Buttons/ContinueNo" unique_id=684408781]
 layout_mode = 0
 offset_left = 39.0
 offset_top = 7.0
@@ -166,14 +166,14 @@ text = "No"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ConfirmQuit" type="ColorRect" parent="."]
+[node name="ConfirmQuit" type="ColorRect" parent="." unique_id=254002165]
 visible = false
 layout_mode = 0
 offset_right = 640.0
 offset_bottom = 480.0
 color = Color(0, 0, 0, 0.5019608)
 
-[node name="Text" type="Label" parent="ConfirmQuit"]
+[node name="Text" type="Label" parent="ConfirmQuit" unique_id=1844795162]
 layout_mode = 0
 offset_left = 234.0
 offset_top = 160.0
@@ -185,7 +185,7 @@ text = "Quit?"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Buttons" type="HBoxContainer" parent="ConfirmQuit"]
+[node name="Buttons" type="HBoxContainer" parent="ConfirmQuit" unique_id=1970950059]
 layout_mode = 0
 offset_left = 180.0
 offset_top = 240.0
@@ -194,7 +194,7 @@ offset_bottom = 290.0
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="QuitYes" type="TextureButton" parent="ConfirmQuit/Buttons"]
+[node name="QuitYes" type="TextureButton" parent="ConfirmQuit/Buttons" unique_id=529201228]
 layout_mode = 2
 size_flags_horizontal = 3
 focus_neighbor_left = NodePath("../QuitNo")
@@ -206,7 +206,7 @@ texture_normal = ExtResource("3_rdiyk")
 texture_hover = ExtResource("4_bfgkh")
 texture_focused = ExtResource("4_bfgkh")
 
-[node name="Label" type="Label" parent="ConfirmQuit/Buttons/QuitYes"]
+[node name="Label" type="Label" parent="ConfirmQuit/Buttons/QuitYes" unique_id=381833926]
 layout_mode = 0
 offset_left = 39.0
 offset_top = 7.0
@@ -218,7 +218,7 @@ text = "Yes"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="QuitNo" type="TextureButton" parent="ConfirmQuit/Buttons"]
+[node name="QuitNo" type="TextureButton" parent="ConfirmQuit/Buttons" unique_id=376514217]
 layout_mode = 2
 size_flags_horizontal = 3
 focus_neighbor_left = NodePath("../QuitYes")
@@ -230,7 +230,7 @@ texture_normal = ExtResource("3_rdiyk")
 texture_hover = ExtResource("4_bfgkh")
 texture_focused = ExtResource("4_bfgkh")
 
-[node name="Label" type="Label" parent="ConfirmQuit/Buttons/QuitNo"]
+[node name="Label" type="Label" parent="ConfirmQuit/Buttons/QuitNo" unique_id=2111053923]
 layout_mode = 0
 offset_left = 39.0
 offset_top = 7.0
@@ -242,7 +242,7 @@ text = "No"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AudioController" parent="." instance=ExtResource("3_ktc4i")]
+[node name="AudioController" parent="." unique_id=362018970 instance=ExtResource("3_ktc4i")]
 
 [connection signal="pressed" from="GameOverScreen/Buttons/Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="GameOverScreen/Buttons/Quit" to="." method="_on_quit_pressed"]
