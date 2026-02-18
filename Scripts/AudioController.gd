@@ -53,6 +53,9 @@ func play_volume(stream_number: int, volume_number):
 	
 func stop_music():
 	music_0.stop()
+	music_1.stop()
+	music_2.stop()
+	music_3.stop()
 	
 func play_sfx(sfx_name):
 	sfx.stream = sfx_name
