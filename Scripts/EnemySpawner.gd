@@ -15,6 +15,7 @@ var enemy_count: int = 0
 @onready var enemy_gunner_spawn_sfx: AudioStreamPlayer2D = $EnemyGunnerSpawnSFX
 
 func _ready():
+	await get_tree().create_timer(1).timeout
 	spawn_enemy()
 
 func _on_timer_timeout() -> void:

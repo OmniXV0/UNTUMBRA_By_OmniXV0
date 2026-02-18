@@ -12,7 +12,7 @@ func _process(_delta: float) -> void:
 	if !Global.is_game_over:
 		if Input.is_action_just_pressed("controls"):
 			if !Global.is_pause_menu:
-				audio_controller.play_music(audio_controller.click_yes_sfx)
+				audio_controller.play_sfx(audio_controller.click_yes_sfx)
 				pause_unpause()
 			
 func pause_unpause():

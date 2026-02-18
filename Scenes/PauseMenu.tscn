@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://5sox1abvv7cw"]
+[gd_scene format=3 uid="uid://5sox1abvv7cw"]
 
 [ext_resource type="Script" uid="uid://1rktdndgyeb8" path="res://Scripts/PauseMenu.gd" id="1_p8av3"]
 [ext_resource type="PackedScene" uid="uid://dsawtc1yhu1wh" path="res://Scenes/AudioController.tscn" id="2_drk18"]
@@ -7,20 +7,19 @@
 [ext_resource type="Texture2D" uid="uid://c4meaycj1efv2" path="res://Textures/ButtonHover.png" id="3_siy43"]
 [ext_resource type="FontFile" uid="uid://ckc538rqyx11m" path="res://Resources/PixelFont.tres" id="5_gqxqw"]
 
-[node name="PauseMenu" type="Control"]
+[node name="PauseMenu" type="Control" unique_id=835055137]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_p8av3")
 
-[node name="PauseScreen" type="ColorRect" parent="."]
-visible = false
+[node name="PauseScreen" type="ColorRect" parent="." unique_id=1451022763]
 layout_mode = 0
 offset_right = 640.0
 offset_bottom = 480.0
 color = Color(0, 0, 0, 0.5019608)
 
-[node name="Text" type="Label" parent="PauseScreen"]
+[node name="Text" type="Label" parent="PauseScreen" unique_id=1695440080]
 layout_mode = 0
 offset_left = 190.0
 offset_top = 120.0
@@ -32,16 +31,16 @@ text = "Pause"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Buttons" type="VBoxContainer" parent="PauseScreen"]
+[node name="Buttons" type="VBoxContainer" parent="PauseScreen" unique_id=1364546571]
 layout_mode = 0
 offset_left = 260.0
 offset_top = 220.0
 offset_right = 390.0
 offset_bottom = 340.0
-theme_override_constants/separation = 0
+theme_override_constants/separation = 20
 alignment = 1
 
-[node name="Resume" type="TextureButton" parent="PauseScreen/Buttons"]
+[node name="Resume" type="TextureButton" parent="PauseScreen/Buttons" unique_id=1986798733]
 layout_mode = 2
 focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath("../Exit")
@@ -52,7 +51,7 @@ texture_normal = ExtResource("2_ey1tb")
 texture_hover = ExtResource("3_siy43")
 texture_focused = ExtResource("3_siy43")
 
-[node name="Label" type="Label" parent="PauseScreen/Buttons/Resume"]
+[node name="Label" type="Label" parent="PauseScreen/Buttons/Resume" unique_id=1472113957]
 layout_mode = 0
 offset_left = 12.0
 offset_top = 7.0
@@ -64,7 +63,7 @@ text = "Resume"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Exit" type="TextureButton" parent="PauseScreen/Buttons"]
+[node name="Exit" type="TextureButton" parent="PauseScreen/Buttons" unique_id=1946997714]
 layout_mode = 2
 focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath("../Resume")
@@ -76,7 +75,7 @@ texture_normal = ExtResource("2_ey1tb")
 texture_hover = ExtResource("3_siy43")
 texture_focused = ExtResource("3_siy43")
 
-[node name="Label" type="Label" parent="PauseScreen/Buttons/Exit"]
+[node name="Label" type="Label" parent="PauseScreen/Buttons/Exit" unique_id=1680285806]
 layout_mode = 0
 offset_left = 39.0
 offset_top = 7.0
@@ -88,14 +87,14 @@ text = "Exit"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ConfirmExit" type="ColorRect" parent="."]
+[node name="ConfirmExit" type="ColorRect" parent="." unique_id=274672788]
 visible = false
 layout_mode = 0
 offset_right = 640.0
 offset_bottom = 480.0
 color = Color(0, 0, 0, 0.5019608)
 
-[node name="Text" type="Label" parent="ConfirmExit"]
+[node name="Text" type="Label" parent="ConfirmExit" unique_id=862175296]
 layout_mode = 0
 offset_left = 33.0
 offset_top = 160.0
@@ -107,7 +106,7 @@ text = "Exit to Title Screen?"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Buttons" type="HBoxContainer" parent="ConfirmExit"]
+[node name="Buttons" type="HBoxContainer" parent="ConfirmExit" unique_id=975417188]
 layout_mode = 0
 offset_left = 180.0
 offset_top = 240.0
@@ -116,7 +115,7 @@ offset_bottom = 290.0
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="ExitYes" type="TextureButton" parent="ConfirmExit/Buttons"]
+[node name="ExitYes" type="TextureButton" parent="ConfirmExit/Buttons" unique_id=1586188252]
 layout_mode = 2
 size_flags_horizontal = 3
 focus_neighbor_left = NodePath("../ExitNo")
@@ -129,7 +128,7 @@ texture_normal = ExtResource("2_ey1tb")
 texture_hover = ExtResource("3_siy43")
 texture_focused = ExtResource("3_siy43")
 
-[node name="Label" type="Label" parent="ConfirmExit/Buttons/ExitYes"]
+[node name="Label" type="Label" parent="ConfirmExit/Buttons/ExitYes" unique_id=1389203110]
 layout_mode = 0
 offset_left = 39.0
 offset_top = 7.0
@@ -141,7 +140,7 @@ text = "Yes"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ExitNo" type="TextureButton" parent="ConfirmExit/Buttons"]
+[node name="ExitNo" type="TextureButton" parent="ConfirmExit/Buttons" unique_id=482512321]
 layout_mode = 2
 size_flags_horizontal = 3
 focus_neighbor_left = NodePath("../ExitYes")
@@ -154,7 +153,7 @@ texture_normal = ExtResource("2_ey1tb")
 texture_hover = ExtResource("3_siy43")
 texture_focused = ExtResource("3_siy43")
 
-[node name="Label" type="Label" parent="ConfirmExit/Buttons/ExitNo"]
+[node name="Label" type="Label" parent="ConfirmExit/Buttons/ExitNo" unique_id=79899123]
 layout_mode = 0
 offset_left = 39.0
 offset_top = 7.0
@@ -166,7 +165,7 @@ text = "No"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AudioController" parent="." instance=ExtResource("2_drk18")]
+[node name="AudioController" parent="." unique_id=1675270674 instance=ExtResource("2_drk18")]
 
 [connection signal="pressed" from="PauseScreen/Buttons/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="PauseScreen/Buttons/Exit" to="." method="_on_exit_pressed"]

@@ -23,7 +23,7 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("ui_down") || Input.is_action_just_pressed("ui_up") || Input.is_action_just_pressed("ui_left") || Input.is_action_just_pressed("ui_right"):
 		audio_controller.play_sfx(audio_controller.click_select_sfx)
 	if Input.is_action_just_pressed("ui_cancel"):
-		audio_controller.play_music(audio_controller.click_select_sfx)
+		audio_controller.play_sfx(audio_controller.click_select_sfx)
 		if confirm_exit.visible == true:
 			_on_exit_no_pressed()
 		else:
@@ -38,7 +38,7 @@ func _on_play_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/Game.tscn")
 
 func _on_quit_pressed() -> void:
-	audio_controller.play_music(audio_controller.click_yes_sfx)
+	audio_controller.play_sfx(audio_controller.click_yes_sfx)
 	main_menu_screen.hide()
 	confirm_exit.show()
 	exit_buttons.find_child("ExitNo").grab_focus()

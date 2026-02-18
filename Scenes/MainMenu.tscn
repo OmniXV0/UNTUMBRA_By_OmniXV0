@@ -132,10 +132,10 @@ vertical_alignment = 1
 [node name="Buttons" type="VBoxContainer" parent="." unique_id=789066617]
 layout_mode = 0
 offset_left = 260.0
-offset_top = 250.0
+offset_top = 240.0
 offset_right = 390.0
-offset_bottom = 356.0
-theme_override_constants/separation = 5
+offset_bottom = 360.0
+theme_override_constants/separation = 20
 alignment = 1
 
 [node name="Play" type="TextureButton" parent="Buttons" unique_id=154725946]
@@ -189,7 +189,7 @@ visible = false
 layout_mode = 0
 offset_right = 640.0
 offset_bottom = 480.0
-color = Color(0, 0, 0, 1)
+color = Color(0, 0, 0, 0.5019608)
 
 [node name="Text" type="Label" parent="ConfirmExit" unique_id=1001360340]
 layout_mode = 0
