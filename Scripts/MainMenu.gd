@@ -39,7 +39,6 @@ func _on_play_pressed() -> void:
 
 func _on_quit_pressed() -> void:
 	audio_controller.play_sfx(audio_controller.click_yes_sfx)
-	main_menu_screen.hide()
 	confirm_exit.show()
 	exit_buttons.find_child("ExitNo").grab_focus()
 
@@ -49,7 +48,6 @@ func _on_exit_yes_pressed() -> void:
 	get_tree().quit()
 
 func _on_exit_no_pressed() -> void:
-	audio_controller.play_music(audio_controller.click_yes_sfx)
-	main_menu_screen.show()
+	audio_controller.play_sfx(audio_controller.click_yes_sfx)
 	confirm_exit.hide()
 	main_menu_buttons.find_child("Quit").grab_focus()

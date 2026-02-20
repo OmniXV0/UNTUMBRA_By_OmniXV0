@@ -18,7 +18,7 @@ func _process(_delta: float) -> void:
 	if !Global.is_game_over:
 		if Input.is_action_just_pressed("ui_down") || Input.is_action_just_pressed("ui_up") || Input.is_action_just_pressed("ui_left") || Input.is_action_just_pressed("ui_right"):
 			if pause_screen.visible == true || confirm_exit.visible == true:
-				audio_controller.play_music(audio_controller.click_select_sfx)
+				audio_controller.play_sfx(audio_controller.click_select_sfx)
 		if Input.is_action_just_pressed("pause"):
 			if !Global.is_controls_menu:
 				if is_confirm == false:

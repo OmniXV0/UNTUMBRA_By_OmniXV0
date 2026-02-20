@@ -38,24 +38,29 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_loo7a")
 
 [node name="Logo" type="TextureRect" parent="." unique_id=2074789027]
+visible = false
 layout_mode = 0
-offset_left = 148.0
-offset_top = 20.0
-offset_right = 276.0
-offset_bottom = 148.0
+offset_left = 113.0
+offset_top = 175.0
+offset_right = 241.0
+offset_bottom = 303.0
+rotation = -1.5707964
 texture = ExtResource("7_if7li")
 
 [node name="Title" type="Label" parent="." unique_id=1226874470]
-layout_mode = 0
-offset_left = 183.0
-offset_top = 50.0
-offset_right = 468.0
-offset_bottom = 175.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -190.0
+offset_top = 40.0
+offset_right = 190.0
+offset_bottom = 165.0
+grow_horizontal = 2
 theme_override_constants/line_spacing = -10
 theme_override_fonts/font = SubResource("FontVariation_rrcx7")
 theme_override_font_sizes/font_size = 50
-text = "     allen 
-Land"
+text = "Fallen Land"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -130,11 +135,17 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Buttons" type="VBoxContainer" parent="." unique_id=789066617]
-layout_mode = 0
-offset_left = 260.0
-offset_top = 240.0
-offset_right = 390.0
-offset_bottom = 360.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -65.0
+offset_right = 65.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/separation = 20
 alignment = 1
 

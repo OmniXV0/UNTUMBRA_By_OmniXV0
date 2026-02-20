@@ -32,11 +32,18 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Buttons" type="VBoxContainer" parent="PauseScreen" unique_id=1364546571]
-layout_mode = 0
-offset_left = 260.0
-offset_top = 220.0
-offset_right = 390.0
-offset_bottom = 340.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -65.0
+offset_top = -20.0
+offset_right = 65.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/separation = 20
 alignment = 1
 
@@ -107,11 +114,17 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Buttons" type="HBoxContainer" parent="ConfirmExit" unique_id=975417188]
-layout_mode = 0
-offset_left = 180.0
-offset_top = 240.0
-offset_right = 460.0
-offset_bottom = 290.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -140.0
+offset_right = 140.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/separation = 20
 alignment = 1
 
