@@ -57,7 +57,7 @@ tile_set = ExtResource("3_2irst")
 [node name="Player" parent="." unique_id=240871995 instance=ExtResource("2_gl6un")]
 position = Vector2(320, 240)
 
-[node name="PlayerCamera" parent="Player" index="18" unique_id=1590006365]
+[node name="PlayerCamera" parent="Player" index="20" unique_id=1590006365]
 limit_left = -320
 limit_top = -240
 limit_right = 960

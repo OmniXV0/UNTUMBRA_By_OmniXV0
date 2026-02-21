@@ -3,6 +3,7 @@ class_name Player extends CharacterBody2D
 @export var stats: Stats
 @export var player_frames: int
 @export var dash_trail_node: PackedScene
+@export var bomb_node: PackedScene
 
 @onready var combo_timer: Timer = $ComboTimer
 @onready var combo_timer_2: Timer = $ComboTimer2
@@ -27,6 +28,7 @@ class_name Player extends CharacterBody2D
 @onready var hurtbox_area: Hurtbox = $HurtboxArea
 @onready var big_slash: Sprite2D = $BigSlash
 @onready var heals_animation: AnimationPlayer = $HealsAnimation
+@onready var bombs_animation: AnimationPlayer = $BombsAnimation
 
 @onready var pause
 @onready var game_over
@@ -54,6 +56,9 @@ var swinging3: bool = false
 var dash_trail_frame: int = 0
 var sound_has_played: bool = false
 var can_heal: bool = false
+var can_throw_bombs: bool = false
+var bomb_speed: int = 100
+var bomb_object: Node2D
 
 var big_slash_powerup: bool = false
 var speed_multiplier: int = 1
@@ -78,6 +83,7 @@ func _ready() -> void:
 	hurtbox_area.hurt.connect(take_hit.call_deferred)
 	stats.no_health.connect(player_death)
 	stats.no_heals.connect(no_healing)
+	stats.no_bombs.connect(no_bombs_throwing)
 	
 func _physics_process(delta: float) -> void:
 	swinging = false
@@ -112,7 +118,12 @@ func _physics_process(delta: float) -> void:
 					
 				if Input.is_action_just_pressed("heal"):
 					heal()
-				
+					
+				if Input.is_action_just_pressed("throw"):
+					throw_bomb()
+					bomb_object.position += last_direction * bomb_speed
+					move_and_slide()
+					
 				velocity = direction * speed
 				move_and_slide()
 				move_and_collide(velocity * delta)
@@ -224,7 +235,7 @@ func dash_screen_shake(shake_amount, shake_time):
 func blast_screen_shake(shake_amount, shake_time):
 	if big_blast_powerup:
 		player_camera.screen_shake(shake_amount, shake_time)
-	
+		
 func add_heal():
 	print("ADD HEAL")
 	heals_animation.play("PlayerAnimation/HealsAdd")
@@ -251,6 +262,30 @@ func heal():
 	
 func no_healing():
 	can_heal = false
+	
+func add_bomb():
+	print("ADD BOMB")
+	bombs_animation.play("PlayerAnimation/BombsAdd")
+	if stats.bombs < stats.max_bombs:
+		stats.bombs += 1
+	
+func throw_bomb():
+	if stats.bombs > 0:
+		can_throw_bombs = true
+	if can_throw_bombs == true:
+		print("BOMB")
+		can_throw_bombs = false
+		var bomb = bomb_node.instantiate()
+		bomb.set_property(position, $PlayerSprite.scale)
+		get_tree().current_scene.add_child(bomb)
+		bomb_object = bomb
+		stats.bombs -= 1
+		bomb.bomb_node_animation.play("BombAnimation/BombShockwaveAnimation")
+		await get_tree().create_timer(0.5).timeout
+		player_camera.screen_shake(5.0, 0.5)
+	
+func no_bombs_throwing():
+	can_throw_bombs = false
 	
 func player_death() -> void:
 	z_index = 200

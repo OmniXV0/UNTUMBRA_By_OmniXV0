@@ -7,12 +7,13 @@ var big_sword_item = load("res://Sprites/SwordItem.png")
 var heals_item = load("res://Sprites/HealsItem.png")
 var dash_item = load("res://Sprites/DashItem.png")
 var big_gun_item = load("res://Sprites/GunItem.png")
+var bomb_item = load ("res://Sprites/BombItem.png")
 
 var item_type: int = 0
 var item_choice: int = 0
 
 func _ready() -> void:
-	item_type = randi_range(0, 3)	#CHANGE THIS BACK WHEN READY
+	item_type = randi_range(0, 4)	#CHANGE THIS BACK WHEN READY
 	if item_type == 0:
 		item_sprite.texture = big_sword_item
 		item_choice = 0
@@ -25,6 +26,9 @@ func _ready() -> void:
 	elif item_type == 3:
 		item_sprite.texture = big_gun_item
 		item_choice = 3
+	elif item_type == 4:
+		item_sprite.texture = bomb_item
+		item_choice = 4
 	await get_tree().create_timer(10).timeout
 	queue_free()
 
@@ -39,4 +43,6 @@ func _on_body_entered(body: Node2D) -> void:
 			body.long_dash()
 		if item_choice == 3:
 			body.big_blast()
+		if item_choice == 4:
+			body.add_bomb()
 		queue_free()

@@ -20,8 +20,19 @@ var free_enemy: bool = false
 			heals_changed.emit(heals)
 		if heals <= 0: 
 			no_heals.emit()
+@export var max_bombs: = 1
+@export var bombs: = max_bombs:
+	set(value):
+		var previous_bombs = bombs
+		bombs = value
+		if bombs != previous_bombs:
+			bombs_changed.emit(bombs)
+		if bombs <= 0: 
+			no_bombs.emit()
 
 signal health_changed(new_health)
 signal no_health()
 signal heals_changed(new_heals)
 signal no_heals()
+signal bombs_changed(new_bombs)
+signal no_bombs()

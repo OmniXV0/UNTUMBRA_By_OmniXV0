@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Stats" load_steps=2 format=3 uid="uid://cjtc123x1jbbi"]
+[gd_resource type="Resource" script_class="Stats" format=3 uid="uid://cjtc123x1jbbi"]
 
 [ext_resource type="Script" uid="uid://g58xjr07cgb0" path="res://Scripts/Stats.gd" id="1_c26vb"]
 
@@ -8,4 +8,6 @@ max_health = 5
 health = 5
 max_heals = 3
 heals = 3
+max_bombs = 2
+bombs = 2
 metadata/_custom_type_script = "uid://g58xjr07cgb0"

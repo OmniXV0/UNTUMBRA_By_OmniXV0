@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://mu3i8nv3wkev"]
+[gd_scene format=3 uid="uid://mu3i8nv3wkev"]
 
 [ext_resource type="Texture2D" uid="uid://ccgvhanvhfgas" path="res://Sprites/SwordItem.png" id="1_3ocph"]
 [ext_resource type="Script" uid="uid://vua55ttu4qc2" path="res://Scripts/Item.gd" id="2_646pp"]
@@ -6,16 +6,16 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_2oiv6"]
 radius = 18.0
 
-[node name="Item" type="Area2D"]
+[node name="Item" type="Area2D" unique_id=2129583867]
 y_sort_enabled = true
 collision_layer = 32
 collision_mask = 2
 script = ExtResource("2_646pp")
 
-[node name="ItemSprite" type="Sprite2D" parent="."]
+[node name="ItemSprite" type="Sprite2D" parent="." unique_id=1984607771]
 texture = ExtResource("1_3ocph")
 
-[node name="ItemCollision" type="CollisionShape2D" parent="."]
+[node name="ItemCollision" type="CollisionShape2D" parent="." unique_id=1456067379]
 shape = SubResource("CircleShape2D_2oiv6")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
