@@ -98,11 +98,10 @@ _data = {
 &"RESET": SubResource("Animation_0llsd")
 }
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bugvj"]
-radius = 47.0
-height = 384.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_iiucn"]
+radius = 300.6659
 
-[node name="Bomb" type="Node2D" unique_id=832530506]
+[node name="Bomb" type="Node2D" unique_id=77537376]
 script = ExtResource("1_4pshg")
 
 [node name="BombSprite" type="Sprite2D" parent="." unique_id=1015229911]
@@ -127,8 +126,9 @@ metadata/_custom_type_script = "uid://c6qkwgrvt7d3i"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=186542148]
 rotation = 1.5707964
-shape = SubResource("CapsuleShape2D_bugvj")
+shape = SubResource("CircleShape2D_iiucn")
 disabled = true
 
-[node name="PlayerBombSFX" type="AudioStreamPlayer" parent="." unique_id=1720694592]
-bus = &"SFX"
+[node name="BombScreenNotifier" type="VisibleOnScreenNotifier2D" parent="." unique_id=1969697502]
+
+[connection signal="screen_exited" from="BombScreenNotifier" to="." method="_on_bomb_screen_notifier_screen_exited"]

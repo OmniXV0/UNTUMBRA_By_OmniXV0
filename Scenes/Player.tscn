@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://cnmxu631phwyn" path="res://Scenes/DashTrail.tscn" id="3_o3h8g"]
 [ext_resource type="AnimationLibrary" uid="uid://qrwp383ejci" path="res://Animations/PlayerAnimation.res" id="3_xobjj"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://dnsyprwaagsy8" path="res://Animations/Player.tres" id="4_5ixxa"]
-[ext_resource type="PackedScene" uid="uid://ctuhdg5cexsrf" path="res://Scenes/Bomb.tscn" id="4_8flut"]
 [ext_resource type="Script" uid="uid://bxof3upxugd7q" path="res://Scripts/Camera.gd" id="4_dewec"]
 [ext_resource type="Texture2D" uid="uid://ba2oc0olx2ai" path="res://Sprites/TheSurvivorBigSlash.png" id="5_1e7my"]
 [ext_resource type="PackedScene" uid="uid://cjnl3fl8xn5ge" path="res://Scenes/Gun.tscn" id="6_arntx"]
@@ -25,6 +24,7 @@
 [ext_resource type="AudioStream" uid="uid://djkqk84ulpem6" path="res://Audio/SFX/PlayerBigSlashSFX.mp3" id="14_ulo2v"]
 [ext_resource type="AudioStream" uid="uid://c1yceetrjsjuf" path="res://Audio/SFX/PlayerLongDashSFX.mp3" id="19_i2e8t"]
 [ext_resource type="AudioStream" uid="uid://ck3byk12qpj4t" path="res://Audio/SFX/EnemyBotAttackSFX.mp3" id="22_x63xi"]
+[ext_resource type="AudioStream" uid="uid://bvjx5mbnvnktl" path="res://Audio/SFX/PlayerBombSFX.mp3" id="24_70hv0"]
 
 [sub_resource type="Gradient" id="Gradient_o3h8g"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -344,7 +344,6 @@ collision_mask = 7
 script = ExtResource("1_ttesm")
 stats = ExtResource("2_bhhdu")
 dash_trail_node = ExtResource("3_o3h8g")
-bomb_node = ExtResource("4_8flut")
 
 [node name="PlayerSprite" type="Sprite2D" parent="." unique_id=400677169]
 texture = ExtResource("3_bhhdu")
@@ -405,7 +404,7 @@ text = "+1"
 
 [node name="Gun" parent="." unique_id=858814920 instance=ExtResource("6_arntx")]
 
-[node name="PlayerBigBlastSFX" parent="Gun" index="5"]
+[node name="PlayerBigBlastSFX" parent="Gun" index="5" unique_id=1075791288]
 stream = null
 
 [node name="ComboTimer" type="Timer" parent="." unique_id=1735073139]
@@ -533,6 +532,10 @@ bus = &"SFX"
 
 [node name="PlayerHealSFX" type="AudioStreamPlayer" parent="." unique_id=1410060800]
 stream = ExtResource("14_o3h8g")
+bus = &"SFX"
+
+[node name="PlayerBombSFX" type="AudioStreamPlayer" parent="." unique_id=1878401466]
+stream = ExtResource("24_70hv0")
 bus = &"SFX"
 
 [node name="EnemyBotAttackSFX" type="AudioStreamPlayer" parent="." unique_id=2138971928]

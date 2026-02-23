@@ -9,13 +9,17 @@ extends Node2D
 @export var fire_delay: float = 0.25
 @onready var fire_delay_timer: Timer = $FireDelayTimer
 @onready var player_shoot_sfx: AudioStreamPlayer = $PlayerShootSFX
+@export var bomb_node: PackedScene
 
 @onready var player: Player = $".."
 var can_fire: bool = false
 
+var can_throw_bombs: bool = false
+
 func _ready():
 	gun_sprite.hide()
 	big_blast.hide()
+	player.stats.no_bombs.connect(no_bombs_throwing)
 
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -64,4 +68,30 @@ func _process(delta: float) -> void:
 		player.gun_animation.play("PlayerAnimation/BigBlastAnimation")
 	else:
 		player.gun_animation.stop()
+		
+	if Input.is_action_just_pressed("throw"):
+		throw_bomb()
+		
+func throw_bomb():
+	if player.stats.bombs > 0:
+		can_throw_bombs = true
+	if can_throw_bombs == true:
+		print("BOMB")
+		can_throw_bombs = false
+		var bomb = bomb_node.instantiate()
+		get_tree().current_scene.add_child(bomb)
+		bomb.global_position = spawn_point.global_position
+		bomb.rotation = rotation
+		bomb.hitbox_area.clear_hit_targets()
+		bomb.bomb_node_animation.play("BombAnimation/BombShockwaveAnimation")
+		player.stats.bombs -= 1
+		await get_tree().create_timer(0.5).timeout
+		player.player_camera.screen_shake(5.0, 0.5)
+		
+func no_bombs_throwing():
+	can_throw_bombs = false
+	
+func bomb_screen_shake(shake_amount, shake_time):
+	player.player_bomb_sfx.play()
+	player.player_camera.screen_shake(shake_amount, shake_time)
 		
