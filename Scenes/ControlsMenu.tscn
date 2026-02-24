@@ -1,18 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://bcpma0af5t0hx"]
+[gd_scene format=3 uid="uid://bcpma0af5t0hx"]
 
 [ext_resource type="FontFile" uid="uid://bvvaytb6u27py" path="res://Fonts/deltha/Deltha.otf" id="1_gyf44"]
 [ext_resource type="Script" uid="uid://dvsvgp4322w3a" path="res://Scripts/ControlsMenu.gd" id="1_n2li1"]
-[ext_resource type="FontFile" uid="uid://do8imyb1tdnka" path="res://Fonts/bytebounce/ByteBounce.ttf" id="2_n2li1"]
+[ext_resource type="Texture2D" uid="uid://3oqwga86bivv" path="res://Textures/ControlsMenuKeyboardWithoutMouse.png" id="2_bvrd0"]
 [ext_resource type="PackedScene" uid="uid://dsawtc1yhu1wh" path="res://Scenes/AudioController.tscn" id="4_bvrd0"]
+[ext_resource type="Texture2D" uid="uid://cmv3e4crqltte" path="res://Textures/Arrow.png" id="4_e566s"]
+[ext_resource type="Texture2D" uid="uid://cc5bpp1h44ft2" path="res://Textures/ArrowHover.png" id="5_kn478"]
+[ext_resource type="Texture2D" uid="uid://io0fmecc6n8n" path="res://Textures/ControlsMenuKeyboardWithMouse.png" id="6_m21ao"]
+[ext_resource type="Texture2D" uid="uid://c2cr8vehc2n66" path="res://Textures/ControlsMenuController.png" id="7_myglc"]
 
-[node name="ControlsMenu" type="Control"]
+[node name="ControlsMenu" type="Control" unique_id=362910232]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_n2li1")
 
-[node name="ControlsScreen" type="ColorRect" parent="."]
-visible = false
+[node name="ControlsScreen" type="ColorRect" parent="." unique_id=1720544178]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,71 +26,142 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.5019608)
 
-[node name="ControlsTitle" type="Label" parent="ControlsScreen"]
+[node name="KeyboardWithoutMouseScreen" type="TextureRect" parent="ControlsScreen" unique_id=1983662891]
 layout_mode = 0
-offset_left = 240.0
-offset_top = 10.0
-offset_right = 393.0
-offset_bottom = 45.0
+offset_left = 65.0
+offset_top = 45.0
+offset_right = 705.0
+offset_bottom = 525.0
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_bvrd0")
+
+[node name="ControlsTitle" type="Label" parent="ControlsScreen/KeyboardWithoutMouseScreen" unique_id=1956625579]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -285.0
+offset_top = -40.0
+offset_right = 349.0
+offset_bottom = -5.0
+grow_horizontal = 2
+scale = Vector2(0.9, 0.9)
 theme_override_fonts/font = ExtResource("1_gyf44")
 theme_override_font_sizes/font_size = 25
-text = "Controls"
+text = "Controls: Keyboard 
+Without Mouse"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ControlsTextContainer" type="GridContainer" parent="ControlsScreen"]
+[node name="ArrowRight" type="TextureButton" parent="ControlsScreen/KeyboardWithoutMouseScreen" unique_id=891181539]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -27.5
+offset_right = 50.0
+offset_bottom = 22.5
+grow_horizontal = 0
+grow_vertical = 2
+texture_normal = ExtResource("4_e566s")
+texture_hover = ExtResource("5_kn478")
+
+[node name="KeyboardWithMouseScreen" type="TextureRect" parent="ControlsScreen" unique_id=951972566]
+visible = false
 layout_mode = 0
-offset_left = 10.0
-offset_top = 60.0
-offset_right = 635.0
-offset_bottom = 444.0
-theme_override_constants/h_separation = -20
-theme_override_constants/v_separation = 50
-columns = 2
+offset_left = 65.0
+offset_top = 45.0
+offset_right = 705.0
+offset_bottom = 525.0
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("6_m21ao")
 
-[node name="ControlsText0" type="Label" parent="ControlsScreen/ControlsTextContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_n2li1")
-theme_override_font_sizes/font_size = 20
-text = "Keyboard Without Mouse:
+[node name="ControlsTitle" type="Label" parent="ControlsScreen/KeyboardWithMouseScreen" unique_id=351590683]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -285.0
+offset_top = -40.0
+offset_right = 349.0
+offset_bottom = -5.0
+grow_horizontal = 2
+scale = Vector2(0.9, 0.9)
+theme_override_fonts/font = ExtResource("1_gyf44")
+theme_override_font_sizes/font_size = 25
+text = "Controls: Keyboard 
+With Mouse"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-Move: Arrow Keys
-Slash: Z
-Dash: X
-Shoot: C | Hold button
-Aim: Left Shift - turn left, B - turn right
-Heal: V | Hold button
-Pause: Escape (Esc)
-Exit this screen: Ctrl or Cmd"
+[node name="ArrowLeft" type="TextureButton" parent="ControlsScreen/KeyboardWithMouseScreen" unique_id=1258622812]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -27.5
+offset_bottom = 22.5
+grow_vertical = 2
+texture_normal = ExtResource("4_e566s")
+texture_hover = ExtResource("5_kn478")
+flip_h = true
 
-[node name="ControlsText1" type="Label" parent="ControlsScreen/ControlsTextContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_n2li1")
-theme_override_font_sizes/font_size = 20
-text = "Keyboard With Mouse:
+[node name="ArrowRight" type="TextureButton" parent="ControlsScreen/KeyboardWithMouseScreen" unique_id=752141517]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -27.5
+offset_right = 50.0
+offset_bottom = 22.5
+grow_horizontal = 0
+grow_vertical = 2
+texture_normal = ExtResource("4_e566s")
+texture_hover = ExtResource("5_kn478")
 
-Move: WASD
-Slash: Left mouse button
-Dash: Right mouse button
-Shoot: Middle mouse button | Hold button
-Aim: Mouse cursor
-Heal: E | Hold button
-Pause: Escape (Esc)
-Exit this screen, controls menu: Tab"
+[node name="ControllerScreen" type="TextureRect" parent="ControlsScreen" unique_id=1715080964]
+visible = false
+layout_mode = 0
+offset_left = 65.0
+offset_top = 45.0
+offset_right = 705.0
+offset_bottom = 525.0
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("7_myglc")
 
-[node name="ControlsText2" type="Label" parent="ControlsScreen/ControlsTextContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_n2li1")
-theme_override_font_sizes/font_size = 20
-text = "Controller:
+[node name="ControlsTitle" type="Label" parent="ControlsScreen/ControllerScreen" unique_id=155403291]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -285.0
+offset_top = -40.0
+offset_right = 349.0
+offset_bottom = -5.0
+grow_horizontal = 2
+scale = Vector2(0.9, 0.9)
+theme_override_fonts/font = ExtResource("1_gyf44")
+theme_override_font_sizes/font_size = 25
+text = "Controls: Controller"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-Move: Left Stick / D-Pad
-Slash: B (Nintendo) / A (Xbox) / Cross (Sony)
-Dash: Y (Nintendo) / X (Xbox) / Square (Sony)
-Shoot: Right Shoulder or Right Trigger
-Aim: Right Stick
-Heal: Left Shoulder or Left Trigger
-Pause: Start
-Exit this screen, controls menu: Select"
+[node name="ArrowLeft" type="TextureButton" parent="ControlsScreen/ControllerScreen" unique_id=533102283]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -27.5
+offset_bottom = 22.5
+grow_vertical = 2
+texture_normal = ExtResource("4_e566s")
+texture_hover = ExtResource("5_kn478")
+flip_h = true
 
-[node name="AudioController" parent="." instance=ExtResource("4_bvrd0")]
+[node name="AudioController" parent="." unique_id=1612195536 instance=ExtResource("4_bvrd0")]
