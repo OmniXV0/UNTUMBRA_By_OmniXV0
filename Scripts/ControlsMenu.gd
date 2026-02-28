@@ -16,31 +16,21 @@ func _ready() -> void:
 	
 func _process(_delta: float) -> void:
 	if !Global.is_game_over:
-		if Input.is_action_pressed("left") || Input.is_action_pressed("right"):
-			audio_controller.play_sfx(audio_controller.click_select_sfx)
 		if Input.is_action_just_pressed("controls"):
 			if !Global.is_pause_menu:
 				audio_controller.play_sfx(audio_controller.click_yes_sfx)
 				pause_unpause()
 		if keyboard_without_mouse_screen.visible == true:
 			if Input.is_action_just_pressed("right"):
-				keyboard_without_mouse_screen.hide()
-				keyboard_with_mouse_screen.show()
-				controller_screen.hide()
+				_on_screen_1_arrow_right_pressed()
 		elif keyboard_with_mouse_screen.visible == true:
 			if Input.is_action_just_pressed("left"):
-				keyboard_without_mouse_screen.show()
-				keyboard_with_mouse_screen.hide()
-				controller_screen.hide()
+				_on_screen_2_arrow_left_pressed()
 			if Input.is_action_just_pressed("right"):
-				keyboard_without_mouse_screen.hide()
-				keyboard_with_mouse_screen.hide()
-				controller_screen.show()
+				_on_screen_2_arrow_right_pressed()
 		elif controller_screen.visible == true:
 			if Input.is_action_just_pressed("left"):
-				keyboard_without_mouse_screen.hide()
-				keyboard_with_mouse_screen.show()
-				controller_screen.hide()
+				_on_screen_3_arrow_left_pressed()
 			
 func pause_unpause():
 	is_controls = !get_tree().paused
@@ -51,3 +41,27 @@ func pause_unpause():
 		Global.is_controls_menu = false
 		controls_screen.hide()
 	get_tree().paused = not get_tree().paused
+	
+func _on_screen_1_arrow_right_pressed() -> void:
+	audio_controller.play_sfx(audio_controller.click_yes_sfx)
+	keyboard_without_mouse_screen.hide()
+	keyboard_with_mouse_screen.show()
+	controller_screen.hide()
+
+func _on_screen_2_arrow_left_pressed() -> void:
+	audio_controller.play_sfx(audio_controller.click_yes_sfx)
+	keyboard_without_mouse_screen.show()
+	keyboard_with_mouse_screen.hide()
+	controller_screen.hide()
+
+func _on_screen_2_arrow_right_pressed() -> void:
+	audio_controller.play_sfx(audio_controller.click_yes_sfx)
+	keyboard_without_mouse_screen.hide()
+	keyboard_with_mouse_screen.hide()
+	controller_screen.show()
+
+func _on_screen_3_arrow_left_pressed() -> void:
+	audio_controller.play_sfx(audio_controller.click_yes_sfx)
+	keyboard_without_mouse_screen.hide()
+	keyboard_with_mouse_screen.show()
+	controller_screen.hide()

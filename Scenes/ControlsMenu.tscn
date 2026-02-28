@@ -53,7 +53,7 @@ Without Mouse"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ArrowRight" type="TextureButton" parent="ControlsScreen/KeyboardWithoutMouseScreen" unique_id=891181539]
+[node name="Screen1ArrowRight" type="TextureButton" parent="ControlsScreen/KeyboardWithoutMouseScreen" unique_id=891181539]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -96,7 +96,7 @@ With Mouse"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ArrowLeft" type="TextureButton" parent="ControlsScreen/KeyboardWithMouseScreen" unique_id=1258622812]
+[node name="Screen2ArrowLeft" type="TextureButton" parent="ControlsScreen/KeyboardWithMouseScreen" unique_id=1258622812]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -109,7 +109,7 @@ texture_normal = ExtResource("4_e566s")
 texture_hover = ExtResource("5_kn478")
 flip_h = true
 
-[node name="ArrowRight" type="TextureButton" parent="ControlsScreen/KeyboardWithMouseScreen" unique_id=752141517]
+[node name="Screen2ArrowRight" type="TextureButton" parent="ControlsScreen/KeyboardWithMouseScreen" unique_id=752141517]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -151,7 +151,7 @@ text = "Controls: Controller"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ArrowLeft" type="TextureButton" parent="ControlsScreen/ControllerScreen" unique_id=533102283]
+[node name="Screen3ArrowLeft" type="TextureButton" parent="ControlsScreen/ControllerScreen" unique_id=533102283]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -165,3 +165,8 @@ texture_hover = ExtResource("5_kn478")
 flip_h = true
 
 [node name="AudioController" parent="." unique_id=1612195536 instance=ExtResource("4_bvrd0")]
+
+[connection signal="pressed" from="ControlsScreen/KeyboardWithoutMouseScreen/Screen1ArrowRight" to="." method="_on_screen_1_arrow_right_pressed"]
+[connection signal="pressed" from="ControlsScreen/KeyboardWithMouseScreen/Screen2ArrowLeft" to="." method="_on_screen_2_arrow_left_pressed"]
+[connection signal="pressed" from="ControlsScreen/KeyboardWithMouseScreen/Screen2ArrowRight" to="." method="_on_screen_2_arrow_right_pressed"]
+[connection signal="pressed" from="ControlsScreen/ControllerScreen/Screen3ArrowLeft" to="." method="_on_screen_3_arrow_left_pressed"]
