@@ -20,17 +20,18 @@ func _process(_delta: float) -> void:
 			if !Global.is_pause_menu:
 				audio_controller.play_sfx(audio_controller.click_yes_sfx)
 				pause_unpause()
-		if keyboard_without_mouse_screen.visible == true:
-			if Input.is_action_just_pressed("right"):
-				_on_screen_1_arrow_right_pressed()
-		elif keyboard_with_mouse_screen.visible == true:
-			if Input.is_action_just_pressed("left"):
-				_on_screen_2_arrow_left_pressed()
-			if Input.is_action_just_pressed("right"):
-				_on_screen_2_arrow_right_pressed()
-		elif controller_screen.visible == true:
-			if Input.is_action_just_pressed("left"):
-				_on_screen_3_arrow_left_pressed()
+		if Global.is_controls_menu:
+			if keyboard_without_mouse_screen.visible == true:
+				if Input.is_action_just_pressed("right"):
+					_on_screen_1_arrow_right_pressed()
+			elif keyboard_with_mouse_screen.visible == true:
+				if Input.is_action_just_pressed("left"):
+					_on_screen_2_arrow_left_pressed()
+				if Input.is_action_just_pressed("right"):
+					_on_screen_2_arrow_right_pressed()
+			elif controller_screen.visible == true:
+				if Input.is_action_just_pressed("left"):
+					_on_screen_3_arrow_left_pressed()
 			
 func pause_unpause():
 	is_controls = !get_tree().paused

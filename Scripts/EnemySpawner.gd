@@ -2,9 +2,11 @@ extends Node2D
 
 @export var enemy_prefab: PackedScene
 @export var enemy_warrior_prefab: PackedScene
+@export var enemy_lord_prefab: PackedScene
 
 var enemy: Node2D
 var enemy_warrior: Node2D
+var enemy_lord: Node2D
 var enemy_spawn_rate: int = 0
 var enemies_dead: int = 0
 var enemy_count: int = 0
@@ -13,19 +15,26 @@ var enemy_count: int = 0
 @onready var enemy_fighter_spawn_sfx: AudioStreamPlayer2D = $EnemyFighterSpawnSFX
 @onready var enemy_slasher_spawn_sfx: AudioStreamPlayer2D = $EnemySlasherSpawnSFX
 @onready var enemy_gunner_spawn_sfx: AudioStreamPlayer2D = $EnemyGunnerSpawnSFX
+@onready var enemy_lord_spawn_sfx: AudioStreamPlayer2D = $EnemyLordSpawnSFX
+@onready var timer: Timer = $Timer
 
 func _ready():
 	await get_tree().create_timer(1).timeout
 	spawn_enemy()
 
 func _on_timer_timeout() -> void:
-	enemy_count = self.get_child_count()
-	if enemy_count <= 5:
+	for i in get_children():
+		if i is CharacterBody2D:
+			if !i.is_dead:
+				enemy_count += 1
+			else:
+				enemy_count -= 1
+	if enemy_count < 5:
 		if !Global.is_game_over:
 			spawn_enemy()
 	else:
 		print("ENEMIES FULL")
-			
+	
 func spawn_enemy():
 	enemy_spawn_rate = randi_range(0, 9)
 	if enemy_spawn_rate == 6 || enemy_spawn_rate == 7 || enemy_spawn_rate == 8:
@@ -42,8 +51,10 @@ func spawn_enemy():
 			enemy_gunner_spawn_sfx.play()
 		else:
 			pass
-	#elif enemy_spawn_rate == 9:
-		#pass
+	elif enemy_spawn_rate == 9:
+		enemy_lord_spawn_sfx.play()
+		enemy_lord = enemy_lord_prefab.instantiate()
+		add_child(enemy_lord)
 	else:
 		enemy_bot_spawn_sfx.play()
 		enemy = enemy_prefab.instantiate()

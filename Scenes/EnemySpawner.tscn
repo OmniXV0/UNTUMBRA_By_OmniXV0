@@ -1,36 +1,43 @@
-[gd_scene load_steps=8 format=3 uid="uid://c8dqra4mgk5vf"]
+[gd_scene format=3 uid="uid://c8dqra4mgk5vf"]
 
 [ext_resource type="Script" uid="uid://b0rrm0safu16k" path="res://Scripts/EnemySpawner.gd" id="1_4b1db"]
 [ext_resource type="PackedScene" uid="uid://cwqhmpdq1ggbh" path="res://Scenes/Enemy.tscn" id="2_4l853"]
 [ext_resource type="PackedScene" uid="uid://cwj0y85uv7vvm" path="res://Scenes/EnemyWarrior.tscn" id="3_dg7rp"]
 [ext_resource type="AudioStream" uid="uid://6jqy7mk0fvci" path="res://Audio/SFX/EnemyBotSpawnSFX.mp3" id="3_u7cdh"]
+[ext_resource type="PackedScene" uid="uid://c3u87xh0pqnqc" path="res://Scenes/EnemyLord.tscn" id="4_1y54x"]
 [ext_resource type="AudioStream" uid="uid://d3rj443p26s23" path="res://Audio/SFX/EnemyFighterSpawnSFX.mp3" id="5_i2m4k"]
 [ext_resource type="AudioStream" uid="uid://cnfoq1d1adsb5" path="res://Audio/SFX/EnemySlasherSpawnSFX.mp3" id="6_16a1j"]
 [ext_resource type="AudioStream" uid="uid://dyhnq0jy8tvt3" path="res://Audio/SFX/EnemyGunnerSpawnSFX.mp3" id="7_ctwkl"]
+[ext_resource type="AudioStream" uid="uid://dbrfly0s4bxcp" path="res://Audio/SFX/EnemyLordSpawnSFX.mp3" id="8_kpa3q"]
 
-[node name="EnemySpawner" type="Node2D"]
+[node name="EnemySpawner" type="Node2D" unique_id=1238196476]
 script = ExtResource("1_4b1db")
 enemy_prefab = ExtResource("2_4l853")
 enemy_warrior_prefab = ExtResource("3_dg7rp")
+enemy_lord_prefab = ExtResource("4_1y54x")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=1740093601]
 wait_time = 10.0
 autostart = true
 
-[node name="EnemyBotSpawnSFX" type="AudioStreamPlayer2D" parent="."]
+[node name="EnemyBotSpawnSFX" type="AudioStreamPlayer2D" parent="." unique_id=770061769]
 stream = ExtResource("3_u7cdh")
 bus = &"SFX"
 
-[node name="EnemyFighterSpawnSFX" type="AudioStreamPlayer2D" parent="."]
+[node name="EnemyFighterSpawnSFX" type="AudioStreamPlayer2D" parent="." unique_id=1215173815]
 stream = ExtResource("5_i2m4k")
 bus = &"SFX"
 
-[node name="EnemySlasherSpawnSFX" type="AudioStreamPlayer2D" parent="."]
+[node name="EnemySlasherSpawnSFX" type="AudioStreamPlayer2D" parent="." unique_id=1713655124]
 stream = ExtResource("6_16a1j")
 bus = &"SFX"
 
-[node name="EnemyGunnerSpawnSFX" type="AudioStreamPlayer2D" parent="."]
+[node name="EnemyGunnerSpawnSFX" type="AudioStreamPlayer2D" parent="." unique_id=1476349036]
 stream = ExtResource("7_ctwkl")
+bus = &"SFX"
+
+[node name="EnemyLordSpawnSFX" type="AudioStreamPlayer2D" parent="." unique_id=1081266951]
+stream = ExtResource("8_kpa3q")
 bus = &"SFX"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

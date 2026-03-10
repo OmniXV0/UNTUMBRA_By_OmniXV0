@@ -36,8 +36,10 @@ var can_dash: bool = false
 var can_fire: bool = false
 const dash_speed: int = 1000
 const bullet_speed: int = 1000
+var is_dead: bool = false
 
 func _ready() -> void:
+	is_dead = false
 	enemy_sprite.show()
 	enemy_hearts.hide()
 	enemy_stats = enemy_stats.duplicate()
@@ -173,14 +175,7 @@ func take_hit(other_hitbox: Hitbox) -> void:
 		playback.start("Knockback")
 	
 func free_enemy() -> void:
-	if enemy_id == 0:
-		Global.score += 10
-	elif enemy_id == 1 || enemy_id == 2 || enemy_id == 3:
-		Global.score += 100
-	elif enemy_id == 4:
-		Global.score += 1000
-	else:
-		pass
+	Global.score += 100
 	var death_effect = DEATH_EFFECT.instantiate()
 	get_tree().current_scene.add_child(death_effect)
 	death_effect.global_position = global_position 
@@ -215,6 +210,7 @@ func drop_item():
 	item.global_position = center.global_position
 	
 func despawn():
+	is_dead = true
 	stop_enemy = false
 	queue_free()
 	

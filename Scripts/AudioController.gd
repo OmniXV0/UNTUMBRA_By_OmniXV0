@@ -16,6 +16,8 @@ var enemy_death_sfx = load("res://Audio/SFX/EnemyDeathSFX.mp3")
 var enemy_fighter_attack_sfx = load("res://Audio/SFX/EnemyFighterAttackSFX.mp3")
 var enemy_slasher_attack_sfx = load("res://Audio/SFX/EnemySlasherAttackSFX.mp3")
 var enemy_gunner_attack_sfx = load("res://Audio/SFX/EnemyGunnerAttackSFX.mp3")
+var enemy_lord_attack_sfx = load("res://Audio/SFX/EnemyLordAttackSFX.mp3")
+var enemy_lord_spawn_sfx = load("res://Audio/SFX/EnemyLordSpawnSFX.mp3")
 
 var powerup_spawn_sfx = load("res://Audio/SFX/PowerupSpawnSFX.mp3")
 var powerup_collect_sfx = load("res://Audio/SFX/PowerupCollectSFX.mp3")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cwqhmpdq1ggbh"]
+[gd_scene format=3 uid="uid://cwqhmpdq1ggbh"]
 
 [ext_resource type="Script" uid="uid://c4iy15dgc5bhm" path="res://Scripts/Enemy.gd" id="1_wovta"]
 [ext_resource type="Resource" uid="uid://bp6hmylj0oaj0" path="res://Resources/EnemyStats.tres" id="2_uoxpr"]
@@ -104,7 +104,7 @@ size = Vector2(34, 34)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mo1ky"]
 size = Vector2(32, 32)
 
-[node name="Enemy" type="CharacterBody2D"]
+[node name="Enemy" type="CharacterBody2D" unique_id=651297019]
 y_sort_enabled = true
 collision_layer = 4
 collision_mask = 5
@@ -113,26 +113,24 @@ script = ExtResource("1_wovta")
 enemy_stats = ExtResource("2_uoxpr")
 item_node = ExtResource("3_0o0ue")
 
-[node name="EnemyCollision" type="CollisionShape2D" parent="."]
+[node name="EnemyCollision" type="CollisionShape2D" parent="." unique_id=1487972793]
 position = Vector2(0, 8)
 shape = SubResource("RectangleShape2D_wovta")
 
-[node name="EnemySprite" type="Sprite2D" parent="."]
+[node name="EnemySprite" type="Sprite2D" parent="." unique_id=1208276630]
 texture = ExtResource("3_6s1gy")
 hframes = 9
 
-[node name="EnemyAnimation" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_kpr8r"),
-&"EnemyAnimation": ExtResource("5_0o0ue")
-}
+[node name="EnemyAnimation" type="AnimationPlayer" parent="." unique_id=2080069019]
+libraries/ = SubResource("AnimationLibrary_kpr8r")
+libraries/EnemyAnimation = ExtResource("5_0o0ue")
 
-[node name="EnemyAnimationTree" type="AnimationTree" parent="."]
+[node name="EnemyAnimationTree" type="AnimationTree" parent="." unique_id=1464687635]
 tree_root = SubResource("AnimationNodeBlendTree_6s1gy")
 advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../EnemyAnimation")
 
-[node name="HealthBar" type="ProgressBar" parent="."]
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=906890827]
 visible = false
 offset_left = -12.5
 offset_top = -23.0
@@ -141,30 +139,30 @@ offset_bottom = -18.0
 value = 100.0
 show_percentage = false
 
-[node name="EnemyRaycast" type="RayCast2D" parent="."]
+[node name="EnemyRaycast" type="RayCast2D" parent="." unique_id=436138288]
 target_position = Vector2(8, 0)
 
-[node name="HurtboxArea" type="Area2D" parent="."]
+[node name="HurtboxArea" type="Area2D" parent="." unique_id=681328442]
 collision_layer = 16
 collision_mask = 16
 script = ExtResource("3_xeo28")
 metadata/_custom_type_script = "uid://bna5ylwwau47l"
 
-[node name="HurtboxCollision" type="CollisionShape2D" parent="HurtboxArea"]
+[node name="HurtboxCollision" type="CollisionShape2D" parent="HurtboxArea" unique_id=1616166024]
 scale = Vector2(0.25, 0.25)
 shape = SubResource("RectangleShape2D_b2bpf")
 
-[node name="HitboxArea" type="Area2D" parent="."]
+[node name="HitboxArea" type="Area2D" parent="." unique_id=1320079908]
 collision_layer = 8
 collision_mask = 8
 script = ExtResource("5_1exfc")
 enemy_collide_attack = true
 metadata/_custom_type_script = "uid://c6qkwgrvt7d3i"
 
-[node name="HitboxCollision" type="CollisionShape2D" parent="HitboxArea"]
+[node name="HitboxCollision" type="CollisionShape2D" parent="HitboxArea" unique_id=886075190]
 shape = SubResource("RectangleShape2D_mo1ky")
 
-[node name="EnemyHeartsUI" type="Control" parent="."]
+[node name="EnemyHeartsUI" type="Control" parent="." unique_id=150816341]
 layout_mode = 3
 anchors_preset = 0
 offset_left = -15.0
@@ -174,14 +172,14 @@ offset_bottom = -19.0
 script = ExtResource("6_idouy")
 enemy_stats = ExtResource("2_uoxpr")
 
-[node name="EmptyHearts" type="TextureRect" parent="EnemyHeartsUI"]
+[node name="EmptyHearts" type="TextureRect" parent="EnemyHeartsUI" unique_id=325147677]
 layout_mode = 0
 offset_right = 30.0
 offset_bottom = 10.0
 texture = ExtResource("6_6bs3c")
 stretch_mode = 1
 
-[node name="FullHearts" type="TextureRect" parent="EnemyHeartsUI"]
+[node name="FullHearts" type="TextureRect" parent="EnemyHeartsUI" unique_id=1840988432]
 layout_mode = 0
 offset_right = 30.0
 offset_bottom = 10.0
@@ -189,4 +187,4 @@ texture = ExtResource("7_uoxpr")
 expand_mode = 1
 stretch_mode = 1
 
-[node name="Center" type="Marker2D" parent="."]
+[node name="Center" type="Marker2D" parent="." unique_id=1912881127]

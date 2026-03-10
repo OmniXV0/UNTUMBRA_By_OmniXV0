@@ -27,8 +27,10 @@ const DEATH_EFFECT = preload("res://Scenes/DeathEffect.tscn")
 const speed = 75
 const friction = 500
 var stop_enemy: bool = false
+var is_dead: bool = false
 
 func _ready() -> void:
+	is_dead = false
 	enemy_sprite.show()
 	enemy_hearts.hide()
 	enemy_stats = enemy_stats.duplicate()
@@ -99,14 +101,7 @@ func take_hit(other_hitbox: Hitbox) -> void:
 		playback.start("Knockback")
 	
 func free_enemy() -> void:
-	if enemy_id == 0:
-		Global.score += 10
-	elif enemy_id == 1 || enemy_id == 2 || enemy_id == 3:
-		Global.score += 100
-	elif enemy_id == 4:
-		Global.score += 1000
-	else:
-		pass
+	Global.score += 10
 	var death_effect = DEATH_EFFECT.instantiate()
 	get_tree().current_scene.add_child(death_effect)
 	death_effect.global_position = global_position
@@ -134,3 +129,4 @@ func drop_item():
 func despawn():
 	stop_enemy = false
 	queue_free()
+	is_dead = true
