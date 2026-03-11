@@ -111,9 +111,37 @@ offset_right = 1.0
 offset_left = 540.0
 offset_right = 540.0
 
-[node name="EnemySpawner5" parent="." unique_id=1262635718 instance=ExtResource("7_fgofq")]
+[node name="EnemySpawner" parent="." unique_id=1238196476 instance=ExtResource("7_fgofq")]
+y_sort_enabled = true
+position = Vector2(-320, -240)
+
+[node name="EnemySpawner1" parent="." unique_id=1795594893 instance=ExtResource("7_fgofq")]
+y_sort_enabled = true
+position = Vector2(320, -240)
+
+[node name="EnemySpawner2" parent="." unique_id=789322309 instance=ExtResource("7_fgofq")]
+y_sort_enabled = true
+position = Vector2(960, -240)
+
+[node name="EnemySpawner3" parent="." unique_id=1262635718 instance=ExtResource("7_fgofq")]
 y_sort_enabled = true
 position = Vector2(960, 240)
+
+[node name="EnemySpawner4" parent="." unique_id=2118342057 instance=ExtResource("7_fgofq")]
+y_sort_enabled = true
+position = Vector2(960, 720)
+
+[node name="EnemySpawner5" parent="." unique_id=1926579422 instance=ExtResource("7_fgofq")]
+y_sort_enabled = true
+position = Vector2(320, 720)
+
+[node name="EnemySpawner6" parent="." unique_id=578087958 instance=ExtResource("7_fgofq")]
+y_sort_enabled = true
+position = Vector2(-320, 720)
+
+[node name="EnemySpawner7" parent="." unique_id=1185305756 instance=ExtResource("7_fgofq")]
+y_sort_enabled = true
+position = Vector2(-320, 240)
 
 [editable path="Player"]
 [editable path="Player/Gun"]
