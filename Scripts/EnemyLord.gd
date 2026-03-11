@@ -4,7 +4,7 @@ const HIT_EFFECT = preload("res://Scenes/HitEffect.tscn")
 const DEATH_EFFECT = preload("res://Scenes/DeathEffect.tscn")
 
 @export var enemy_stats: Stats
-@export var min_range: = 300
+@export var min_range: = 100
 @export var max_range: = 1024
 @export var enemy_id: int = 0
 @export var item_node: PackedScene
@@ -62,7 +62,6 @@ func _physics_process(delta: float) -> void:
 			velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
 			move_and_slide()
 		"Attack":
-			min_range = 300
 			change_animation("EnemyLordAnimation/EnemyLordAttack")
 			
 			
@@ -92,7 +91,6 @@ func is_player_in_range() -> bool:
 	return result
 	
 func is_player_in_attack() -> bool:
-	min_range = 300
 	var result = false
 	var player_in_range: = get_player()
 	if player_in_range is Player:
@@ -103,7 +101,6 @@ func is_player_in_attack() -> bool:
 	return result
 	
 func is_player_in_attack_mirrored() -> bool:
-	min_range = 300
 	var result = false
 	var player_in_range: = get_player()
 	if player_in_range is Player:
