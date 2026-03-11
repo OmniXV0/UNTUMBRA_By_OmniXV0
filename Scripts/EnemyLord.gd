@@ -4,7 +4,7 @@ const HIT_EFFECT = preload("res://Scenes/HitEffect.tscn")
 const DEATH_EFFECT = preload("res://Scenes/DeathEffect.tscn")
 
 @export var enemy_stats: Stats
-@export var min_range: = 100
+@export var min_range: = 200
 @export var max_range: = 1024
 @export var enemy_id: int = 0
 @export var item_node: PackedScene

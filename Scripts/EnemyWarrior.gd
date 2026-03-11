@@ -79,7 +79,7 @@ func _physics_process(delta: float) -> void:
 			move_and_slide()
 		"Attack":
 			if enemy_id == 1:
-				min_range = 60
+				min_range = 50
 				change_animation("EnemyWarriorAnimation/EnemyWarriorAttack")
 			elif enemy_id == 2:
 				min_range = 100
@@ -97,7 +97,7 @@ func _physics_process(delta: float) -> void:
 					elif direction.x < 0:
 						enemy_gun.position.x = -35
 						enemy_sprite.scale.x = -1
-				min_range = 200
+				min_range = 150
 				change_animation("EnemyWarriorAnimation/EnemyWarriorShoot")
 				
 func enemy_warrior_attack():
@@ -132,11 +132,11 @@ func is_player_in_range() -> bool:
 	
 func is_player_in_attack() -> bool:
 	if enemy_id == 1:
-		min_range = 60
+		min_range = 50
 	elif enemy_id == 2:
 		min_range = 100
 	elif enemy_id == 3:
-		min_range = 200
+		min_range = 150
 	var result = false
 	var player_in_range: = get_player()
 	if player_in_range is Player:
