@@ -261,7 +261,6 @@ transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition
 graph_offset = Vector2(-69.21014, -29.203997)
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_6s1gy"]
-graph_offset = Vector2(-276.17767, 40.882957)
 nodes/EnemyLordState/node = SubResource("AnimationNodeStateMachine_0o0ue")
 nodes/EnemyLordState/position = Vector2(0, 100)
 node_connections = [&"output", 0, &"EnemyLordState"]
@@ -305,7 +304,6 @@ modulate = Color(1, 1, 1, 0)
 z_index = 1
 y_sort_enabled = true
 position = Vector2(15, -108)
-scale = Vector2(0.5, 0.5)
 texture = ExtResource("6_dwhup")
 offset = Vector2(1025, 0)
 
