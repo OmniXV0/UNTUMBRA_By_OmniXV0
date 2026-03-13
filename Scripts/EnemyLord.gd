@@ -28,7 +28,7 @@ const speed = 100
 const friction = 500
 var stop_enemy: bool = false
 var direction: Vector2 = Vector2.ZERO
-var is_dead: bool = false
+var is_dead: bool = true
 
 func _ready() -> void:
 	is_dead = false
@@ -172,5 +172,6 @@ func drop_item():
 	
 func despawn():
 	is_dead = true
+	Global.lord_is_dead = true
 	stop_enemy = false
 	queue_free()

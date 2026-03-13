@@ -19,6 +19,7 @@ var enemy_count: int = 0
 @onready var timer: Timer = $Timer
 
 func _ready():
+	Global.lord_is_dead = true
 	await get_tree().create_timer(1).timeout
 	spawn_enemy()
 
@@ -52,10 +53,20 @@ func spawn_enemy():
 		else:
 			pass
 	elif enemy_spawn_rate == 9:
-		enemy_lord_spawn_sfx.play()
-		enemy_lord = enemy_lord_prefab.instantiate()
-		add_child(enemy_lord)
+		if !Global.lord_is_dead:
+			print("LORD ALREADY PRESENT")
+			spawn_bot()
+		else:
+			print("LORD PRESENT")
+			Global.lord_is_dead = false
+			enemy_lord_spawn_sfx.play()
+			enemy_lord = enemy_lord_prefab.instantiate()
+			add_child(enemy_lord)
 	else:
-		enemy_bot_spawn_sfx.play()
-		enemy = enemy_prefab.instantiate()
-		add_child(enemy)
+		spawn_bot()
+		
+func spawn_bot():
+	enemy_bot_spawn_sfx.play()
+	enemy = enemy_prefab.instantiate()
+	add_child(enemy)
+	

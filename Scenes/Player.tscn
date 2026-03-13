@@ -148,7 +148,7 @@ tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [8]
+"values": [0]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
@@ -353,7 +353,7 @@ vframes = 5
 [node name="BigSlash" type="Sprite2D" parent="." unique_id=1320063862]
 texture = ExtResource("5_1e7my")
 hframes = 9
-frame = 8
+vframes = 3
 
 [node name="HealsIcon" type="Sprite2D" parent="." unique_id=520396698]
 visible = false
