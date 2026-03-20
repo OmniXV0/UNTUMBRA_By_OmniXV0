@@ -44,25 +44,25 @@ func pause_unpause():
 	get_tree().paused = not get_tree().paused
 	
 func _on_screen_1_arrow_right_pressed() -> void:
-	audio_controller.play_sfx(audio_controller.click_yes_sfx)
+	audio_controller.play_sfx(audio_controller.click_select_sfx)
 	keyboard_without_mouse_screen.hide()
 	keyboard_with_mouse_screen.show()
 	controller_screen.hide()
 
 func _on_screen_2_arrow_left_pressed() -> void:
-	audio_controller.play_sfx(audio_controller.click_yes_sfx)
+	audio_controller.play_sfx(audio_controller.click_select_sfx)
 	keyboard_without_mouse_screen.show()
 	keyboard_with_mouse_screen.hide()
 	controller_screen.hide()
 
 func _on_screen_2_arrow_right_pressed() -> void:
-	audio_controller.play_sfx(audio_controller.click_yes_sfx)
+	audio_controller.play_sfx(audio_controller.click_select_sfx)
 	keyboard_without_mouse_screen.hide()
 	keyboard_with_mouse_screen.hide()
 	controller_screen.show()
 
 func _on_screen_3_arrow_left_pressed() -> void:
-	audio_controller.play_sfx(audio_controller.click_yes_sfx)
+	audio_controller.play_sfx(audio_controller.click_select_sfx)
 	keyboard_without_mouse_screen.hide()
 	keyboard_with_mouse_screen.show()
 	controller_screen.hide()
