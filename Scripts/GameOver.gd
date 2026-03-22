@@ -47,6 +47,7 @@ func _on_continue_yes_pressed() -> void:
 	audio_controller.play_sfx(audio_controller.click_yes_sfx)
 	player_stats.health = player_stats.max_health
 	player_stats.heals = player_stats.max_heals
+	player_stats.bombs = player_stats.max_bombs
 	await get_tree().create_timer(0.5).timeout
 	get_tree().change_scene_to_file("res://Scenes/Game.tscn")
 
