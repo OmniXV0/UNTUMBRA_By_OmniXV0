@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/OmniXV0 - The 0th Hour.mp3-735dd6635f83a6d64a
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0
