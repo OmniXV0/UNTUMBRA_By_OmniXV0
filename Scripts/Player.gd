@@ -69,6 +69,9 @@ func _ready() -> void:
 	AudioController.play_music(1, AudioController.game_music_part_1)
 	AudioController.play_music(2, AudioController.game_music_part_2)
 	AudioController.play_music(3, AudioController.game_music_part_3)
+	AudioController.play_volume(1, -80)
+	AudioController.play_volume(2, -80)
+	AudioController.play_volume(3, -80)
 	
 	z_index = 0
 	big_slash.hide()
