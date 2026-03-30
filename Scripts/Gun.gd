@@ -47,6 +47,7 @@ func _process(delta: float) -> void:
 		fire_delay_timer.start(fire_delay)
 		if player.big_blast_powerup:
 			can_fire = true
+			hitbox_collision.disabled = false
 			big_blast.show()
 			big_blast_hitbox_area.clear_hit_targets()
 		else:
