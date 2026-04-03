@@ -62,6 +62,9 @@ var speed_multiplier: int = 1
 var long_dash_powerup: bool = false
 var big_blast_powerup: bool = false
 
+var spritesheet_default = load("res://Sprites/TheSurvivor.png")
+var spritesheet_big_slash = load("res://Sprites/TheSurvivorBigSlashWeapon.png")
+
 func _ready() -> void:
 	Global.score = 0
 	Global.is_game_over = false
@@ -75,6 +78,7 @@ func _ready() -> void:
 	
 	z_index = 0
 	big_slash.hide()
+	player_sprite.texture = spritesheet_default
 	if get_tree().current_scene.name == "Game":
 		pause = $"../UI/PauseMenu"
 		game_over = $"../UI/GameOver/GameOverScreen"
@@ -181,6 +185,7 @@ func big_sword():
 	print("BIG SLASH")
 	AudioController.play_volume(1, 0)
 	big_slash_powerup = true
+	player_sprite.texture = spritesheet_big_slash
 	big_slash.frame = 8
 	hitbox_collision.scale = Vector2(2, 2)
 	big_slash.show()
@@ -205,6 +210,7 @@ func big_blast():
 func _on_slash_timer_timeout() -> void:
 	AudioController.play_volume(1, -80)
 	big_slash_powerup = false
+	player_sprite.texture = spritesheet_default
 	hitbox_collision.scale = Vector2(1, 1)
 	big_slash.hide()
 	
