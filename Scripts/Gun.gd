@@ -16,7 +16,11 @@ var can_fire: bool = false
 
 var can_throw_bombs: bool = false
 
+var gun_default = load("res://Sprites/TheSurvivorGun.png")
+var gun_big_blast = load("res://Sprites/TheSurvivorGunBigBlast.png")
+
 func _ready():
+	gun_sprite.texture = gun_default
 	gun_sprite.hide()
 	big_blast.hide()
 	player.stats.no_bombs.connect(no_bombs_throwing)
@@ -48,11 +52,13 @@ func _process(delta: float) -> void:
 		if player.big_blast_powerup:
 			can_fire = true
 			hitbox_collision.disabled = false
+			gun_sprite.texture = gun_big_blast
 			big_blast.show()
 			big_blast_hitbox_area.clear_hit_targets()
 		else:
 			can_fire = false
 			player_shoot_sfx.play()
+			gun_sprite.texture = gun_default
 			big_blast.hide()
 			hitbox_collision.disabled = true
 			var bullet = bullet_node.instantiate()

@@ -15,13 +15,13 @@ bomb_node = ExtResource("3_qwx25")
 
 [node name="GunSprite" type="Sprite2D" parent="." unique_id=1626868037]
 visible = false
-position = Vector2(16, 0)
+position = Vector2(23, 0)
 rotation = -1.5707964
 texture = ExtResource("3_cgpo0")
 
 [node name="BigBlast" type="Sprite2D" parent="." unique_id=819161999]
 visible = false
-position = Vector2(583, 0)
+position = Vector2(595, 0)
 texture = ExtResource("4_phyfd")
 
 [node name="HitboxArea" type="Area2D" parent="BigBlast" unique_id=2002245152]

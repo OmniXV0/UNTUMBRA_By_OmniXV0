@@ -33,7 +33,6 @@ func _on_continue_pressed() -> void:
 	confirm_continue.show()
 	confirm_quit.hide()
 	continue_buttons.find_child("ContinueNo").grab_focus()
-	confirm_continue.show()
 		
 func _on_quit_pressed() -> void:
 	audio_controller.play_sfx(audio_controller.click_yes_sfx)
@@ -41,7 +40,6 @@ func _on_quit_pressed() -> void:
 	confirm_continue.hide()
 	confirm_quit.show()
 	quit_buttons.find_child("QuitNo").grab_focus()
-	confirm_quit.show()
 
 func _on_continue_yes_pressed() -> void:
 	audio_controller.play_sfx(audio_controller.click_yes_sfx)
@@ -55,6 +53,7 @@ func _on_continue_no_pressed() -> void:
 	audio_controller.play_sfx(audio_controller.click_yes_sfx)
 	game_over_screen.show()
 	confirm_continue.hide()
+	confirm_quit.hide()
 	game_over_buttons.find_child("Continue").grab_focus()
 
 func _on_quit_yes_pressed() -> void:
@@ -65,5 +64,6 @@ func _on_quit_yes_pressed() -> void:
 func _on_quit_no_pressed() -> void:
 	audio_controller.play_sfx(audio_controller.click_yes_sfx)
 	game_over_screen.show()
+	confirm_continue.hide()
 	confirm_quit.hide()
 	game_over_buttons.find_child("Quit").grab_focus()

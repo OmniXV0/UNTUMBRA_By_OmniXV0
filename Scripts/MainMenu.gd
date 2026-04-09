@@ -14,7 +14,10 @@ func _ready():
 	Global.high_score = SaveLoad.contents_to_save.high_score
 	high_score.text = str(Global.high_score)
 	Global.is_game_over = false
+	
+	AudioController.stop_music()
 	AudioController.play_music(0, AudioController.main_menu_music)
+	
 	main_menu_buttons.find_child("Play").grab_focus()
 	main_menu_screen.show()
 	confirm_exit.hide()
