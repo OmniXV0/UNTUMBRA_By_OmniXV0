@@ -67,6 +67,7 @@ var spritesheet_big_slash = load("res://Sprites/TheSurvivorBigSlashWeapon.png")
 
 func _ready() -> void:
 	Global.score = 0
+	Global.time = 0
 	Global.is_game_over = false
 	AudioController.play_music(0, AudioController.game_music_part_0)
 	AudioController.play_music(1, AudioController.game_music_part_1)

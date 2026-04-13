@@ -5,7 +5,8 @@ extends Control
 @onready var confirm_exit: ColorRect = $ConfirmExit
 @onready var main_menu_buttons: VBoxContainer = $Buttons
 @onready var exit_buttons: HBoxContainer = $ConfirmExit/Buttons
-@onready var high_score: Label = $HighScore
+@onready var high_score: Label = $HighScoreContainer/HighScore
+@onready var time_score: Label = $TimeScoreContainer/TimeScore
 
 @onready var audio_controller: Node = $AudioController
 
@@ -13,6 +14,9 @@ func _ready():
 	SaveLoad._load()
 	Global.high_score = SaveLoad.contents_to_save.high_score
 	high_score.text = str(Global.high_score)
+	Global.time_score = SaveLoad.contents_to_save.time_score
+	time_score.text = Global.format_time(Global.time_score)
+	
 	Global.is_game_over = false
 	
 	AudioController.stop_music()

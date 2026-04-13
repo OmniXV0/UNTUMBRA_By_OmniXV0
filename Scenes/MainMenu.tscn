@@ -121,25 +121,62 @@ text = "© 2025 OmniXV0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HighScoreText" type="Label" parent="." unique_id=616731391]
-layout_mode = 0
-offset_left = 250.0
-offset_right = 381.0
-offset_bottom = 21.0
+[node name="HighScoreContainer" type="HBoxContainer" parent="." unique_id=1943416871]
+layout_direction = 4
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -74.0
+offset_right = 74.0
+offset_bottom = 40.0
+grow_horizontal = 2
+pivot_offset = Vector2(75, 0)
+alignment = 1
+
+[node name="HighScoreText" type="Label" parent="HighScoreContainer" unique_id=616731391]
+layout_mode = 2
 theme_override_fonts/font = ExtResource("5_cmrfp")
 theme_override_font_sizes/font_size = 30
 text = "High Score: "
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HighScore" type="Label" parent="." unique_id=1830267702]
-layout_mode = 0
-offset_left = 380.0
-offset_right = 393.0
-offset_bottom = 21.0
+[node name="HighScore" type="Label" parent="HighScoreContainer" unique_id=1830267702]
+layout_mode = 2
 theme_override_fonts/font = ExtResource("5_cmrfp")
 theme_override_font_sizes/font_size = 30
 text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TimeScoreContainer" type="HBoxContainer" parent="." unique_id=1982288774]
+layout_direction = 4
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -74.0
+offset_top = 25.0
+offset_right = 74.0
+offset_bottom = 65.0
+grow_horizontal = 2
+pivot_offset = Vector2(75, 0)
+alignment = 1
+
+[node name="TimeScoreText" type="Label" parent="TimeScoreContainer" unique_id=622140841]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_cmrfp")
+theme_override_font_sizes/font_size = 30
+text = "Time Score: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TimeScore" type="Label" parent="TimeScoreContainer" unique_id=2054136828]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_cmrfp")
+theme_override_font_sizes/font_size = 30
+text = "00:00:00"
 horizontal_alignment = 1
 vertical_alignment = 1
 

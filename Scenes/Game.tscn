@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cilnjlxdaljl6" path="res://Scenes/ScoreUI.tscn" id="7_2irst"]
 [ext_resource type="PackedScene" uid="uid://bcpma0af5t0hx" path="res://Scenes/ControlsMenu.tscn" id="7_bf53h"]
 [ext_resource type="PackedScene" uid="uid://c8dqra4mgk5vf" path="res://Scenes/EnemySpawner.tscn" id="7_fgofq"]
+[ext_resource type="PackedScene" uid="uid://cpanv64da0q5g" path="res://Scenes/TimerUI.tscn" id="9_3so38"]
 [ext_resource type="FontFile" uid="uid://do8imyb1tdnka" path="res://Fonts/bytebounce/ByteBounce.ttf" id="9_71axn"]
 
 [node name="Game" type="Node2D" unique_id=1393734757]
@@ -103,13 +104,21 @@ offset_right = 1.0
 
 [node name="GameOver" parent="UI" unique_id=839149203 instance=ExtResource("6_7lihs")]
 
-[node name="PauseMenu" parent="UI" unique_id=428999909 instance=ExtResource("5_7lihs")]
-
-[node name="ControlsMenu" parent="UI" unique_id=1825290512 instance=ExtResource("7_bf53h")]
-
 [node name="ScoreUI" parent="UI" unique_id=1537864482 instance=ExtResource("7_2irst")]
 offset_left = 540.0
 offset_right = 540.0
+
+[node name="TimerUI" parent="UI" unique_id=772824901 instance=ExtResource("9_3so38")]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -45.0
+offset_right = 45.0
+grow_horizontal = 2
+
+[node name="ControlsMenu" parent="UI" unique_id=1825290512 instance=ExtResource("7_bf53h")]
+
+[node name="PauseMenu" parent="UI" unique_id=428999909 instance=ExtResource("5_7lihs")]
 
 [node name="EnemySpawner" parent="." unique_id=1238196476 instance=ExtResource("7_fgofq")]
 y_sort_enabled = true
@@ -148,6 +157,6 @@ position = Vector2(-320, 240)
 [editable path="UI/CoolDownUI"]
 [editable path="UI/HeartsUI"]
 [editable path="UI/GameOver"]
-[editable path="UI/PauseMenu"]
-[editable path="UI/ControlsMenu"]
 [editable path="UI/ScoreUI"]
+[editable path="UI/ControlsMenu"]
+[editable path="UI/PauseMenu"]
