@@ -27,7 +27,7 @@ buses/default_bus_layout="uid://cp1s0ti8j8c3e"
 
 [autoload]
 
-Global="*res://Global.gd"
+Global="*uid://diu4q0jnulhle"
 AudioController="*res://Scenes/AudioController.tscn"
 SaveLoad="*res://Scripts/SaveLoad.gd"
 

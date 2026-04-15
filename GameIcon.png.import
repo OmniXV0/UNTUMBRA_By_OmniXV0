@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://yjmm30gbxay0"
-path="res://.godot/imported/FallenLandIcon.png-0d157317e1825cda01928d90752d24a0.ctex"
+uid="uid://b750hl4t5raxi"
+path="res://.godot/imported/GameIcon.png-2898ddd711c7fdff1741d9ab9b391647.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://FallenLandIcon.png"
-dest_files=["res://.godot/imported/FallenLandIcon.png-0d157317e1825cda01928d90752d24a0.ctex"]
+source_file="res://GameIcon.png"
+dest_files=["res://.godot/imported/GameIcon.png-2898ddd711c7fdff1741d9ab9b391647.ctex"]
 
 [params]
 

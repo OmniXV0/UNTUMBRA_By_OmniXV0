@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1aye8u22giwe"
-path="res://.godot/imported/OmniXV0 Banner.png-b1209c17c7c2ab691836480e6d34909f.ctex"
+uid="uid://se7jdj6cyhfo"
+path="res://.godot/imported/GameCursor.png-e62176ab119096e468f113f0c8e7fff8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://OmniXV0 Banner.png"
-dest_files=["res://.godot/imported/OmniXV0 Banner.png-b1209c17c7c2ab691836480e6d34909f.ctex"]
+source_file="res://Sprites/GameCursor.png"
+dest_files=["res://.godot/imported/GameCursor.png-e62176ab119096e468f113f0c8e7fff8.ctex"]
 
 [params]
 
