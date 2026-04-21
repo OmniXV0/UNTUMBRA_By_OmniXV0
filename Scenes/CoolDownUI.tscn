@@ -1,86 +1,86 @@
-[gd_scene load_steps=5 format=3 uid="uid://rtiew07hcd7u"]
+[gd_scene format=3 uid="uid://rtiew07hcd7u"]
 
-[ext_resource type="FontFile" uid="uid://do8imyb1tdnka" path="res://Fonts/bytebounce/ByteBounce.ttf" id="1_7wb5p"]
 [ext_resource type="Script" uid="uid://brnlucqnd6gfi" path="res://Scripts/CoolDownUI.gd" id="1_k7vag"]
+[ext_resource type="FontFile" uid="uid://cleogctrnw3bu" path="res://Fonts/pixeloid/PixeloidSans-Bold.otf" id="2_vt7x5"]
 [ext_resource type="Texture2D" uid="uid://bpl8mmut6gurm" path="res://Textures/CoolDownBarEmpty.png" id="3_vt7x5"]
 [ext_resource type="Texture2D" uid="uid://c1aff3sfk1xyl" path="res://Textures/CoolDownBarFull.png" id="4_t8blx"]
 
-[node name="CoolDownUI" type="Control"]
+[node name="CoolDownUI" type="Control" unique_id=994451218]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_k7vag")
 
-[node name="CoolDownContainer" type="VBoxContainer" parent="."]
+[node name="CoolDownContainer" type="VBoxContainer" parent="." unique_id=688367110]
 layout_mode = 0
 offset_right = 100.0
 offset_bottom = 92.0
 alignment = 2
 
-[node name="CoolDownText" type="Label" parent="CoolDownContainer"]
+[node name="CoolDownText" type="Label" parent="CoolDownContainer" unique_id=1066889869]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 0, 1)
-theme_override_fonts/font = ExtResource("1_7wb5p")
-theme_override_font_sizes/font_size = 20
+theme_override_fonts/font = ExtResource("2_vt7x5")
+theme_override_font_sizes/font_size = 12
 text = "Big Slash:"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="BarContainer" type="HBoxContainer" parent="CoolDownContainer"]
+[node name="BarContainer" type="HBoxContainer" parent="CoolDownContainer" unique_id=1079407888]
 layout_mode = 2
 alignment = 2
 
-[node name="SlashBar" type="TextureProgressBar" parent="CoolDownContainer/BarContainer"]
+[node name="SlashBar" type="TextureProgressBar" parent="CoolDownContainer/BarContainer" unique_id=841338665]
 layout_mode = 2
 max_value = 10.0
 fill_mode = 1
 texture_under = ExtResource("3_vt7x5")
 texture_progress = ExtResource("4_t8blx")
 
-[node name="CoolDownText2" type="Label" parent="CoolDownContainer"]
+[node name="CoolDownText2" type="Label" parent="CoolDownContainer" unique_id=578648616]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 0, 1)
-theme_override_fonts/font = ExtResource("1_7wb5p")
-theme_override_font_sizes/font_size = 20
+theme_override_fonts/font = ExtResource("2_vt7x5")
+theme_override_font_sizes/font_size = 12
 text = "Long Dash:"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="BarContainer2" type="HBoxContainer" parent="CoolDownContainer"]
+[node name="BarContainer2" type="HBoxContainer" parent="CoolDownContainer" unique_id=1716432504]
 layout_mode = 2
 alignment = 2
 
-[node name="DashBar" type="TextureProgressBar" parent="CoolDownContainer/BarContainer2"]
+[node name="DashBar" type="TextureProgressBar" parent="CoolDownContainer/BarContainer2" unique_id=1139008647]
 layout_mode = 2
 max_value = 10.0
 fill_mode = 1
 texture_under = ExtResource("3_vt7x5")
 texture_progress = ExtResource("4_t8blx")
 
-[node name="CoolDownText3" type="Label" parent="CoolDownContainer"]
+[node name="CoolDownText3" type="Label" parent="CoolDownContainer" unique_id=662355587]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 0, 1)
-theme_override_fonts/font = ExtResource("1_7wb5p")
-theme_override_font_sizes/font_size = 20
+theme_override_fonts/font = ExtResource("2_vt7x5")
+theme_override_font_sizes/font_size = 12
 text = "Big Blast:"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="BarContainer3" type="HBoxContainer" parent="CoolDownContainer"]
+[node name="BarContainer3" type="HBoxContainer" parent="CoolDownContainer" unique_id=1570120890]
 layout_mode = 2
 alignment = 2
 
-[node name="BlastBar" type="TextureProgressBar" parent="CoolDownContainer/BarContainer3"]
+[node name="BlastBar" type="TextureProgressBar" parent="CoolDownContainer/BarContainer3" unique_id=1067330920]
 layout_mode = 2
 max_value = 10.0
 fill_mode = 1
 texture_under = ExtResource("3_vt7x5")
 texture_progress = ExtResource("4_t8blx")
 
-[node name="SlashWaitTimer" type="Timer" parent="."]
+[node name="SlashWaitTimer" type="Timer" parent="." unique_id=215516769]
 
-[node name="DashWaitTimer" type="Timer" parent="."]
+[node name="DashWaitTimer" type="Timer" parent="." unique_id=2058469072]
 
-[node name="BlastWaitTimer" type="Timer" parent="."]
+[node name="BlastWaitTimer" type="Timer" parent="." unique_id=340428502]
 
 [connection signal="timeout" from="SlashWaitTimer" to="." method="_on_slash_wait_timer_timeout"]
 [connection signal="timeout" from="DashWaitTimer" to="." method="_on_dash_wait_timer_timeout"]

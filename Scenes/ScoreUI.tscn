@@ -1,27 +1,27 @@
-[gd_scene load_steps=3 format=3 uid="uid://cilnjlxdaljl6"]
+[gd_scene format=3 uid="uid://cilnjlxdaljl6"]
 
 [ext_resource type="Script" uid="uid://y0c257hwc73x" path="res://Scripts/ScoreUI.gd" id="1_kegac"]
-[ext_resource type="FontFile" uid="uid://do8imyb1tdnka" path="res://Fonts/bytebounce/ByteBounce.ttf" id="1_slrw0"]
+[ext_resource type="FontFile" uid="uid://cleogctrnw3bu" path="res://Fonts/pixeloid/PixeloidSans-Bold.otf" id="2_ared3"]
 
-[node name="ScoreUI" type="Control"]
+[node name="ScoreUI" type="Control" unique_id=410709185]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_kegac")
 
-[node name="ScoreContainer" type="HBoxContainer" parent="."]
+[node name="ScoreContainer" type="HBoxContainer" parent="." unique_id=1962713817]
 layout_direction = 3
 layout_mode = 0
 offset_left = -94.0
-offset_bottom = 21.0
+offset_bottom = 22.0
 
-[node name="Score" type="Label" parent="ScoreContainer"]
+[node name="Score" type="Label" parent="ScoreContainer" unique_id=1629699433]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_slrw0")
-theme_override_font_sizes/font_size = 30
+theme_override_fonts/font = ExtResource("2_ared3")
+theme_override_font_sizes/font_size = 16
 text = "0"
 
-[node name="ScoreText" type="Label" parent="ScoreContainer"]
+[node name="ScoreText" type="Label" parent="ScoreContainer" unique_id=75725854]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_slrw0")
-theme_override_font_sizes/font_size = 30
+theme_override_fonts/font = ExtResource("2_ared3")
+theme_override_font_sizes/font_size = 16
 text = "Score: "

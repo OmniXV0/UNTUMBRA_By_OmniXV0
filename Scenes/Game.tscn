@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://o5ae7hx476ey" path="res://Scenes/Player.tscn" id="2_gl6un"]
 [ext_resource type="TileSet" uid="uid://bnnob625p5bk6" path="res://Resources/GameTileset.tres" id="3_2irst"]
 [ext_resource type="Texture2D" uid="uid://cuv13f10r8la6" path="res://Textures/GameBackground.png" id="3_fgofq"]
+[ext_resource type="FontFile" uid="uid://cleogctrnw3bu" path="res://Fonts/pixeloid/PixeloidSans-Bold.otf" id="4_3so38"]
 [ext_resource type="PackedScene" uid="uid://5sox1abvv7cw" path="res://Scenes/PauseMenu.tscn" id="5_7lihs"]
 [ext_resource type="PackedScene" uid="uid://byvx0ai4y18v0" path="res://Scenes/HeartsUI.tscn" id="5_b2bpf"]
 [ext_resource type="PackedScene" uid="uid://rtiew07hcd7u" path="res://Scenes/CoolDownUI.tscn" id="5_dahhg"]
@@ -11,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://bcpma0af5t0hx" path="res://Scenes/ControlsMenu.tscn" id="7_bf53h"]
 [ext_resource type="PackedScene" uid="uid://c8dqra4mgk5vf" path="res://Scenes/EnemySpawner.tscn" id="7_fgofq"]
 [ext_resource type="PackedScene" uid="uid://cpanv64da0q5g" path="res://Scenes/TimerUI.tscn" id="9_3so38"]
-[ext_resource type="FontFile" uid="uid://do8imyb1tdnka" path="res://Fonts/bytebounce/ByteBounce.ttf" id="9_71axn"]
 
 [node name="Game" type="Node2D" unique_id=1393734757]
 y_sort_enabled = true
@@ -86,8 +86,8 @@ offset_top = -15.0
 offset_right = 168.5
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_fonts/font = ExtResource("9_71axn")
-theme_override_font_sizes/font_size = 21
+theme_override_fonts/font = ExtResource("4_3so38")
+theme_override_font_sizes/font_size = 12
 text = "Press Tab, Ctrl/Cmd, or Select for controls"
 horizontal_alignment = 1
 vertical_alignment = 1

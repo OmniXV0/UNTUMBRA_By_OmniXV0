@@ -7,18 +7,20 @@
 [ext_resource type="Texture2D" uid="uid://biymkoh426l8f" path="res://Textures/Button.png" id="3_df05h"]
 [ext_resource type="Texture2D" uid="uid://m48eaaxv1rp7" path="res://Textures/MainMenuBackground.png" id="3_loo7a"]
 [ext_resource type="Texture2D" uid="uid://c4meaycj1efv2" path="res://Textures/ButtonHover.png" id="4_8um5k"]
-[ext_resource type="FontFile" uid="uid://do8imyb1tdnka" path="res://Fonts/bytebounce/ByteBounce.ttf" id="5_cmrfp"]
+[ext_resource type="FontFile" uid="uid://pjje3wr0ycv1" path="res://Fonts/oblivion-future-free/OblivionFutureFree-Regular.otf" id="5_if7li"]
+[ext_resource type="FontFile" uid="uid://cleogctrnw3bu" path="res://Fonts/pixeloid/PixeloidSans-Bold.otf" id="6_if7li"]
 [ext_resource type="FontFile" uid="uid://ckc538rqyx11m" path="res://Resources/PixelFont.tres" id="6_loo7a"]
 [ext_resource type="Texture2D" uid="uid://c5sfg2vgmb3n0" path="res://Textures/FallenLandSymbol.png" id="7_if7li"]
 
 [sub_resource type="FontVariation" id="FontVariation_rrcx7"]
-base_font = ExtResource("3_cmrfp")
+base_font = ExtResource("5_if7li")
+spacing_glyph = 10
 
 [sub_resource type="FontVariation" id="FontVariation_fh7cp"]
-base_font = ExtResource("6_loo7a")
+base_font = ExtResource("6_if7li")
 
 [sub_resource type="FontVariation" id="FontVariation_8e205"]
-base_font = ExtResource("6_loo7a")
+base_font = ExtResource("6_if7li")
 
 [node name="MainMenu" type="Control" unique_id=661216247]
 layout_mode = 3
@@ -64,7 +66,7 @@ text = "UNTUMBRA"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Name" type="Label" parent="." unique_id=1213736507]
+[node name="Names" type="Label" parent="." unique_id=1213736507]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -77,8 +79,8 @@ offset_right = 94.5
 offset_bottom = -21.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("5_cmrfp")
-theme_override_font_sizes/font_size = 30
+theme_override_fonts/font = ExtResource("6_if7li")
+theme_override_font_sizes/font_size = 16
 text = "By OmniXV0 
 Matthew Rusche 
 Jordan Hopf"
@@ -91,8 +93,8 @@ offset_left = 180.0
 offset_top = 400.0
 offset_right = 465.0
 offset_bottom = 525.0
-theme_override_fonts/font = ExtResource("5_cmrfp")
-theme_override_font_sizes/font_size = 30
+theme_override_fonts/font = ExtResource("6_if7li")
+theme_override_font_sizes/font_size = 16
 text = "Version 1.0.0"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -103,8 +105,8 @@ offset_left = -40.0
 offset_top = 400.0
 offset_right = 245.0
 offset_bottom = 525.0
-theme_override_fonts/font = ExtResource("5_cmrfp")
-theme_override_font_sizes/font_size = 30
+theme_override_fonts/font = ExtResource("6_if7li")
+theme_override_font_sizes/font_size = 16
 text = "Made with Godot"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -115,8 +117,8 @@ offset_left = 395.0
 offset_top = 400.0
 offset_right = 680.0
 offset_bottom = 525.0
-theme_override_fonts/font = ExtResource("5_cmrfp")
-theme_override_font_sizes/font_size = 30
+theme_override_fonts/font = ExtResource("6_if7li")
+theme_override_font_sizes/font_size = 16
 text = "© 2025 OmniXV0"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -136,16 +138,16 @@ alignment = 1
 
 [node name="HighScoreText" type="Label" parent="HighScoreContainer" unique_id=616731391]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("5_cmrfp")
-theme_override_font_sizes/font_size = 30
+theme_override_fonts/font = ExtResource("6_if7li")
+theme_override_font_sizes/font_size = 16
 text = "High Score: "
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HighScore" type="Label" parent="HighScoreContainer" unique_id=1830267702]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("5_cmrfp")
-theme_override_font_sizes/font_size = 30
+theme_override_fonts/font = ExtResource("6_if7li")
+theme_override_font_sizes/font_size = 16
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -166,16 +168,16 @@ alignment = 1
 
 [node name="TimeScoreText" type="Label" parent="TimeScoreContainer" unique_id=622140841]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("5_cmrfp")
-theme_override_font_sizes/font_size = 30
+theme_override_fonts/font = ExtResource("6_if7li")
+theme_override_font_sizes/font_size = 16
 text = "Time Score: "
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TimeScore" type="Label" parent="TimeScoreContainer" unique_id=2054136828]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("5_cmrfp")
-theme_override_font_sizes/font_size = 30
+theme_override_fonts/font = ExtResource("6_if7li")
+theme_override_font_sizes/font_size = 16
 text = "00:00:00"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -213,7 +215,7 @@ offset_top = 7.0
 offset_right = 104.0
 offset_bottom = 42.0
 theme_override_fonts/font = SubResource("FontVariation_fh7cp")
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 20
 text = "Play"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -236,7 +238,7 @@ offset_top = 7.0
 offset_right = 91.0
 offset_bottom = 42.0
 theme_override_fonts/font = SubResource("FontVariation_8e205")
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 20
 text = "Quit"
 horizontal_alignment = 1
 vertical_alignment = 1

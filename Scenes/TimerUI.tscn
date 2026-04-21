@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cpanv64da0q5g"]
 
-[ext_resource type="FontFile" uid="uid://do8imyb1tdnka" path="res://Fonts/bytebounce/ByteBounce.ttf" id="1_ee8yr"]
 [ext_resource type="Script" uid="uid://bx67yln1fsxym" path="res://Scripts/TimerUI.gd" id="1_p8nju"]
+[ext_resource type="FontFile" uid="uid://cleogctrnw3bu" path="res://Fonts/pixeloid/PixeloidSans-Bold.otf" id="2_p8nju"]
 
 [node name="TimerUI" type="Control" unique_id=772824901]
 layout_mode = 3
@@ -14,8 +14,8 @@ script = ExtResource("1_p8nju")
 layout_mode = 0
 offset_right = 90.0
 offset_bottom = 23.0
-theme_override_fonts/font = ExtResource("1_ee8yr")
-theme_override_font_sizes/font_size = 30
+theme_override_fonts/font = ExtResource("2_p8nju")
+theme_override_font_sizes/font_size = 16
 text = "00:00:00"
 horizontal_alignment = 1
 

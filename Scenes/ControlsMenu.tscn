@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://bcpma0af5t0hx"]
 
-[ext_resource type="FontFile" uid="uid://bvvaytb6u27py" path="res://Fonts/deltha/Deltha.otf" id="1_gyf44"]
 [ext_resource type="Script" uid="uid://dvsvgp4322w3a" path="res://Scripts/ControlsMenu.gd" id="1_n2li1"]
 [ext_resource type="Texture2D" uid="uid://3oqwga86bivv" path="res://Textures/ControlsMenuKeyboardWithoutMouse.png" id="2_bvrd0"]
+[ext_resource type="FontFile" uid="uid://pjje3wr0ycv1" path="res://Fonts/oblivion-future-free/OblivionFutureFree-Regular.otf" id="3_m21ao"]
 [ext_resource type="PackedScene" uid="uid://dsawtc1yhu1wh" path="res://Scenes/AudioController.tscn" id="4_bvrd0"]
 [ext_resource type="Texture2D" uid="uid://cmv3e4crqltte" path="res://Textures/Arrow.png" id="4_e566s"]
 [ext_resource type="Texture2D" uid="uid://cc5bpp1h44ft2" path="res://Textures/ArrowHover.png" id="5_kn478"]
@@ -46,7 +46,7 @@ offset_right = 349.0
 offset_bottom = -5.0
 grow_horizontal = 2
 scale = Vector2(0.9, 0.9)
-theme_override_fonts/font = ExtResource("1_gyf44")
+theme_override_fonts/font = ExtResource("3_m21ao")
 theme_override_font_sizes/font_size = 25
 text = "Controls: Keyboard 
 Without Mouse"
@@ -89,7 +89,7 @@ offset_right = 349.0
 offset_bottom = -5.0
 grow_horizontal = 2
 scale = Vector2(0.9, 0.9)
-theme_override_fonts/font = ExtResource("1_gyf44")
+theme_override_fonts/font = ExtResource("3_m21ao")
 theme_override_font_sizes/font_size = 25
 text = "Controls: Keyboard 
 With Mouse"
@@ -145,7 +145,7 @@ offset_right = 349.0
 offset_bottom = -5.0
 grow_horizontal = 2
 scale = Vector2(0.9, 0.9)
-theme_override_fonts/font = ExtResource("1_gyf44")
+theme_override_fonts/font = ExtResource("3_m21ao")
 theme_override_font_sizes/font_size = 25
 text = "Controls: Controller"
 horizontal_alignment = 1
