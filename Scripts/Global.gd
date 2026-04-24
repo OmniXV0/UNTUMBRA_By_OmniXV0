@@ -1,5 +1,7 @@
 extends Node
 
+var is_tutorial: bool = false
+
 var is_game_over: bool = false
 var is_pause_menu: bool = false
 var is_controls_menu: bool = false

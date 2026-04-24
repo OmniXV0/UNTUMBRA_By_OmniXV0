@@ -65,6 +65,8 @@ var big_blast_powerup: bool = false
 var spritesheet_default = load("res://Sprites/TheSurvivor.png")
 var spritesheet_big_slash = load("res://Sprites/TheSurvivorBigSlashWeapon.png")
 
+var is_using_controller = false
+
 func _ready() -> void:
 	Global.score = 0
 	Global.time = 0
@@ -80,14 +82,32 @@ func _ready() -> void:
 	z_index = 0
 	big_slash.hide()
 	player_sprite.texture = spritesheet_default
-	if get_tree().current_scene.name == "Game":
+	if get_tree().current_scene.name == "Game" || get_tree().current_scene.name == "Tutorial":
 		pause = $"../UI/PauseMenu"
-		game_over = $"../UI/GameOver/GameOverScreen"
+		game_over = $"../UI/GameOver"
 		cool_down_ui = $"../UI/CoolDownUI"
 		game_over.hide()
 	hurtbox_area.hurt.connect(take_hit.call_deferred)
 	stats.no_health.connect(player_death)
 	stats.no_heals.connect(no_healing)
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventJoypadButton or event is InputEventJoypadMotion:
+		if not is_using_controller:
+			is_using_controller = true
+			_on_input_source_changed()
+	elif event is InputEventKey or event is InputEventMouseButton or event is InputEventMouseMotion:
+		if is_using_controller:
+			is_using_controller = false
+			_on_input_source_changed()
+
+func _on_input_source_changed():
+	if is_using_controller:
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+		print("Switched to Controller")
+	else:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		print("Switched to Keyboard/Mouse")
 	
 func _physics_process(delta: float) -> void:
 	swinging = false

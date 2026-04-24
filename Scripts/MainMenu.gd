@@ -42,6 +42,7 @@ func _on_play_pressed() -> void:
 	player_stats.heals = player_stats.max_heals
 	player_stats.bombs = player_stats.max_bombs
 	Global.is_game_over = false
+	Global.is_tutorial = false
 	await get_tree().create_timer(0.5).timeout
 	get_tree().change_scene_to_file("res://Scenes/Game.tscn")
 
@@ -59,3 +60,13 @@ func _on_exit_no_pressed() -> void:
 	audio_controller.play_sfx(audio_controller.click_yes_sfx)
 	confirm_exit.hide()
 	main_menu_buttons.find_child("Quit").grab_focus()
+
+func _on_tutorial_pressed() -> void:
+	audio_controller.play_sfx(audio_controller.click_yes_sfx)
+	player_stats.health = player_stats.max_health
+	player_stats.heals = player_stats.max_heals
+	player_stats.bombs = player_stats.max_bombs
+	Global.is_game_over = false
+	Global.is_tutorial = true
+	await get_tree().create_timer(0.5).timeout
+	get_tree().change_scene_to_file("res://Scenes/Tutorial.tscn")

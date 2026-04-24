@@ -4,7 +4,8 @@ extends Control
 	
 func _process(_delta: float) -> void:
 	score.text = str(Global.score)
-	if Global.score > Global.high_score:
-		Global.high_score = Global.score
-		SaveLoad.contents_to_save.high_score = Global.high_score
-		SaveLoad._save()
+	if !Global.is_tutorial:
+		if Global.score > Global.high_score:
+			Global.high_score = Global.score
+			SaveLoad.contents_to_save.high_score = Global.high_score
+			SaveLoad._save()

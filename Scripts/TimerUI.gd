@@ -12,8 +12,9 @@ func _process(_delta: float) -> void:
 	timer_text.text = Global.format_time(Global.time)
 	if total_time_in_secs > Global.time_score:
 		Global.time_score = total_time_in_secs
-		SaveLoad.contents_to_save.time_score = Global.time_score
-		SaveLoad._save()
+		if !Global.is_tutorial:
+			SaveLoad.contents_to_save.time_score = Global.time_score
+			SaveLoad._save()
 
 func _on_timer_timeout() -> void:
 	if !Global.is_game_over:
