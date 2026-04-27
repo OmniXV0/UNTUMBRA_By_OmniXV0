@@ -216,7 +216,7 @@ func big_sword():
 func long_dash():
 	print("LONG DASH")
 	AudioController.play_volume(2, 0)
-	speed_multiplier = 3
+	speed_multiplier = 2
 	long_dash_powerup = true
 	dash_timer.start(10)
 	cool_down_ui.dash_cool_down()

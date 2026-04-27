@@ -16,39 +16,94 @@ var enemy_count: int = 0
 @onready var enemy_slasher_spawn_sfx: AudioStreamPlayer2D = $EnemySlasherSpawnSFX
 @onready var enemy_gunner_spawn_sfx: AudioStreamPlayer2D = $EnemyGunnerSpawnSFX
 @onready var enemy_lord_spawn_sfx: AudioStreamPlayer2D = $EnemyLordSpawnSFX
-@onready var timer: Timer = $Timer
 
-@onready var tutorial_text: Control = $"../TutorialText"
-@onready var tutorial_text_1: Label = $"../TutorialText/TutorialText1"
-@onready var tutorial_text_2: Label = $"../TutorialText/TutorialText2"
-@onready var tutorial_text_3: Label = $"../TutorialText/TutorialText3"
+@onready var tutorial_text: Control = $"../UI/TutorialText"
+@onready var tutorial_text_1: Label = $"../UI/TutorialText/TutorialText1"
+@onready var tutorial_text_2: Label = $"../UI/TutorialText/TutorialText2"
+@onready var tutorial_text_3: Label = $"../UI/TutorialText/TutorialText3"
 
 @onready var text_animation: AnimationPlayer = $"../TextAnimation"
 
-func _ready():
-	Global.lord_is_dead = true
-	await get_tree().create_timer(1).timeout
-	text_animation.play("TutorialTextAnimation/TutorialTextFadeIn")
-	tutorial_text_1.text = "MOVE:
-							ARROW KEYS
-							or WASD KEYS
-							or LEFT STICK/D-PAD"
+enum States {
+	MOVE_TEXT,
+	MOVE,
+	SLASH_TEXT,
+	SLASH,
+	DASH_TEXT,
+	DASH,
+	SHOOT_TEXT,
+	SHOOT,
+	UI,
+	POWERUP,
+	HEAL,
+	THROW,
+	REPLENISH,
+	BAR,
+	PAUSE,
+	CONTROLS
+}
 
-func _on_timer_timeout() -> void:
-	for i in get_children():
-		if i is CharacterBody2D:
-			if !i.is_dead:
-				enemy_count += 1
-			else:
-				enemy_count -= 1
-	if enemy_count < 5:
-		if !Global.is_game_over:
-			spawn_enemy()
-	else:
-		print("ENEMIES FULL")
+var state = States.MOVE_TEXT
+
+func change_state(new_state):
+	state = new_state
+
+func _ready():
+	Global.is_tutorial = true
+	Global.tutorial_enemy_number = 0
+	Global.lord_is_dead = true
 	
-func spawn_enemy():
-	enemy_spawn_rate = randi_range(0, 9)
+func _physics_process(_delta: float) -> void:
+	match state:
+		States.MOVE_TEXT:
+			print("STATE: MOVE_TEXT")
+			text_animation.play("TutorialTextAnimation/TutorialTextFadeIn")
+			tutorial_text_1.text = "MOVE:
+									ARROW KEYS
+									or WASD KEYS
+									or LEFT STICK/D-PAD"
+			change_state(States.MOVE)
+		States.MOVE:
+			print("STATE: MOVE")
+			if Input.is_action_just_pressed("down") || Input.is_action_just_pressed("up") || Input.is_action_just_pressed("left") || Input.is_action_just_pressed("right"):
+				text_animation.play("TutorialTextAnimation/TutorialTextFadeOut")
+				change_state(States.SLASH_TEXT)
+		States.SLASH_TEXT:
+			print("STATE: SLASH_TEXT")
+			text_animation.play("TutorialTextAnimation/TutorialTextFadeIn")
+			tutorial_text_1.text = "SLASH:
+									Z KEY
+									LEFT MOUSE
+									A BUTTON
+									
+									Press 3 times fast for a combo"
+			spawn_enemy(0)
+			change_state(States.SLASH)
+		States.SLASH:
+			print("STATE: SLASH")
+			if Global.tutorial_enemy_number == 1:
+				text_animation.play("TutorialTextAnimation/TutorialTextFadeOut")
+				change_state(States.DASH_TEXT)
+		States.DASH_TEXT:
+			print("STATE: DASH_TEXT")
+			text_animation.play("TutorialTextAnimation/TutorialTextFadeIn")
+			tutorial_text_1.text = "DASH:
+									X KEY
+									RIGHT MOUSE
+									X BUTTON
+
+									Dash through enemies to escape
+									You can slash and dash at the same time"
+			change_state(States.DASH)
+		States.DASH:
+			print("STATE: DASH")
+			if Input.is_action_just_pressed("dash"):
+				text_animation.play("TutorialTextAnimation/TutorialTextFadeOut")
+				change_state(States.SHOOT_TEXT)
+				
+func spawn_enemy(spawn_id: int) -> void:
+	print("SPAWN ENEMY")
+	enemy_spawn_rate = spawn_id
 	if enemy_spawn_rate == 6 || enemy_spawn_rate == 7 || enemy_spawn_rate == 8:
 		enemy_warrior = enemy_warrior_prefab.instantiate()
 		add_child(enemy_warrior)
@@ -64,19 +119,10 @@ func spawn_enemy():
 		else:
 			pass
 	elif enemy_spawn_rate == 9:
-		if !Global.lord_is_dead:
-			print("LORD ALREADY PRESENT")
-			spawn_bot()
-		else:
-			print("LORD PRESENT")
-			Global.lord_is_dead = false
 			enemy_lord_spawn_sfx.play()
 			enemy_lord = enemy_lord_prefab.instantiate()
 			add_child(enemy_lord)
 	else:
-		spawn_bot()
-		
-func spawn_bot():
-	enemy_bot_spawn_sfx.play()
-	enemy = enemy_prefab.instantiate()
-	add_child(enemy)
+		enemy_bot_spawn_sfx.play()
+		enemy = enemy_prefab.instantiate()
+		add_child(enemy)

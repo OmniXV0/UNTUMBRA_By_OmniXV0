@@ -16,10 +16,6 @@ enemy_prefab = ExtResource("2_4l853")
 enemy_warrior_prefab = ExtResource("3_dg7rp")
 enemy_lord_prefab = ExtResource("4_1y54x")
 
-[node name="Timer" type="Timer" parent="." unique_id=1740093601]
-wait_time = 10.0
-autostart = true
-
 [node name="EnemyBotSpawnSFX" type="AudioStreamPlayer2D" parent="." unique_id=770061769]
 stream = ExtResource("3_u7cdh")
 bus = &"SFX"
@@ -39,5 +35,3 @@ bus = &"SFX"
 [node name="EnemyLordSpawnSFX" type="AudioStreamPlayer2D" parent="." unique_id=1081266951]
 stream = ExtResource("8_kpa3q")
 bus = &"SFX"
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

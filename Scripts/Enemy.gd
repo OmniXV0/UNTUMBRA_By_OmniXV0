@@ -42,19 +42,20 @@ func _physics_process(delta: float) -> void:
 	match state:
 		"Idle": pass
 		"Chase":
-			var player_chased: = get_player()
-			if player_chased is Player:
-				if !Global.is_game_over:
-					velocity = global_position.direction_to(player_chased.global_position) * speed	#move towards the player
-					if global_position.x != 320:	#"320" has to do with the screen size
-						enemy_sprite.scale.x = sign(velocity.x)
+			if !Global.is_tutorial:
+				var player_chased: = get_player()
+				if player_chased is Player:
+					if !Global.is_game_over:
+						velocity = global_position.direction_to(player_chased.global_position) * speed	#move towards the player
+						if global_position.x != 320:	#"320" has to do with the screen size
+							enemy_sprite.scale.x = sign(velocity.x)
+					else:
+						velocity = Vector2.ZERO
 				else:
 					velocity = Vector2.ZERO
-			else:
-				velocity = Vector2.ZERO
-			if stop_enemy == true:
-				velocity = Vector2.ZERO
-			move_and_slide()
+				if stop_enemy == true:
+					velocity = Vector2.ZERO
+				move_and_slide()
 		"Knockback":
 			velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
 			move_and_slide()
@@ -112,7 +113,8 @@ func free_enemy() -> void:
 	var item_drop_rate: int = randi_range(0, 4)	#CHANGE THIS BACK WHEN READY
 	if item_drop_rate == 0:
 		enemy_sprite.hide()
-		drop_item()
+		if !Global.is_tutorial:
+			drop_item()
 		despawn()
 	else:
 		print("No item")
@@ -127,6 +129,8 @@ func drop_item():
 	item.global_position = center.global_position
 	
 func despawn():
+	if Global.is_tutorial:
+		Global.tutorial_enemy_number += 1
 	stop_enemy = false
 	queue_free()
 	is_dead = true
