@@ -33,13 +33,21 @@ enum States {
 	DASH,
 	SHOOT_TEXT,
 	SHOOT,
+	UI_TEXT,
 	UI,
+	POWERUP_TEXT,
 	POWERUP,
+	HEAL_TEXT,
 	HEAL,
+	THROW_TEXT,
 	THROW,
+	REPLENISH_TEXT,
 	REPLENISH,
+	BAR_TEXT,
 	BAR,
+	PAUSE_TEXT,
 	PAUSE,
+	CONTROLS_TEXT,
 	CONTROLS
 }
 
@@ -100,6 +108,24 @@ func _physics_process(_delta: float) -> void:
 			if Input.is_action_just_pressed("dash"):
 				text_animation.play("TutorialTextAnimation/TutorialTextFadeOut")
 				change_state(States.SHOOT_TEXT)
+		States.SHOOT_TEXT:
+			print("STATE: SHOOT_TEXT")
+			text_animation.play("TutorialTextAnimation/TutorialTextFadeIn")
+			tutorial_text_1.text = "SHOOT:
+									C KEY (HOLD)
+									MIDDLE MOUSE (HOLD)
+									RIGHT TRIGGER (HOLD)"
+			tutorial_text_2.text = "AIM (SHOOT/THROW BOMB):
+									B or SHIFT KEYS (HOLD)
+									DRAG MOUSE
+									RIGHT STICK"
+			spawn_enemy(0)
+			change_state(States.SHOOT)
+		States.SHOOT:
+			print("STATE: SHOOT")
+			if Global.tutorial_enemy_number == 2:
+				text_animation.play("TutorialTextAnimation/TutorialTextFadeOut")
+				change_state(States.UI_TEXT)
 				
 func spawn_enemy(spawn_id: int) -> void:
 	print("SPAWN ENEMY")
