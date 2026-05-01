@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://5sox1abvv7cw" path="res://Scenes/PauseMenu.tscn" id="11_m8quk"]
 [ext_resource type="PackedScene" uid="uid://c8dqra4mgk5vf" path="res://Scenes/EnemySpawner.tscn" id="12_qae3o"]
 [ext_resource type="Script" uid="uid://cdwrs3yx0q3eu" path="res://Scripts/EnemySpawnerTutorial.gd" id="13_sgy12"]
+[ext_resource type="PackedScene" uid="uid://mu3i8nv3wkev" path="res://Scenes/Item.tscn" id="15_brn58"]
 
 [sub_resource type="Animation" id="Animation_brn58"]
 length = 0.001
@@ -47,6 +48,42 @@ _data = {
 &"RESET": SubResource("Animation_brn58")
 }
 
+[sub_resource type="Animation" id="Animation_fx2vl"]
+resource_name = "FadeScreen"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_mqud2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sswaw"]
+_data = {
+&"FadeScreen": SubResource("Animation_fx2vl"),
+&"RESET": SubResource("Animation_mqud2")
+}
+
 [node name="Tutorial" type="Node2D" unique_id=1393734757]
 y_sort_enabled = true
 
@@ -75,7 +112,14 @@ tile_set = ExtResource("2_sgy12")
 
 [node name="Rocks" type="TileMapLayer" parent="." unique_id=232539278]
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAAWABEAAQAAAAMAABAJAAwAAQAAAAUAAAAPAAYAAQAAAAQAAAALAP//AQAAAAMAABD9/woAAQAAAAUAABABABAAAQAAAAQAAAAWAAEAAQAAAAUAABD8/wIAAQAAAAQAABADAAQAAQAAAAMAAAA=")
+tile_map_data = PackedByteArray("AAAWABEAAQAAAAMAABAJAAwAAQAAAAUAAAAPAAYAAQAAAAQAAAD9/woAAQAAAAUAABABABAAAQAAAAQAAAAWAAEAAQAAAAUAABD8/wIAAQAAAAQAABADAAQAAQAAAAMAAAALAP7/AQAAAAMAABA=")
+tile_set = ExtResource("2_sgy12")
+
+[node name="RockWall" type="TileMapLayer" parent="." unique_id=1565287729]
+visible = false
+y_sort_enabled = true
+position = Vector2(0, -118)
+tile_map_data = PackedByteArray("AAANAAQAAQAAAAMAAAANAAUAAQAAAAMAAAANAAYAAQAAAAMAAAANAAcAAQAAAAMAAAANAAgAAQAAAAMAAAANAAkAAQAAAAMAAAANAAoAAQAAAAMAAAAGAAoAAQAAAAMAAAAGAAkAAQAAAAMAAAAGAAgAAQAAAAMAAAAGAAcAAQAAAAMAAAAGAAYAAQAAAAMAAAAGAAUAAQAAAAMAAAAGAAQAAQAAAAMAAAAGAAsAAQAAAAMAAAAHAAsAAQAAAAMAAAAIAAsAAQAAAAMAAAAJAAsAAQAAAAMAAAAKAAsAAQAAAAMAAAALAAsAAQAAAAMAAAAMAAsAAQAAAAMAAAANAAsAAQAAAAMAAAAGAAMAAQAAAAMAAAAHAAMAAQAAAAMAAAAIAAMAAQAAAAMAAAAJAAMAAQAAAAMAAAAKAAMAAQAAAAMAAAALAAMAAQAAAAMAAAAMAAMAAQAAAAMAAAANAAMAAQAAAAMAAAA=")
 tile_set = ExtResource("2_sgy12")
 
 [node name="WallsBase" type="TileMapLayer" parent="." unique_id=1749702665]
@@ -90,7 +134,7 @@ tile_map_data = PackedByteArray("AAD3/wEAAQAFAAAAAGD3////AQAGAAAAAFAcAAEAAQAJAAA
 tile_set = ExtResource("2_sgy12")
 
 [node name="Player" parent="." unique_id=240871995 instance=ExtResource("3_5gw1s")]
-position = Vector2(320, 240)
+position = Vector2(322, 240)
 
 [node name="PlayerCamera" parent="Player" index="20" unique_id=1590006365]
 limit_left = -320
@@ -106,6 +150,11 @@ position = Vector2(320, 240)
 position = Vector2(4, 1)
 scale = Vector2(1.1, 1.1)
 polygon = PackedVector2Array(-645, -522, 696, -526, 698, 534, -688, 534, -692, -481, -644, -481, -640.90906, -276.36362, -529.0909, -275.45453, -527.2727, -106.363625, -631.8181, -105.45454, -631.8181, 103.63637, -529.0909, 103.63637, -529.0909, 270.90906, -637.2727, 270.90906, -638.18176, 480.90912, -435.45453, 478.18182, -435.45453, 414.54547, -126.36363, 410.90912, -122.727264, 472.7273, 114.54544, 474.54547, 117.272736, 402.7273, 430.9091, 398.18182, 430.9091, 472.7273, 641, 483, 636.36365, 270, 522.7273, 267.2727, 521.8181, 103.63637, 642.7273, 100.000015, 640.90906, -109.090904, 519.09094, -109.090904, 517.2727, -274.54544, 650, -275.45453, 644.5454, -480, 428.1818, -485.45453, 428.1818, -390.90906, 116.36365, -390.90906, 116.36365, -482.72723, -123.63635, -480, -122.727264, -390.90906, -435.45453, -390.90906, -436.36362, -479.09088, -644, -481)
+
+[node name="RockWallCollision" type="CollisionPolygon2D" parent="Boundary" unique_id=1846065464]
+position = Vector2(0, -118)
+polygon = PackedVector2Array(-115, -134, 119, -134, 119, 132, -116, 132, -116, -117, -110, -117, -110, 125, 111, 125, 111, -124, -115, -124)
+disabled = true
 
 [node name="TextAnimation" type="AnimationPlayer" parent="." unique_id=1667520127]
 libraries/ = SubResource("AnimationLibrary_fx2vl")
@@ -201,7 +250,7 @@ offset_right = 274.0
 offset_bottom = 281.0
 theme_override_fonts/font = ExtResource("4_brn58")
 theme_override_font_sizes/font_size = 20
-text = "The score shows total points from enemies defeated"
+text = "The score at the top right shows total points from enemies defeated"
 autowrap_mode = 2
 
 [node name="TextTime" type="Label" parent="." unique_id=1051857216]
@@ -400,13 +449,13 @@ metadata/_edit_use_anchors_ = true
 
 [node name="TutorialText3" type="Label" parent="UI/TutorialText" unique_id=1270216894]
 layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -150.0
-offset_right = 200.0
-offset_bottom = 150.0
-grow_vertical = 2
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -150.0
+offset_right = 150.0
+offset_bottom = 200.0
+grow_horizontal = 2
 mouse_filter = 0
 theme_override_fonts/font = ExtResource("4_brn58")
 theme_override_font_sizes/font_size = 18
@@ -456,6 +505,18 @@ offset_left = -45.0
 offset_right = 45.0
 grow_horizontal = 2
 
+[node name="FadeScreen" type="ColorRect" parent="UI" unique_id=2112330892]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="FadeScreenAnimation" type="AnimationPlayer" parent="UI/FadeScreen" unique_id=581954968]
+libraries/ = SubResource("AnimationLibrary_sswaw")
+
 [node name="ControlsMenu" parent="UI" unique_id=1825290512 instance=ExtResource("10_orlbv")]
 visible = false
 
@@ -466,6 +527,9 @@ visible = false
 y_sort_enabled = true
 position = Vector2(320, 125)
 script = ExtResource("13_sgy12")
+item_node_1 = ExtResource("15_brn58")
+item_node_2 = ExtResource("15_brn58")
+item_node_3 = ExtResource("15_brn58")
 
 [editable path="Player"]
 [editable path="Player/Gun"]

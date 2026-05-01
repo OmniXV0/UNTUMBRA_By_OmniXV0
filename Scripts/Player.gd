@@ -275,6 +275,7 @@ func heal():
 				print("RETURN")
 				return
 			if can_heal == true:
+				Global.tutorial_heal = true
 				can_heal = false
 				player_heal_sfx.play()
 				heals_animation.play("PlayerAnimation/HealsIconAnimation")

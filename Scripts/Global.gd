@@ -2,6 +2,8 @@ extends Node
 
 var is_tutorial: bool = false
 var tutorial_enemy_number: int = 0
+var tutorial_item_number: int = 0
+var tutorial_heal: bool = false
 
 var is_game_over: bool = false
 var is_pause_menu: bool = false
