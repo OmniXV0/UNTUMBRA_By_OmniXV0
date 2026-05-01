@@ -36,7 +36,7 @@ func _ready() -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if "Player" in body.name:
-		if !Global.is_tutorial:
+		if Global.is_tutorial:
 			Global.tutorial_item_number += 1
 		AudioController.play_sfx(AudioController.powerup_collect_sfx)
 		if item_choice == 0:

@@ -91,6 +91,7 @@ func throw_bomb():
 		bomb.rotation = rotation
 		bomb.hitbox_area.clear_hit_targets()
 		bomb.bomb_node_animation.play("BombAnimation/BombShockwaveAnimation")
+		Global.tutorial_throw = true
 		player.stats.bombs -= 1
 		await get_tree().create_timer(0.5).timeout
 		player.player_camera.screen_shake(5.0, 0.5)

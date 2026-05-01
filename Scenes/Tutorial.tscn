@@ -313,7 +313,9 @@ theme_override_font_sizes/font_size = 20
 text = "THROW BOMB:
 SPACEBAR
 Q KEY
-LEFT OR RIGHT SHOULDER"
+LEFT OR RIGHT SHOULDER
+
+Aiming is the same as the gun ability"
 autowrap_mode = 2
 
 [node name="TextHealthBar" type="Label" parent="." unique_id=173811860]
@@ -518,10 +520,8 @@ color = Color(0, 0, 0, 1)
 libraries/ = SubResource("AnimationLibrary_sswaw")
 
 [node name="ControlsMenu" parent="UI" unique_id=1825290512 instance=ExtResource("10_orlbv")]
-visible = false
 
 [node name="PauseMenu" parent="UI" unique_id=428999909 instance=ExtResource("11_m8quk")]
-visible = false
 
 [node name="EnemySpawnerTutorial" parent="." unique_id=134713463 instance=ExtResource("12_qae3o")]
 y_sort_enabled = true
@@ -530,6 +530,8 @@ script = ExtResource("13_sgy12")
 item_node_1 = ExtResource("15_brn58")
 item_node_2 = ExtResource("15_brn58")
 item_node_3 = ExtResource("15_brn58")
+item_node_4 = ExtResource("15_brn58")
+item_node_5 = ExtResource("15_brn58")
 
 [connection signal="animation_finished" from="UI/FadeScreen/FadeScreenAnimation" to="EnemySpawnerTutorial" method="_on_fade_screen_animation_animation_finished"]
 

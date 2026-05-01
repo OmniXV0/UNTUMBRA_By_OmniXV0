@@ -35,3 +35,7 @@ bus = &"SFX"
 [node name="EnemyLordSpawnSFX" type="AudioStreamPlayer2D" parent="." unique_id=1081266951]
 stream = ExtResource("8_kpa3q")
 bus = &"SFX"
+
+[node name="Timer" type="Timer" parent="." unique_id=273812636]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
