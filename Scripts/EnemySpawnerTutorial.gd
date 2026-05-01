@@ -137,7 +137,7 @@ func _physics_process(_delta: float) -> void:
 									C KEY (HOLD)
 									MIDDLE MOUSE (HOLD)
 									RIGHT TRIGGER (HOLD)"
-			tutorial_text_2.text = "AIM (SHOOT/THROW BOMB):
+			tutorial_text_2.text = "AIM:
 									B or SHIFT KEYS (HOLD)
 									DRAG MOUSE
 									RIGHT STICK"
@@ -247,7 +247,10 @@ func _physics_process(_delta: float) -> void:
 									Q KEY
 									LEFT OR RIGHT SHOULDER
 									
-									aiming is the same as the gun ability"
+									AIM:
+									B or SHIFT KEYS (HOLD)
+									DRAG MOUSE
+									RIGHT STICK"
 			change_state(States.HEAL)
 		States.HEAL:
 			if Global.tutorial_heal == true || Global.tutorial_throw == true:
