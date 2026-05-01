@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bcpma0af5t0hx" path="res://Scenes/ControlsMenu.tscn" id="7_bf53h"]
 [ext_resource type="PackedScene" uid="uid://c8dqra4mgk5vf" path="res://Scenes/EnemySpawner.tscn" id="7_fgofq"]
 [ext_resource type="PackedScene" uid="uid://cpanv64da0q5g" path="res://Scenes/TimerUI.tscn" id="9_3so38"]
+[ext_resource type="Script" uid="uid://b0rrm0safu16k" path="res://Scripts/EnemySpawner.gd" id="13_3cx6b"]
 
 [node name="Game" type="Node2D" unique_id=1393734757]
 y_sort_enabled = true
@@ -123,34 +124,42 @@ grow_horizontal = 2
 [node name="EnemySpawner" parent="." unique_id=1238196476 instance=ExtResource("7_fgofq")]
 y_sort_enabled = true
 position = Vector2(-320, -240)
+script = ExtResource("13_3cx6b")
 
 [node name="EnemySpawner1" parent="." unique_id=1795594893 instance=ExtResource("7_fgofq")]
 y_sort_enabled = true
 position = Vector2(320, -240)
+script = ExtResource("13_3cx6b")
 
 [node name="EnemySpawner2" parent="." unique_id=789322309 instance=ExtResource("7_fgofq")]
 y_sort_enabled = true
 position = Vector2(960, -240)
+script = ExtResource("13_3cx6b")
 
 [node name="EnemySpawner3" parent="." unique_id=1262635718 instance=ExtResource("7_fgofq")]
 y_sort_enabled = true
 position = Vector2(960, 240)
+script = ExtResource("13_3cx6b")
 
 [node name="EnemySpawner4" parent="." unique_id=2118342057 instance=ExtResource("7_fgofq")]
 y_sort_enabled = true
 position = Vector2(960, 720)
+script = ExtResource("13_3cx6b")
 
 [node name="EnemySpawner5" parent="." unique_id=1926579422 instance=ExtResource("7_fgofq")]
 y_sort_enabled = true
 position = Vector2(320, 720)
+script = ExtResource("13_3cx6b")
 
 [node name="EnemySpawner6" parent="." unique_id=578087958 instance=ExtResource("7_fgofq")]
 y_sort_enabled = true
 position = Vector2(-320, 720)
+script = ExtResource("13_3cx6b")
 
 [node name="EnemySpawner7" parent="." unique_id=1185305756 instance=ExtResource("7_fgofq")]
 y_sort_enabled = true
 position = Vector2(-320, 240)
+script = ExtResource("13_3cx6b")
 
 [editable path="Player"]
 [editable path="Player/Gun"]
