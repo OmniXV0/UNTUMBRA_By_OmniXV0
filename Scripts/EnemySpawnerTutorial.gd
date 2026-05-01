@@ -273,7 +273,6 @@ func _physics_process(_delta: float) -> void:
 			if Input.is_action_just_pressed("down") || Input.is_action_just_pressed("up") || Input.is_action_just_pressed("left") || Input.is_action_just_pressed("right"):
 				text_animation.play("TutorialTextAnimation/TutorialTextFadeOut")
 				fade_screen_animation.play("FadeScreen")
-				get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
 			
 func spawn_enemy(spawn_id: int) -> void:
 	print("SPAWN ENEMY")
@@ -300,3 +299,6 @@ func spawn_enemy(spawn_id: int) -> void:
 		enemy_bot_spawn_sfx.play()
 		enemy = enemy_prefab.instantiate()
 		add_child(enemy)
+		
+func _on_fade_screen_animation_animation_finished(_anim_name: StringName) -> void:
+	get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")

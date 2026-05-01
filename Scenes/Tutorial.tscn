@@ -531,6 +531,8 @@ item_node_1 = ExtResource("15_brn58")
 item_node_2 = ExtResource("15_brn58")
 item_node_3 = ExtResource("15_brn58")
 
+[connection signal="animation_finished" from="UI/FadeScreen/FadeScreenAnimation" to="EnemySpawnerTutorial" method="_on_fade_screen_animation_animation_finished"]
+
 [editable path="Player"]
 [editable path="Player/Gun"]
 [editable path="UI/CoolDownUI"]
