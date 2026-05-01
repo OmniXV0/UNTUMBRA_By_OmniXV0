@@ -157,11 +157,8 @@ func _physics_process(_delta: float) -> void:
 			rock_wall.hide()
 			rock_wall_collision.disabled = true
 			text_animation.play("TutorialTextAnimation/TutorialTextFadeIn")
-			tutorial_text_1.text = "The score at the top right shows 
-									total points from enemies 
-									defeated"
-			tutorial_text_2.text = "The time at the top center shows 
-									how much time has passed"
+			tutorial_text_1.text = "The score at the top right shows total points from enemies defeated"
+			tutorial_text_2.text = "The time at the top center shows how much time has passed"
 			change_state(States.UI)
 		States.UI:
 			print("STATE: UI")
@@ -172,9 +169,7 @@ func _physics_process(_delta: float) -> void:
 		States.POWERUP_TEXT:
 			print("STATE: POWERUP_TEXT")
 			text_animation.play("TutorialTextAnimation/TutorialTextFadeIn")
-			tutorial_text_1.text = "Collect powerup items to upgrade 
-									player abilities"
-									
+			tutorial_text_1.text = "Collect powerup items to upgrade player abilities"
 			var item = item_node_1.instantiate()
 			item.position = Vector2(320, 125)
 			item.item_type = 0
@@ -199,8 +194,7 @@ func _physics_process(_delta: float) -> void:
 		States.COOLDOWN_TEXT:
 			print("STATE: COOLDOWN_TEXT")
 			text_animation.play("TutorialTextAnimation/TutorialTextFadeIn")
-			tutorial_text_1.text = "The cooldown bars show the time 
-									left for each powerup"
+			tutorial_text_1.text = "The yellow cooldown bars on the top right show the time left for each powerup"
 			change_state(States.COOLDOWN)
 		States.COOLDOWN:
 			print("STATE: COOLDOWN")
@@ -211,8 +205,7 @@ func _physics_process(_delta: float) -> void:
 		States.REPLENISH_TEXT:
 			print("STATE: REPLENISH_TEXT")
 			text_animation.play("TutorialTextAnimation/TutorialTextFadeIn")
-			tutorial_text_1.text = "Collect replenish items to restore 
-									lost bar abilities"
+			tutorial_text_1.text = "Collect replenish items to restore lost bar abilities"
 			var item_4 = item_node_4.instantiate()
 			item_4.position = Vector2(220, 125)
 			item_4.item_type = 3
@@ -233,10 +226,8 @@ func _physics_process(_delta: float) -> void:
 		States.BAR_TEXT:
 			print("STATE: BAR_TEXT")
 			text_animation.play("TutorialTextAnimation/TutorialTextFadeIn")
-			tutorial_text_1.text = "The health bar shows how many 
-									more times you can get hit"
-			tutorial_text_2.text = "the heals bar shows how many 
-									many heals you have"
+			tutorial_text_1.text = "The white square health bar on the top left shows how many more times you can get hit"
+			tutorial_text_2.text = "The green diamond heals bar and white circle bombs bar below the health bar shows how many many heals and bombs you have"
 			change_state(States.BAR)
 		States.BAR:
 			print("STATE: BAR")
@@ -298,8 +289,7 @@ func _physics_process(_delta: float) -> void:
 		States.THANKS_TEXT:
 			print("STATE: THANKS_TEXT")
 			text_animation.play("TutorialTextAnimation/TutorialTextFadeIn")
-			tutorial_text_1.text = "Thanks for playing
-									the tutorial!"
+			tutorial_text_1.text = "Thanks for playing the tutorial!"
 			tutorial_text_2.text = ""
 			change_state(States.THANKS)
 		States.THANKS:
