@@ -94,7 +94,6 @@ func _physics_process(_delta: float) -> void:
 			print("STATE: MOVE")
 			if Input.is_action_just_pressed("down") || Input.is_action_just_pressed("up") || Input.is_action_just_pressed("left") || Input.is_action_just_pressed("right"):
 				text_animation.play("TutorialTextAnimation/TutorialTextFadeOut")
-				await get_tree().create_timer(1).timeout
 				change_state(States.SLASH_TEXT)
 		States.SLASH_TEXT:
 			print("STATE: SLASH_TEXT")
@@ -111,7 +110,6 @@ func _physics_process(_delta: float) -> void:
 			print("STATE: SLASH")
 			if Global.tutorial_enemy_number == 1:
 				text_animation.play("TutorialTextAnimation/TutorialTextFadeOut")
-				await get_tree().create_timer(1).timeout
 				change_state(States.DASH_TEXT)
 		States.DASH_TEXT:
 			print("STATE: DASH_TEXT")
@@ -128,7 +126,6 @@ func _physics_process(_delta: float) -> void:
 			print("STATE: DASH")
 			if Input.is_action_just_pressed("dash"):
 				text_animation.play("TutorialTextAnimation/TutorialTextFadeOut")
-				await get_tree().create_timer(1).timeout
 				change_state(States.SHOOT_TEXT)
 		States.SHOOT_TEXT:
 			print("STATE: SHOOT_TEXT")
@@ -150,7 +147,6 @@ func _physics_process(_delta: float) -> void:
 			rock_wall_collision.disabled = false
 			if Global.tutorial_enemy_number == 2:
 				text_animation.play("TutorialTextAnimation/TutorialTextFadeOut")
-				await get_tree().create_timer(1).timeout
 				change_state(States.UI_TEXT)
 		States.UI_TEXT:
 			print("STATE: UI_TEXT")
@@ -164,7 +160,6 @@ func _physics_process(_delta: float) -> void:
 			print("STATE: UI")
 			if Input.is_action_just_pressed("down") || Input.is_action_just_pressed("up") || Input.is_action_just_pressed("left") || Input.is_action_just_pressed("right"):
 				text_animation.play("TutorialTextAnimation/TutorialTextFadeOut")
-				await get_tree().create_timer(1).timeout
 				change_state(States.POWERUP_TEXT)
 		States.POWERUP_TEXT:
 			print("STATE: POWERUP_TEXT")
@@ -189,7 +184,6 @@ func _physics_process(_delta: float) -> void:
 			print("STATE: POWERUP")
 			if Global.tutorial_item_number == 3:
 				text_animation.play("TutorialTextAnimation/TutorialTextFadeOut")
-				await get_tree().create_timer(1).timeout
 				change_state(States.COOLDOWN_TEXT)
 		States.COOLDOWN_TEXT:
 			print("STATE: COOLDOWN_TEXT")
@@ -200,7 +194,6 @@ func _physics_process(_delta: float) -> void:
 			print("STATE: COOLDOWN")
 			if Input.is_action_just_pressed("swing") || Input.is_action_just_pressed("dash") || Input.is_action_just_pressed("fire"):
 				text_animation.play("TutorialTextAnimation/TutorialTextFadeOut")
-				await get_tree().create_timer(1).timeout
 				change_state(States.REPLENISH_TEXT)
 		States.REPLENISH_TEXT:
 			print("STATE: REPLENISH_TEXT")
@@ -221,7 +214,6 @@ func _physics_process(_delta: float) -> void:
 			print(Global.tutorial_item_number)
 			if Global.tutorial_item_number == 5:
 				text_animation.play("TutorialTextAnimation/TutorialTextFadeOut")
-				await get_tree().create_timer(1).timeout
 				change_state(States.BAR_TEXT)
 		States.BAR_TEXT:
 			print("STATE: BAR_TEXT")
@@ -233,7 +225,6 @@ func _physics_process(_delta: float) -> void:
 			print("STATE: BAR")
 			if Input.is_action_just_pressed("down") || Input.is_action_just_pressed("up") || Input.is_action_just_pressed("left") || Input.is_action_just_pressed("right"):
 				text_animation.play("TutorialTextAnimation/TutorialTextFadeOut")
-				await get_tree().create_timer(1).timeout
 				change_state(States.HEAL_TEXT)
 		States.HEAL_TEXT:
 			print("STATE: HEAL TEXT")
@@ -255,7 +246,6 @@ func _physics_process(_delta: float) -> void:
 		States.HEAL:
 			if Global.tutorial_heal == true || Global.tutorial_throw == true:
 				text_animation.play("TutorialTextAnimation/TutorialTextFadeOut")
-				await get_tree().create_timer(1).timeout
 				change_state(States.PAUSE_TEXT)
 		States.PAUSE_TEXT:
 			print("STATE: PAUSE_TEXT")
@@ -269,7 +259,6 @@ func _physics_process(_delta: float) -> void:
 			print("STATE: PAUSE")
 			if Input.is_action_just_pressed("pause"):
 				text_animation.play("TutorialTextAnimation/TutorialTextFadeOut")
-				await get_tree().create_timer(1).timeout
 				change_state(States.CONTROLS_TEXT)
 		States.CONTROLS_TEXT:
 			print("STATE: CONTROLS_TEXT")
@@ -287,7 +276,6 @@ func _physics_process(_delta: float) -> void:
 			print("STATE: CONTROLS")
 			if Input.is_action_just_pressed("controls"):
 				text_animation.play("TutorialTextAnimation/TutorialTextFadeOut")
-				await get_tree().create_timer(1).timeout
 				change_state(States.THANKS_TEXT)
 		States.THANKS_TEXT:
 			print("STATE: THANKS_TEXT")
@@ -299,7 +287,6 @@ func _physics_process(_delta: float) -> void:
 			print("STATE: THANKS")
 			if Input.is_action_just_pressed("down") || Input.is_action_just_pressed("up") || Input.is_action_just_pressed("left") || Input.is_action_just_pressed("right"):
 				text_animation.play("TutorialTextAnimation/TutorialTextFadeOut")
-				await get_tree().create_timer(1).timeout
 				fade_screen_animation.play("FadeScreen")
 			
 func spawn_enemy(spawn_id: int) -> void:
