@@ -1,0 +1,168 @@
+[gd_scene format=4 uid="uid://cf1mbnoojr8u5"]
+
+[ext_resource type="PackedScene" uid="uid://o5ae7hx476ey" path="res://Scenes/Player.tscn" id="2_gl6un"]
+[ext_resource type="TileSet" uid="uid://bnnob625p5bk6" path="res://Resources/GameTileset.tres" id="3_2irst"]
+[ext_resource type="Texture2D" uid="uid://cuv13f10r8la6" path="res://Textures/GameBackground.png" id="3_fgofq"]
+[ext_resource type="FontFile" uid="uid://cleogctrnw3bu" path="res://Fonts/pixeloid/PixeloidSans-Bold.otf" id="4_3so38"]
+[ext_resource type="PackedScene" uid="uid://5sox1abvv7cw" path="res://Scenes/PauseMenu.tscn" id="5_7lihs"]
+[ext_resource type="PackedScene" uid="uid://byvx0ai4y18v0" path="res://Scenes/HeartsUI.tscn" id="5_b2bpf"]
+[ext_resource type="PackedScene" uid="uid://rtiew07hcd7u" path="res://Scenes/CoolDownUI.tscn" id="5_dahhg"]
+[ext_resource type="PackedScene" uid="uid://b8lvhcqr2djkx" path="res://Scenes/GameOver.tscn" id="6_7lihs"]
+[ext_resource type="PackedScene" uid="uid://cilnjlxdaljl6" path="res://Scenes/ScoreUI.tscn" id="7_2irst"]
+[ext_resource type="PackedScene" uid="uid://bcpma0af5t0hx" path="res://Scenes/ControlsMenu.tscn" id="7_bf53h"]
+[ext_resource type="PackedScene" uid="uid://c8dqra4mgk5vf" path="res://Scenes/EnemySpawner.tscn" id="7_fgofq"]
+[ext_resource type="PackedScene" uid="uid://cpanv64da0q5g" path="res://Scenes/TimerUI.tscn" id="9_3so38"]
+
+[node name="Game" type="Node2D" unique_id=1393734757]
+y_sort_enabled = true
+
+[node name="Background" type="Parallax2D" parent="." unique_id=229429763]
+z_index = -20
+repeat_size = Vector2(640, 480)
+
+[node name="BackgroundTexture" type="TextureRect" parent="Background" unique_id=1800569607]
+offset_left = -320.0
+offset_top = -240.0
+offset_right = 320.0
+offset_bottom = 240.0
+scale = Vector2(2, 2)
+texture = ExtResource("3_fgofq")
+stretch_mode = 1
+
+[node name="WallsShadows" type="TileMapLayer" parent="." unique_id=1256486699]
+z_index = -9
+tile_map_data = PackedByteArray("AAD7//z/AQAKAAAAAAD9//z/AQALAAAAAAAAAPz/AQALAAAAAAADAPz/AQALAAAAAAAFAPz/AQAOAAAAAAAOAPz/AQAKAAAAAAAQAPz/AQALAAAAAAATAPz/AQALAAAAAAAWAPz/AQALAAAAAAAYAPz/AQAOAAAAAAD3/wQAAQAKAAAAAGD3/wIAAQALAAAAAGAcAAIAAQALAAAAAHAcAAQAAQAOAAAAAFD3/xEAAQAKAAAAAGD3/w8AAQALAAAAAEAcABEAAQAOAAAAAFAcAA8AAQALAAAAAFA=")
+tile_set = ExtResource("3_2irst")
+
+[node name="Ruins" type="TileMapLayer" parent="." unique_id=1215216576]
+y_sort_enabled = true
+tile_map_data = PackedByteArray("AAAEAAoAAQABAAMAAAD7/w0AAQAHAAMAAAD9/wUAAQANAAMAAAAVAA8AAQAEAAMAABAXAAgAAQANAAMAAAAHAP7/AQAEAAMAAAAMABIAAQAKAAMAAAA=")
+tile_set = ExtResource("3_2irst")
+
+[node name="Rocks" type="TileMapLayer" parent="." unique_id=232539278]
+y_sort_enabled = true
+tile_map_data = PackedByteArray("AAAWABEAAQAAAAMAABAJAAwAAQAAAAUAAAAPAAYAAQAAAAQAAAD9/woAAQAAAAUAABABABAAAQAAAAQAAAAWAAEAAQAAAAUAABD8/wIAAQAAAAQAABADAAQAAQAAAAMAAAALAP7/AQAAAAMAABA=")
+tile_set = ExtResource("3_2irst")
+
+[node name="WallsBase" type="TileMapLayer" parent="." unique_id=1749702665]
+y_sort_enabled = true
+position = Vector2(-1, -1)
+tile_map_data = PackedByteArray("AAD4/wIAAQAEAAAAAAD2/wIAAQABAAAAAAD2/w8AAQABAAAAAAD4/w8AAQAEAAAAAAAbAA8AAQAAAAAAAAAdAA8AAQABAAAAAAAdAAIAAQABAAAAAAAbAAIAAQAAAAAAAAD7//v/AQAAAAAAAAD9//v/AQABAAAAAAAAAPv/AQABAAAAAAADAPv/AQABAAAAAAAFAPv/AQAEAAAAAAAOAPv/AQAAAAAAAAAYAPv/AQAEAAAAAAAQAPv/AQABAAAAAAATAPv/AQABAAAAAAAWAPv/AQABAAAAAAA=")
+tile_set = ExtResource("3_2irst")
+
+[node name="WallsTop" type="TileMapLayer" parent="." unique_id=1561682838]
+y_sort_enabled = true
+tile_map_data = PackedByteArray("AAD3/wEAAQAFAAAAAGD3////AQAGAAAAAFAcAAEAAQAJAAAAAFAcAP//AQAGAAAAAFAcAA4AAQAJAAAAAFAcAAwAAQAGAAAAAFD7//n/AQAFAAAAAAD9//n/AQAGAAAAAAAFAPn/AQAJAAAAAAAAAPn/AQAGAAAAAAADAPn/AQAGAAAAAAAOAPn/AQAFAAAAAAAQAPn/AQAGAAAAAAATAPn/AQAGAAAAAAAWAPn/AQAGAAAAAAAYAPn/AQAJAAAAAAD3/w4AAQAFAAAAAGAcAAoAAQAFAAAAAVAcAP3/AQAFAAAAAVD3//3/AQAJAAAAAWD7/xUAAQAFAAAAAiAFABUAAQAJAAAAAiAOABUAAQAFAAAAAiAYABUAAQAJAAAAAiD9/xUAAQAGAAAAAiAAABUAAQAGAAAAAiADABUAAQAGAAAAAiAQABUAAQAGAAAAAiATABUAAQAGAAAAAiAWABUAAQAGAAAAAiD3/wwAAQAGAAAAAGD3/woAAQAJAAAAAWA=")
+tile_set = ExtResource("3_2irst")
+
+[node name="Player" parent="." unique_id=240871995 instance=ExtResource("2_gl6un")]
+position = Vector2(320, 240)
+
+[node name="HealsSpriteText" parent="Player/HealsSprite" parent_id_path=PackedInt32Array(240871995, 1487808282) index="0" unique_id=1536958568]
+theme_override_fonts/font = ExtResource("4_3so38")
+
+[node name="BombsSpriteText" parent="Player/BombsSprite" parent_id_path=PackedInt32Array(240871995, 899196851) index="0" unique_id=1153048820]
+theme_override_fonts/font = ExtResource("4_3so38")
+
+[node name="PlayerCamera" parent="Player" index="20" unique_id=1590006365]
+limit_left = -320
+limit_top = -240
+limit_right = 960
+limit_bottom = 720
+
+[node name="Boundary" type="StaticBody2D" parent="." unique_id=1369818942]
+z_index = -8
+position = Vector2(320, 240)
+
+[node name="BoundaryCollision" type="CollisionPolygon2D" parent="Boundary" unique_id=956228315]
+position = Vector2(4, 1)
+scale = Vector2(1.1, 1.1)
+polygon = PackedVector2Array(-645, -522, 696, -526, 698, 534, -688, 534, -692, -481, -644, -481, -640.90906, -276.36362, -529.0909, -275.45453, -527.2727, -106.363625, -631.8181, -105.45454, -631.8181, 103.63637, -529.0909, 103.63637, -529.0909, 270.90906, -637.2727, 270.90906, -638.18176, 480.90912, -435.45453, 478.18182, -435.45453, 414.54547, -126.36363, 410.90912, -122.727264, 472.7273, 114.54544, 474.54547, 117.272736, 402.7273, 430.9091, 398.18182, 430.9091, 472.7273, 641, 483, 636.36365, 270, 522.7273, 267.2727, 521.8181, 103.63637, 642.7273, 100.000015, 640.90906, -109.090904, 519.09094, -109.090904, 517.2727, -274.54544, 650, -275.45453, 644.5454, -480, 428.1818, -485.45453, 428.1818, -390.90906, 116.36365, -390.90906, 116.36365, -482.72723, -123.63635, -480, -122.727264, -390.90906, -435.45453, -390.90906, -436.36362, -479.09088, -644, -481)
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=2064606376]
+
+[node name="ControlsIntroText" type="Label" parent="UI" unique_id=980762328]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -168.5
+offset_top = -15.0
+offset_right = 168.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("4_3so38")
+theme_override_font_sizes/font_size = 12
+text = "Press Tab, Ctrl/Cmd, or Select for controls"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CoolDownUI" parent="UI" unique_id=1897612681 instance=ExtResource("5_dahhg")]
+offset_left = 534.0
+offset_top = 30.0
+offset_right = 534.0
+offset_bottom = 30.0
+
+[node name="HeartsUI" parent="UI" unique_id=1471714699 instance=ExtResource("5_b2bpf")]
+offset_left = 1.0
+offset_right = 1.0
+
+[node name="GameOver" parent="UI" unique_id=839149203 instance=ExtResource("6_7lihs")]
+
+[node name="ScoreUI" parent="UI" unique_id=1537864482 instance=ExtResource("7_2irst")]
+offset_left = 540.0
+offset_right = 540.0
+
+[node name="TimerUI" parent="UI" unique_id=772824901 instance=ExtResource("9_3so38")]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -45.0
+offset_right = 45.0
+grow_horizontal = 2
+
+[node name="ControlsMenu" parent="UI" unique_id=1825290512 instance=ExtResource("7_bf53h")]
+
+[node name="PauseMenu" parent="UI" unique_id=428999909 instance=ExtResource("5_7lihs")]
+
+[node name="EnemySpawner" parent="." unique_id=1238196476 instance=ExtResource("7_fgofq")]
+y_sort_enabled = true
+position = Vector2(-320, -240)
+
+[node name="EnemySpawner1" parent="." unique_id=1795594893 instance=ExtResource("7_fgofq")]
+y_sort_enabled = true
+position = Vector2(320, -240)
+
+[node name="EnemySpawner2" parent="." unique_id=789322309 instance=ExtResource("7_fgofq")]
+y_sort_enabled = true
+position = Vector2(960, -240)
+
+[node name="EnemySpawner3" parent="." unique_id=1262635718 instance=ExtResource("7_fgofq")]
+y_sort_enabled = true
+position = Vector2(960, 240)
+
+[node name="EnemySpawner4" parent="." unique_id=2118342057 instance=ExtResource("7_fgofq")]
+y_sort_enabled = true
+position = Vector2(960, 720)
+
+[node name="EnemySpawner5" parent="." unique_id=1926579422 instance=ExtResource("7_fgofq")]
+y_sort_enabled = true
+position = Vector2(320, 720)
+
+[node name="EnemySpawner6" parent="." unique_id=578087958 instance=ExtResource("7_fgofq")]
+y_sort_enabled = true
+position = Vector2(-320, 720)
+
+[node name="EnemySpawner7" parent="." unique_id=1185305756 instance=ExtResource("7_fgofq")]
+y_sort_enabled = true
+position = Vector2(-320, 240)
+
+[editable path="Player"]
+[editable path="Player/Gun"]
+[editable path="UI/CoolDownUI"]
+[editable path="UI/HeartsUI"]
+[editable path="UI/GameOver"]
+[editable path="UI/ScoreUI"]
+[editable path="UI/ControlsMenu"]
+[editable path="UI/PauseMenu"]
