@@ -10,7 +10,6 @@
 [ext_resource type="FontFile" uid="uid://pjje3wr0ycv1" path="res://Fonts/oblivion-future-free/OblivionFutureFree-Regular.otf" id="5_if7li"]
 [ext_resource type="FontFile" uid="uid://cleogctrnw3bu" path="res://Fonts/pixeloid/PixeloidSans-Bold.otf" id="6_if7li"]
 [ext_resource type="FontFile" uid="uid://ckc538rqyx11m" path="res://Resources/PixelFont.tres" id="6_loo7a"]
-[ext_resource type="Texture2D" uid="uid://c5sfg2vgmb3n0" path="res://Textures/FallenLandSymbol.png" id="7_if7li"]
 
 [sub_resource type="FontVariation" id="FontVariation_rrcx7"]
 base_font = ExtResource("5_if7li")
@@ -38,16 +37,6 @@ offset_right = 1280.0
 offset_bottom = 960.0
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_loo7a")
-
-[node name="Logo" type="TextureRect" parent="." unique_id=2074789027]
-visible = false
-layout_mode = 0
-offset_left = 113.0
-offset_top = 175.0
-offset_right = 241.0
-offset_bottom = 303.0
-rotation = -1.5707964
-texture = ExtResource("7_if7li")
 
 [node name="Title" type="Label" parent="." unique_id=1226874470]
 layout_mode = 1
@@ -95,7 +84,7 @@ offset_right = 465.0
 offset_bottom = 525.0
 theme_override_fonts/font = ExtResource("6_if7li")
 theme_override_font_sizes/font_size = 16
-text = "Version 1.0.0"
+text = "Version 1.1.1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -124,7 +113,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HighScoreContainer" type="HBoxContainer" parent="." unique_id=1943416871]
-layout_direction = 4
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -134,6 +122,7 @@ offset_right = 74.0
 offset_bottom = 40.0
 grow_horizontal = 2
 pivot_offset = Vector2(75, 0)
+layout_direction = 4
 alignment = 1
 
 [node name="HighScoreText" type="Label" parent="HighScoreContainer" unique_id=616731391]
@@ -153,7 +142,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TimeScoreContainer" type="HBoxContainer" parent="." unique_id=1982288774]
-layout_direction = 4
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -164,6 +152,7 @@ offset_right = 74.0
 offset_bottom = 65.0
 grow_horizontal = 2
 pivot_offset = Vector2(75, 0)
+layout_direction = 4
 alignment = 1
 
 [node name="TimeScoreText" type="Label" parent="TimeScoreContainer" unique_id=622140841]

@@ -162,6 +162,7 @@ func _physics_process(_delta: float) -> void:
 				text_animation.play("TutorialTextAnimation/TutorialTextFadeOut")
 				change_state(States.POWERUP_TEXT)
 		States.POWERUP_TEXT:
+			Global.tutorial_item_number = 0
 			print("STATE: POWERUP_TEXT")
 			text_animation.play("TutorialTextAnimation/TutorialTextFadeIn")
 			tutorial_text_1.text = "Collect powerup items to upgrade player abilities"

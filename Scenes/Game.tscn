@@ -58,12 +58,6 @@ tile_set = ExtResource("3_2irst")
 [node name="Player" parent="." unique_id=240871995 instance=ExtResource("2_gl6un")]
 position = Vector2(320, 240)
 
-[node name="HealsSpriteText" parent="Player/HealsSprite" parent_id_path=PackedInt32Array(240871995, 1487808282) index="0" unique_id=1536958568]
-theme_override_fonts/font = ExtResource("4_3so38")
-
-[node name="BombsSpriteText" parent="Player/BombsSprite" parent_id_path=PackedInt32Array(240871995, 899196851) index="0" unique_id=1153048820]
-theme_override_fonts/font = ExtResource("4_3so38")
-
 [node name="PlayerCamera" parent="Player" index="20" unique_id=1590006365]
 limit_left = -320
 limit_top = -240

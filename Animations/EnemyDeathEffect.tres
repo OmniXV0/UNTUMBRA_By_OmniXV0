@@ -96,7 +96,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_5a1ev")
 }],
-"loop": false,
+"loop": 0,
 "name": &"BotDeathEffect",
 "speed": 5.0
 }, {
@@ -128,7 +128,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_civj3")
 }],
-"loop": false,
+"loop": 0,
 "name": &"FighterDeathEffect",
 "speed": 5.0
 }, {
@@ -160,7 +160,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_6mvmq")
 }],
-"loop": false,
+"loop": 0,
 "name": &"GunnerDeathEffect",
 "speed": 5.0
 }, {
@@ -192,7 +192,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_7bh7n")
 }],
-"loop": false,
+"loop": 0,
 "name": &"LordDeathEffect",
 "speed": 5.0
 }, {
@@ -224,7 +224,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_hq5fk")
 }],
-"loop": false,
+"loop": 0,
 "name": &"SlasherDeathEffect",
 "speed": 5.0
 }]

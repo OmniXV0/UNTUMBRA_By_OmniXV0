@@ -67,6 +67,8 @@ var spritesheet_big_slash = load("res://Sprites/TheSurvivorBigSlashWeapon.png")
 
 var is_using_controller = false
 
+const LIBRARY_NAME := "PlayerAnimation"
+
 func _ready() -> void:
 	Global.score = 0
 	Global.time = 0
