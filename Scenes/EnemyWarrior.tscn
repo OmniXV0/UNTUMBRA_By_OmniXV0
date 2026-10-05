@@ -163,6 +163,7 @@ one_shot = true
 [node name="EnemyAnimation" type="AnimationPlayer" parent="." unique_id=1889326250]
 libraries/ = SubResource("AnimationLibrary_kpr8r")
 libraries/EnemyWarriorAnimation = ExtResource("3_3k342")
+movie_quit_on_finish = true
 
 [node name="EnemyAnimationTree" type="AnimationTree" parent="." unique_id=1125238725]
 tree_root = SubResource("AnimationNodeBlendTree_6s1gy")

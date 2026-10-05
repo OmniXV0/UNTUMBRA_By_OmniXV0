@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bkapfdbgrbcop"]
+[gd_scene format=3 uid="uid://bkapfdbgrbcop"]
 
 [ext_resource type="Texture2D" uid="uid://cbge3mx5o8dno" path="res://Sprites/HitEffect.png" id="1_gnjlb"]
 
@@ -19,15 +19,17 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_0fcvl")
 }],
-"loop": false,
+"loop": 0,
 "name": &"default",
 "speed": 5.0
 }]
 
-[node name="HitEffect" type="AnimatedSprite2D"]
+[node name="HitEffect" type="AnimatedSprite2D" unique_id=1430755328]
 modulate = Color(1, 1, 1, 0.39215687)
 z_index = 10
 sprite_frames = SubResource("SpriteFrames_lgy7n")
 autoplay = "default"
+frame = 1
+frame_progress = 1.0
 
 [connection signal="animation_finished" from="." to="." method="queue_free"]

@@ -94,6 +94,7 @@ transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition
 graph_offset = Vector2(-136, 24)
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_6s1gy"]
+graph_offset = Vector2(-92, 34)
 nodes/EnemyState/node = SubResource("AnimationNodeStateMachine_0o0ue")
 nodes/EnemyState/position = Vector2(0, 100)
 node_connections = [&"output", 0, &"EnemyState"]
@@ -124,6 +125,7 @@ hframes = 9
 [node name="EnemyAnimation" type="AnimationPlayer" parent="." unique_id=2080069019]
 libraries/ = SubResource("AnimationLibrary_kpr8r")
 libraries/EnemyAnimation = ExtResource("5_0o0ue")
+movie_quit_on_finish = true
 
 [node name="EnemyAnimationTree" type="AnimationTree" parent="." unique_id=1464687635]
 tree_root = SubResource("AnimationNodeBlendTree_6s1gy")

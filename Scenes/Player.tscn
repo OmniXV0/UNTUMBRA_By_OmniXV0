@@ -440,24 +440,30 @@ process_material = SubResource("ParticleProcessMaterial_ulo2v")
 [node name="PlayerAnimation" type="AnimationPlayer" parent="." unique_id=1142573472]
 libraries/ = SubResource("AnimationLibrary_5ixxa")
 libraries/PlayerAnimation = ExtResource("3_xobjj")
+movie_quit_on_finish = true
 
 [node name="InvincibilityFramesAnimation" type="AnimationPlayer" parent="." unique_id=1546807763]
 libraries/ = SubResource("AnimationLibrary_5ixxa")
 libraries/PlayerAnimation = ExtResource("3_xobjj")
+movie_quit_on_finish = true
 
 [node name="HealsAnimation" type="AnimationPlayer" parent="." unique_id=1275741449]
 libraries/ = SubResource("AnimationLibrary_5ixxa")
 libraries/PlayerAnimation = ExtResource("3_xobjj")
+movie_quit_on_finish = true
 
 [node name="BombsAnimation" type="AnimationPlayer" parent="." unique_id=1929714918]
 libraries/ = SubResource("AnimationLibrary_5ixxa")
 libraries/PlayerAnimation = ExtResource("3_xobjj")
+movie_quit_on_finish = true
 
 [node name="GunAnimation" type="AnimationPlayer" parent="." unique_id=113053396]
 libraries/ = SubResource("AnimationLibrary_5ixxa")
 libraries/PlayerAnimation = ExtResource("3_xobjj")
+movie_quit_on_finish = true
 
 [node name="PlayerAnimationTree" type="AnimationTree" parent="." unique_id=1975964505]
+active = false
 callback_mode_discrete = 1
 tree_root = SubResource("AnimationNodeBlendTree_nn08x")
 advance_expression_base_node = NodePath("..")

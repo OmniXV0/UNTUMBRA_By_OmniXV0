@@ -42,7 +42,7 @@ mouse_cursor/custom_image="uid://se7jdj6cyhfo"
 [editor]
 
 movie_writer/video_quality=1.0
-movie_writer/movie_file="C:/Users/OmniX/OneDrive/Documents/Godot/UNTUMBRA_By_OmniXV0/Movies/PlayerAnimation-SwingDashDown.ogv"
+movie_writer/movie_file="C:/Users/OmniX/OneDrive/Documents/Godot/UNTUMBRA_By_OmniXV0/Movies/PlayerAnimation-SwingDown.ogv"
 
 [global_group]
 
