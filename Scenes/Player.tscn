@@ -327,7 +327,6 @@ _data = {
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_5ixxa"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_nn08x"]
-graph_offset = Vector2(-512.9091, 76.81818)
 nodes/output/position = Vector2(380, 180)
 nodes/PlayerStates/node = ExtResource("4_5ixxa")
 nodes/PlayerStates/position = Vector2(-60, 100)
@@ -463,7 +462,6 @@ libraries/PlayerAnimation = ExtResource("3_xobjj")
 movie_quit_on_finish = true
 
 [node name="PlayerAnimationTree" type="AnimationTree" parent="." unique_id=1975964505]
-active = false
 callback_mode_discrete = 1
 tree_root = SubResource("AnimationNodeBlendTree_nn08x")
 advance_expression_base_node = NodePath("..")
